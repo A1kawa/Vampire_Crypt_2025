@@ -1,0 +1,78 @@
+@import url(globals.css);
+
+body{
+    margin: 0;
+    background-color: var(--color-background);
+    color: var(--color-content);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    transition: .1s;
+}
+.cornerL{
+    left: 10px;
+}
+.logo{
+    height: fit-content;
+    max-width: 20vw;
+    min-width: 20vh;
+    position: absolute;
+    top: 10%;
+}
+.centralY{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.tittle{
+    font-size: clamp(70px, 7vw, 128px);
+    text-align: center;
+    width: fit-content;
+}
+button{
+    background-color: var(--color-background);
+    border-color: var(--color-content);
+    color: var(--color-content);
+    position: absolute;
+    bottom: 16vh;
+    border: 4px solid;
+    padding: 7px 40px;
+    font-size: clamp(20px, 2.1vw, 55px);
+    transition: .1s;
+    cursor: pointer;
+}
+button:hover{
+    background-color: var(--color-content);
+    border-color: var(--color-content);
+    color: var(--color-background);
+}
+#main{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: var(--opacity-transition);
+    transition: .5s linear;
+}
+.content{
+    opacity: 0;
+}
+.name{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: clamp(40px, 3vw, 100px );
+}
+.name input{
+    font-family: "Macondo", serif;
+    background-color: var(--color-content);
+    color: var(--color-background);
+    border: none;
+    padding-left: 1.5%;
+    font-size: x-large;
+    margin-top: 2vh;
+    height: 4.5vh;
+    width: 80%;
+}
