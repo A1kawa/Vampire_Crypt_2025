@@ -1,7 +1,7 @@
+const paragr = document.getElementById('body')
+let loadGameState = true
 let toggleDarkMode = false
 let textIndexInit = 0
-let textIndex = 0
-let iniText = true
 let but = []
 const buttons = 
 [document.getElementsByClassName('opt')[0],
@@ -59,22 +59,31 @@ function darkModeCheck() {
     document.getElementById('bats').src = "images/frontLogo02.png"
 }
 
-function typingEffect(element, body, i = 0) {
+function typingEffect(body, i = 0) {
     if (i === 0) {
-        element.innerHTML = ''
+        paragr.innerHTML = ''
     }
-    
-    if (body[i] === '<') {
-        element.innerHTML = body.slice(0, i + 4)
-        i = i + 4
-        console.log(but)
+    if (body[i] === '<') { //CHECA SE A PROXIMA PALAVRA SERA UMA TAG E PULA
+        if (body[i + 1] === 's' || body[i + 1] === '/'){
+            paragr.innerHTML = body.slice(0, i + 8)
+            i = i + 7
+        } else {
+            paragr.innerHTML = body.slice(0, i + 4)
+            i = i + 3
+        }
+        setTimeout(() => typingEffect(body, (i + 1)), 50)
+        return
     }
-    element.innerHTML += body[i]
+    paragr.innerHTML += body[i]
     if (i === body.length - 1){
+        if (textIndexInit < 5) {
+            but = init
+        }
+        paragr.innerHTML = body
         initButtons(but)
         return
     }
-    setTimeout(() => typingEffect(element, body, (i + 1)), 50)
+    setTimeout(() => typingEffect(body, (i + 1)), 50)
 }
 function initButtons(which) {
     let i = which.length
@@ -85,53 +94,23 @@ function initButtons(which) {
         ind++
     }
 }
-function Continue(param) {
-    switch (param) {
-        case 6:
-            
-        break;
-        case 5:
-            
-        break;
-        case 4:
-            
-        break;
-        case 3:
-            
-        break;
-        case 2:
-            
-        break;
-        case 1:
-            if (iniText) {
-                textIndexInit++
-                gameTextSet(textIndexInit, but)
-                resetButtons()
-                if (textIndexInit == 5) {
-                    iniText = false
-                }
-                return
-            }
-            
-        break;
-        default:
-            break;
-    }
-}
-function resetButtons(){
-    const ind = 0
-    while (ind != 5) {
+function Continue(whichButtonPressed) {
+    //RESETA TODOS OS BOTOES
+    let ind = 0
+    while (ind != 5) { 
         buttons[ind].classList.add('content')
         buttons[ind].textContent = ''
         ind++
     }
-}
-function gameTextSet(i = 0, button){
-    let text = pagTxtInit[i]
-    if (!iniText) {
-        text = pagTxtGame[i]
+
+    if (textIndexInit < 5) { //CHECA SE ESTA NO COMECO E PASSA O TEXTO DE INICIO (HISTORICO)
+        textIndexInit++
+        const text = pagTxtInit[textIndexInit]
+        typingEffect(text)
+        return
     }
-    const paragr = document.getElementById('body')
-    but = button
-    typingEffect(paragr, text)
+
+    typingEffect(pagTxtGame[NextPage[whichButtonPressed]])
+    Paginas(NextPage[whichButtonPressed]) //CHAMA O SWITCH PRINCIPAL PARA A PROXIMA PAG PASSANDO O PARAMETRO DE QUAL BOTAO FOI APERTADO
 }
+

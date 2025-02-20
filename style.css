@@ -87,6 +87,7 @@ button:hover{
     align-items: center;
 }
 .gameButtons button{
+    text-transform: uppercase;
     position: relative;
     bottom: 0;
     margin: 10px 10px;

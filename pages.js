@@ -1,15 +1,15 @@
-var pagTxtGame = [`Undefned`, 
+var pagTxtGame = [`Undefined`, 
     `Você segue a figura até as brumas envolventes. Ela pula para o assento do condutor do coche negro
-    e a porta da carruagem se abre. Os corcéis empinamem expectativa, seu bufar tornando-se vapor no ar frio.<br><br>
+    e a porta da carruagem se abre. Os corcéis empinam em expectativa, seu bufar tornando-se vapor no ar frio. <br> <br>
     <strong>Escolha sua proxima ação:</strong>`, //1
     `Você abre as portas de bronze e caminha por um bem iluminado hall de entrada que se encontra deserto.
     Mosaicos de chão e tapeçarias de parede vermelhos e negros dão à câmara uma aparência sombria, e por um instante
-    você pensa ter ouvido um tênue lamento...<br> <br>
+    você pensa ter ouvido um tênue lamento... <br> <br>
     Existem três saídas do hall.  <br> <br>
     <strong>Escolha sua proxima ação:</strong>`, //2
     `Você tem uma <strong>Espada Mágica</strong>?`, //3
     `Você morde os biscoitos açucarados e crocantes com sua fina e escura camada de chocolate - e alcança o centro macio de<br>
-    sangue coagulado. A guloseima favorita do Conde, mas que o enoja e o deixa nauseado.<br><br>
+    sangue coagulado. A guloseima favorita do Conde, mas que o enoja e o deixa nauseado. <br> <br>
     Você fica trêmulo de horror; <strong>perca 1 ponto de FÉ</strong>.`, //4
     `Assim que cruza o portal, você percebe um pentagrama no chão - tarde demais!
     Uma forma esfumaçada se materializa dentro dele, e um corcel espectral com olhos chamejantes, bafo de fogo e uma fumaça nauseante, 
@@ -18,8 +18,8 @@ var pagTxtGame = [`Undefned`,
     `Durante cada Série de Ataque até que mate a Névoa Vampira, você <strong>perderá 1 ponto de ENERGIA</strong> pela drenagem de sangue.`, //6
     `Um raio de luar o atinge e você vê, com horror, que suas mãos estão cobertas
     por pelo! Sente seus dentes crescendo, e quase começa a uivar para a lua!
-    Esta transformação é muito dolorosa - perca 3 pontos de ENERGIA.<br>
-    Mude sua Licantropia para Aflição de Grande Licantropia em sua Folha de Aventuras.<br><br>
+    Esta transformação é muito dolorosa - perca 3 pontos de ENERGIA. <br>
+    Mude sua Licantropia para Aflição de Grande Licantropia em sua Folha de Aventuras. <br> <br>
     <strong>Você examina a torre, à procura de alguma coisa que possa ajudá-lo</strong>.`, //7
     `Você enfia a chave na fechadura e empurra a porta de modo a abri-la.<br>
     Lá dentro, há uma fila de tumbas simples sem qualquer marca ou decoração, todas idênticas. Você tem uma sensação estranha; seus nervos estão
@@ -201,10 +201,10 @@ var pagTxtGame = [`Undefned`,
      `Você abre a porta para uma câmara tipo depósito, coberta de teias, e que está cheia de cacarecos. 
      Se você a examinar, correrá o risco de ser surpreendido por alguém que entre no hall principal.<br><br>
      <strong>Escolha sua proxima ação:</strong>`, 
-     `Siegfried diz que, enquanto uma estaca pode matar Reiner se ela for enfiada diretamente em seu coração, sua arma atual não pode afetá-lo durante um combate; você tem 
-     que ter uma Espada Mágica. Tal arma existe, com certeza nem de perto tão poderosa quanto a do próprio Siegfried, na tumba de Adolf, um Senhor do Castelo no passado distante.
+     `Siegfried diz que, embora uma estaca pode matar Reiner se ela for enfiada diretamente em seu coração, sua arma atual não pode afetá-lo durante um combate; você tem 
+     que ter uma Espada Mágica. Tal arma existe, na tumba de Adolf, um Senhor do Castelo no passado distante.
      <br><br>
-     Esta tumba fica para leste da junção em T, então você parte e segue para lá.`, 
+     Esta tumba fica para leste da junção em T, então você parte e segue para lá.`, //61
      `De repente, a garota fica de pé, os braços estendidos, com a cabeça jogada para trás. Ela grita!<br>
      Jogue um dado e some 4.<br>
      <strong>Um teste de FÉ</strong>.`, //62
@@ -454,7 +454,7 @@ var pagTxtGame = [`Undefned`,
      `181`, 
      `182`, 
      `183`, 
-     `184`, 
+     `Tendo destruído os repugnantes restos do Doktor Faustus, você quer:`, //184
      `185`, 
      `186`, 
      `187`, 
