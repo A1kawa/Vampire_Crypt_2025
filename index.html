@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="favicon.png" />
     <link href="https://fonts.googleapis.com/css2?family=Macondo&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
@@ -15,14 +16,13 @@
         <img id="bats" style="width: -webkit-fill-available;" src="images/frontLogo02.png" alt="">
     </section>
     <main id="main">
-
+        <section class="unifrakturcook-bold tittle centralY">
+            A Cripta do<br>
+            Vampiro
+        </section>
+        <button class="macondo-regular" onclick="document.getElementById('main').innerHTML = nameDisplay">ENTRAR</button>
     </main>
-    <section class="unifrakturcook-bold tittle centralY">
-        A Cripta do<br>
-        Vampiro
-    </section>
-    <button class="macondo-regular" onclick="iniciar()">INICIAR</button>
-    <div class="centralY cornerL">
+    <div class="centralX">
         <label class="switch">
             <input type="checkbox" onclick="darkMode()">
             <span class="slider"></span>

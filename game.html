@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="favicon.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Macondo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <title>A Cripta do Vampiro</title>
+</head>
+<body>
+    <section class="game-border mar-basic macondo-regular gameBody">
+        <h2 id="body">
+            d3ntro <br>
+            pr3s0 <br>
+            me 4jude
+        </h2>
+    </section>
+    <section class="game-border mar-basic macondo-regular gameButtons">
+        <div style="width: fit-content;">
+            <button class="opt content" onclick="Continue(1)"></button>
+            <button class="opt content" onclick="Continue(2)"></button>
+            <button class="opt content" onclick="Continue(3)"></button>
+            <button class="opt content" onclick="Continue(4)"></button>
+            <button class="opt content" onclick="Continue(5)"></button>
+            <button class="opt content" onclick="Continue(6)"></button>
+        </div>
+        
+    </section>
+    <div class="centralX mar-basic flexRow">
+        <label class="switch">
+            <input type="checkbox" onclick="darkMode2()">
+            <span class="slider"></span>
+        </label>
+        <svg style="margin-left:10px; cursor:pointer" width="38" height="34" viewBox="0 0 64 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M46.5 2.5H51L61 10.5V59.5H51M46.5 2.5V24H19V2.5M46.5 2.5H19M19 2.5H3V59.5H13M13 59.5V38H51V59.5M13 59.5H51M38 8.5V17" stroke="#D9ABAB" stroke-width="5"/>
+        </svg>
+        <svg style="margin-left:10px; cursor:pointer" width="30" height="34" viewBox="0 0 64 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M51 51.5H61V73.5H51M51 51.5V62.5M51 51.5V32.5M51 73.5H13M51 73.5V62.5M13 51.5H3V73.5H13M13 51.5V62.5M13 51.5V32.5M13 73.5V62.5M13 62.5H51M13 32.5V13.5H23M13 32.5H23M51 32.5V13.5H41M51 32.5H41M23 32.5H41M23 32.5V25.5M23 32.5V41M41 32.5V25.5M41 32.5V41M23 13.5V2.5H41V13.5M23 13.5H41" stroke="#D9ABAB" stroke-width="5"/>
+            </svg>
+            
+    </div>
+    <script src="pages.js"></script>
+    <script src="app.js"></script>
+    <script>
+        const init = ['CONTINUAR']
+        window.onload = gameTextSet(0, init)
+    </script>
+</body>
+</html>

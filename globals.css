@@ -14,24 +14,22 @@
     font-weight: 700;
     font-style: normal;
 }
-/* From Uiverse.io by RaspberryBee */ 
+/* From Uiverse.io by arghyaBiswasDev */ 
 /* The switch - the box around the slider */
 .switch {
     font-size: 17px;
     position: relative;
     display: inline-block;
-    width: 2em;
-    height: 3.5em;
+    width: 3.5em;
+    height: 2em;
 }
-  
-  /* Hide default HTML checkbox */
+/* Hide default HTML checkbox */
 .switch input {
     opacity: 0;
     width: 0;
     height: 0;
 }
-  
-  /* The slider */
+/* The slider */
 .slider {
     position: absolute;
     cursor: pointer;
@@ -41,28 +39,49 @@
     bottom: 0;
     background-color: var(--color-content);
     transition: .4s;
-    border-radius: 10px;
+    border-radius: 30px;
 }
-  
 .slider:before {
     position: absolute;
     content: "";
     height: 1.4em;
     width: 1.4em;
-    border-radius: 9px;
-    left: 0.3em;
-    bottom: 1.8em;
+    border-radius: 20px;
+    left: 0.27em;
+    bottom: 0.3em;
     background-color: var(--color-background);
     transition: .4s;
 }
-  
-.switch input:checked + .slider {
-    background-color: var(--color-content);
+input:checked + .slider:before {
+    transform: translateX(1.4em);
 }
-  
-  
-.switch input:checked + .slider:before {
-    transform: translateY(1.65em);
-    background-color: var(--color-background);
+.flexRow{
+    display: flex;
+    align-items: center;
 }
-  
+.flexRow h5{
+    margin: 0;
+    text-align: end;
+}
+svg path {
+    stroke: var(--color-content);
+}
+.flexRow .number{
+    text-align: start;
+}
+.centralY{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.centralX{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.game-border{
+    border: var(--color-content) 4px solid;
+}
+.mar-basic{
+    margin: 20px;
+}

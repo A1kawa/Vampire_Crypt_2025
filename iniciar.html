@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="favicon.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Macondo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <title>A Cripta do Vampiro</title>
+</head>
+<body>
+    <section class="logo">
+        <img id="bats" style="width: -webkit-fill-available;" src="images/frontLogo02.png" alt="">
+    </section>
+    <main id="main">
+        <div class="name macondo-regular centralY">
+            <p id="title" style="text-align: center;">
+            </p>
+            <div class="flexRow">
+                <div style="width: 40vw;">
+                    <h5>
+                        Habilidade<br>
+                        Energia<br>
+                        Sorte<br>
+                        Fe
+                    </h5>
+                </div>
+                <svg style="margin: 0px 20px" width="4" height="254" viewBox="0 0 4 254" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 2V250" stroke-width="4" stroke-linecap="round"/>
+                    </svg>
+                <div style="width: 40vw;">
+                    <h5 class="number" id="hab">0</h5>
+                    <h5 class="number" id="ene">0</h5>
+                    <h5 class="number" id="sor">0</h5>
+                    <h5 class="number" id="fe">0</h5>
+                </div>
+            </div>
+            
+        </div>
+        <button class="macondo-regular" id="but01" onclick="sortChars()">SORTEAR</button>
+        <button class="macondo-regular content" id="but02" onclick="window.location.href = 'game.html'">INICIAR TORMENTA</button>
+    </main>
+    <div class="centralY cornerL">
+        <label class="switch">
+            <input type="checkbox" onclick="darkMode()">
+            <span class="slider"></span>
+        </label>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
