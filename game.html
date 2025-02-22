@@ -21,28 +21,142 @@
     </section>
     <section class="game-border mar-basic macondo-regular gameButtons">
         <div style="width: fit-content;">
-            <button class="macondo-regular opt content" onclick="Continue(0)"></button>
-            <button class="macondo-regular opt content" onclick="Continue(1)"></button>
-            <button class="macondo-regular opt content" onclick="Continue(2)"></button>
-            <button class="macondo-regular opt content" onclick="Continue(3)"></button>
-            <button class="macondo-regular opt content" onclick="Continue(4)"></button>
-            <button class="macondo-regular opt content" onclick="Continue(5)"></button>
+            <button class="macondo-regular intBut content opt" onclick="Continue(0)">OPT1</button>
+            <button class="macondo-regular intBut content" onclick="Continue(1)"></button>
+            <button class="macondo-regular intBut content" onclick="Continue(2)"></button>
+            <button class="macondo-regular intBut content" onclick="Continue(3)"></button>
+            <button class="macondo-regular intBut content" onclick="Continue(4)"></button>
+            <button class="macondo-regular intBut content" onclick="Continue(5)"></button>
         </div>
         
     </section>
-    <div class="centralX mar-basic flexRow">
+    <div class="mar-basic flexRow" style="position:absolute;top:0;">
         <label class="switch">
-            <input type="checkbox" onclick="darkMode2()">
+            <input id='DMinput' type="checkbox" onclick="darkMode2()">
             <span class="slider"></span>
         </label>
-        <svg style="margin-left:10px; cursor:pointer" width="38" height="34" viewBox="0 0 64 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg onclick="attInv()" style="margin-left:10px; cursor:pointer" width="38" height="34" viewBox="0 0 64 62" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M46.5 2.5H51L61 10.5V59.5H51M46.5 2.5V24H19V2.5M46.5 2.5H19M19 2.5H3V59.5H13M13 59.5V38H51V59.5M13 59.5H51M38 8.5V17" stroke="#D9ABAB" stroke-width="5"/>
         </svg>
-        <svg style="margin-left:10px; cursor:pointer" width="30" height="34" viewBox="0 0 64 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg onclick="openInv()" style="margin-left:10px; cursor:pointer" width="30" height="34" viewBox="0 0 64 76" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M51 51.5H61V73.5H51M51 51.5V62.5M51 51.5V32.5M51 73.5H13M51 73.5V62.5M13 51.5H3V73.5H13M13 51.5V62.5M13 51.5V32.5M13 73.5V62.5M13 62.5H51M13 32.5V13.5H23M13 32.5H23M51 32.5V13.5H41M51 32.5H41M23 32.5H41M23 32.5V25.5M23 32.5V41M41 32.5V25.5M41 32.5V41M23 13.5V2.5H41V13.5M23 13.5H41" stroke="#D9ABAB" stroke-width="5"/>
             </svg>
             
     </div>
+    <div style="position:fixed;" class="inventory">
+        <div class="statsCont mar-basic macondo-regular game-border">
+            <div class="game-border mar-basic backpack-text"><h2 id="nameCont">Aikawa</h2><h2 onclick="openInv(true)" style="margin-right: 5px; cursor: pointer;">X</h2></div>
+            <div class="multBoxInv">
+                <div style="width: clamp(180px, 16vw, 200px);justify-content: center;" class="game-border backpack-text">
+                    <h2 style="text-align: end;">
+                        HABILIDADE<br>
+                        ENERGIA<br>
+                        SORTE<br>
+                        FÉ
+                    </h2>
+                </div>
+                <h4 style="text-align:center;">
+                    A<br>
+                    T<br>
+                    U<br>
+                    A<br>
+                    L
+                </h4>
+                <div style="width:35px;justify-content: center; margin-top: 0;" class="game-border backpack-text">
+                    <h2 style="text-align: center;" id="curStats">
+                        11<br>
+                        22<br>
+                        9<br>
+                        5
+                    </h2>
+                </div>
+                <h4 style="text-align:center;">
+                    I<br>
+                    N<br>
+                    I<br>
+                    C<br>
+                    I<br>
+                    A<br>
+                    L
+                </h4>
+                <div style="width:35px;justify-content: center; margin-left: 0; margin-top: 0;" class="game-border backpack-text">
+                    <h2 style="text-align: center;" id="iniStats">
+                        11<br>
+                        22<br>
+                        9<br>
+                        5
+                    </h2>
+                </div>
+            </div>
+            <div class="multBoxInv" style="margin-top:20px;">
+                <div style="margin-right: 20px;" class="arrayInv game-border backpack-text">
+                    <h2>Feitiços</h2>
+                    <h3 id="spells"></h3>
+                </div>
+                <div class="arrayInv game-border backpack-text">
+                    <h2>Aflições</h2>
+                    <h3 id="aflic"></h3>
+                </div>
+            </div>
+            <div class="game-border mar-basic backpack-text" style="margin-bottom: 0;"><h2>Provisões</h2><h2 id="provisions"></h2></div>
+            <div class="game-border mar-basic backpack-text" style="margin-bottom: 0;"><h2>Tesouros</h2><h2 id="treasures"></h2></div>
+            <div class="arrayInv game-border mar-basic backpack-text" style="height: -webkit-fill-available;">
+                <h2>Itens e equipamento</h2>
+                <h3 id="equip"></h3>
+            </div>
+        </div>
+    </div>
+    <div id="combateContainer" class="macondo-regular">
+        <div style="grid-area:Enm;" class="game-border mar-basic cmbStats">
+            <h1 id="EnmName">Dog</h1>
+            <h2 id="EnmStat">H 33<br>E 33</h2>
+        </div>
+        <div style="grid-area:EnmFA; margin-top: 0;" class="game-border mar-basic FAcont">
+            <h3>FA Inimiga</h3>
+            <h1 id="EneFA">33</h1>
+        </div>
+        <div style="grid-area: diceEnmArea; margin-left:0;" class="cmbDice">
+            <svg id="Enedice01" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.5 0C5.51088 0 3.60322 0.790177 2.1967 2.1967C0.790176 3.60322 0 5.51088 0 7.5V32.5C0 34.4891 0.790176 36.3968 2.1967 37.8033C3.60322 39.2098 5.51088 40 7.5 40H32.5C34.4891 40 36.3968 39.2098 37.8033 37.8033C39.2098 36.3968 40 34.4891 40 32.5V7.5C40 5.51088 39.2098 3.60322 37.8033 2.1967C36.3968 0.790177 34.4891 0 32.5 0H7.5ZM23.5 21.5C22 22 22 22 22 23C22 24 21.0001 25 20 25C19 25 18 24 18 23C18 22 18 20 19 19C20 18 21 18 22 18C23 18 24.5 18 25.5 17C26.5 16 26.5 12 25.5 11C24.5 10 22 9 20 9C18 9 15.5 10 14.5 11C13.4393 12.0607 10 11 12 8.5C14 6 16.25 5.41667 17.5 5C18.75 4.58333 21.25 4.75239 22.5 5C23.75 5.24761 26 6 28 8.5C30 11 30 17 28 19.5C26 22 25 21 23.5 21.5ZM20 33.75C19.0054 33.75 18.0516 33.3549 17.3483 32.6516C16.6451 31.9484 16.25 30.9946 16.25 30C16.25 29.0054 16.6451 28.0516 17.3483 27.3483C18.0516 26.6451 19.0054 26.25 20 26.25C20.9946 26.25 21.9484 26.6451 22.6517 27.3483C23.3549 28.0516 23.75 29.0054 23.75 30C23.75 30.9946 23.3549 31.9484 22.6517 32.6516C21.9484 33.3549 20.9946 33.75 20 33.75Z" fill="var(--color-content)"/>
+                <path d="M7.5 0C5.51088 0 3.60322 0.790177 2.1967 2.1967C0.790176 3.60322 0 5.51088 0 7.5V32.5C0 34.4891 0.790176 36.3968 2.1967 37.8033C3.60322 39.2098 5.51088 40 7.5 40H32.5C34.4891 40 36.3968 39.2098 37.8033 37.8033C39.2098 36.3968 40 34.4891 40 32.5V7.5C40 5.51088 39.2098 3.60322 37.8033 2.1967C36.3968 0.790177 34.4891 0 32.5 0H7.5ZM23.5 21.5C22 22 22 22 22 23C22 24 21.0001 25 20 25C19 25 18 24 18 23C18 22 18 20 19 19C20 18 21 18 22 18C23 18 24.5 18 25.5 17C26.5 16 26.5 12 25.5 11C24.5 10 22 9 20 9C18 9 15.5 10 14.5 11C13.4393 12.0607 10 11 12 8.5C14 6 16.25 5.41667 17.5 5C18.75 4.58333 21.25 4.75239 22.5 5C23.75 5.24761 26 6 28 8.5C30 11 30 17 28 19.5C26 22 25 21 23.5 21.5ZM20 33.75C19.0054 33.75 18.0516 33.3549 17.3483 32.6516C16.6451 31.9484 16.25 30.9946 16.25 30C16.25 29.0054 16.6451 28.0516 17.3483 27.3483C18.0516 26.6451 19.0054 26.25 20 26.25C20.9946 26.25 21.9484 26.6451 22.6517 27.3483C23.3549 28.0516 23.75 29.0054 23.75 30C23.75 30.9946 23.3549 31.9484 22.6517 32.6516C21.9484 33.3549 20.9946 33.75 20 33.75Z" fill="var(--color-content)"/>
+            </svg>
+                +
+            <svg id="Enedice02" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.5 0C5.51088 0 3.60322 0.790177 2.1967 2.1967C0.790176 3.60322 0 5.51088 0 7.5V32.5C0 34.4891 0.790176 36.3968 2.1967 37.8033C3.60322 39.2098 5.51088 40 7.5 40H32.5C34.4891 40 36.3968 39.2098 37.8033 37.8033C39.2098 36.3968 40 34.4891 40 32.5V7.5C40 5.51088 39.2098 3.60322 37.8033 2.1967C36.3968 0.790177 34.4891 0 32.5 0H7.5ZM23.5 21.5C22 22 22 22 22 23C22 24 21.0001 25 20 25C19 25 18 24 18 23C18 22 18 20 19 19C20 18 21 18 22 18C23 18 24.5 18 25.5 17C26.5 16 26.5 12 25.5 11C24.5 10 22 9 20 9C18 9 15.5 10 14.5 11C13.4393 12.0607 10 11 12 8.5C14 6 16.25 5.41667 17.5 5C18.75 4.58333 21.25 4.75239 22.5 5C23.75 5.24761 26 6 28 8.5C30 11 30 17 28 19.5C26 22 25 21 23.5 21.5ZM20 33.75C19.0054 33.75 18.0516 33.3549 17.3483 32.6516C16.6451 31.9484 16.25 30.9946 16.25 30C16.25 29.0054 16.6451 28.0516 17.3483 27.3483C18.0516 26.6451 19.0054 26.25 20 26.25C20.9946 26.25 21.9484 26.6451 22.6517 27.3483C23.3549 28.0516 23.75 29.0054 23.75 30C23.75 30.9946 23.3549 31.9484 22.6517 32.6516C21.9484 33.3549 20.9946 33.75 20 33.75Z" fill="var(--color-content)"/>
+                <path d="M7.5 0C5.51088 0 3.60322 0.790177 2.1967 2.1967C0.790176 3.60322 0 5.51088 0 7.5V32.5C0 34.4891 0.790176 36.3968 2.1967 37.8033C3.60322 39.2098 5.51088 40 7.5 40H32.5C34.4891 40 36.3968 39.2098 37.8033 37.8033C39.2098 36.3968 40 34.4891 40 32.5V7.5C40 5.51088 39.2098 3.60322 37.8033 2.1967C36.3968 0.790177 34.4891 0 32.5 0H7.5ZM23.5 21.5C22 22 22 22 22 23C22 24 21.0001 25 20 25C19 25 18 24 18 23C18 22 18 20 19 19C20 18 21 18 22 18C23 18 24.5 18 25.5 17C26.5 16 26.5 12 25.5 11C24.5 10 22 9 20 9C18 9 15.5 10 14.5 11C13.4393 12.0607 10 11 12 8.5C14 6 16.25 5.41667 17.5 5C18.75 4.58333 21.25 4.75239 22.5 5C23.75 5.24761 26 6 28 8.5C30 11 30 17 28 19.5C26 22 25 21 23.5 21.5ZM20 33.75C19.0054 33.75 18.0516 33.3549 17.3483 32.6516C16.6451 31.9484 16.25 30.9946 16.25 30C16.25 29.0054 16.6451 28.0516 17.3483 27.3483C18.0516 26.6451 19.0054 26.25 20 26.25C20.9946 26.25 21.9484 26.6451 22.6517 27.3483C23.3549 28.0516 23.75 29.0054 23.75 30C23.75 30.9946 23.3549 31.9484 22.6517 32.6516C21.9484 33.3549 20.9946 33.75 20 33.75Z" fill="var(--color-content)"/>
+            </svg>
+        </div>
+        <div class="cmbArena" style="grid-area:main;">
+            <h3 class="" id="cond" style="position: absolute;top: 32%;">condicao de combate: dado por rodada</h3>
+            <button class="content" id="diceBut" onclick="initCmb()">JOGAR DADOS</button>
+            <div class="endCmb content">
+                <h2 id="tittleCmb">VOCE VENCEU A RODADA</h2>
+                <div class="endCmbButtons macondo-regular"><button>testar minha sorte</button><button>receber o que eh meu</button></div>
+                <h3 id="cmbSorte">sua sorte eh 20</h3>
+            </div>
+            <svg class="endCmb" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"></svg>
+        </div>
+        <div style="grid-area: diceUsuArea; margin-right:0;" class="cmbDice">
+            <svg id="Usudice01" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.5 0C5.51088 0 3.60322 0.790177 2.1967 2.1967C0.790176 3.60322 0 5.51088 0 7.5V32.5C0 34.4891 0.790176 36.3968 2.1967 37.8033C3.60322 39.2098 5.51088 40 7.5 40H32.5C34.4891 40 36.3968 39.2098 37.8033 37.8033C39.2098 36.3968 40 34.4891 40 32.5V7.5C40 5.51088 39.2098 3.60322 37.8033 2.1967C36.3968 0.790177 34.4891 0 32.5 0H7.5ZM23.5 21.5C22 22 22 22 22 23C22 24 21.0001 25 20 25C19 25 18 24 18 23C18 22 18 20 19 19C20 18 21 18 22 18C23 18 24.5 18 25.5 17C26.5 16 26.5 12 25.5 11C24.5 10 22 9 20 9C18 9 15.5 10 14.5 11C13.4393 12.0607 10 11 12 8.5C14 6 16.25 5.41667 17.5 5C18.75 4.58333 21.25 4.75239 22.5 5C23.75 5.24761 26 6 28 8.5C30 11 30 17 28 19.5C26 22 25 21 23.5 21.5ZM20 33.75C19.0054 33.75 18.0516 33.3549 17.3483 32.6516C16.6451 31.9484 16.25 30.9946 16.25 30C16.25 29.0054 16.6451 28.0516 17.3483 27.3483C18.0516 26.6451 19.0054 26.25 20 26.25C20.9946 26.25 21.9484 26.6451 22.6517 27.3483C23.3549 28.0516 23.75 29.0054 23.75 30C23.75 30.9946 23.3549 31.9484 22.6517 32.6516C21.9484 33.3549 20.9946 33.75 20 33.75Z" fill="var(--color-content)"/>
+                <path d="M7.5 0C5.51088 0 3.60322 0.790177 2.1967 2.1967C0.790176 3.60322 0 5.51088 0 7.5V32.5C0 34.4891 0.790176 36.3968 2.1967 37.8033C3.60322 39.2098 5.51088 40 7.5 40H32.5C34.4891 40 36.3968 39.2098 37.8033 37.8033C39.2098 36.3968 40 34.4891 40 32.5V7.5C40 5.51088 39.2098 3.60322 37.8033 2.1967C36.3968 0.790177 34.4891 0 32.5 0H7.5ZM23.5 21.5C22 22 22 22 22 23C22 24 21.0001 25 20 25C19 25 18 24 18 23C18 22 18 20 19 19C20 18 21 18 22 18C23 18 24.5 18 25.5 17C26.5 16 26.5 12 25.5 11C24.5 10 22 9 20 9C18 9 15.5 10 14.5 11C13.4393 12.0607 10 11 12 8.5C14 6 16.25 5.41667 17.5 5C18.75 4.58333 21.25 4.75239 22.5 5C23.75 5.24761 26 6 28 8.5C30 11 30 17 28 19.5C26 22 25 21 23.5 21.5ZM20 33.75C19.0054 33.75 18.0516 33.3549 17.3483 32.6516C16.6451 31.9484 16.25 30.9946 16.25 30C16.25 29.0054 16.6451 28.0516 17.3483 27.3483C18.0516 26.6451 19.0054 26.25 20 26.25C20.9946 26.25 21.9484 26.6451 22.6517 27.3483C23.3549 28.0516 23.75 29.0054 23.75 30C23.75 30.9946 23.3549 31.9484 22.6517 32.6516C21.9484 33.3549 20.9946 33.75 20 33.75Z" fill="var(--color-content)"/>
+            </svg>
+                +
+            <svg id="Usudice02" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.5 0C5.51088 0 3.60322 0.790177 2.1967 2.1967C0.790176 3.60322 0 5.51088 0 7.5V32.5C0 34.4891 0.790176 36.3968 2.1967 37.8033C3.60322 39.2098 5.51088 40 7.5 40H32.5C34.4891 40 36.3968 39.2098 37.8033 37.8033C39.2098 36.3968 40 34.4891 40 32.5V7.5C40 5.51088 39.2098 3.60322 37.8033 2.1967C36.3968 0.790177 34.4891 0 32.5 0H7.5ZM23.5 21.5C22 22 22 22 22 23C22 24 21.0001 25 20 25C19 25 18 24 18 23C18 22 18 20 19 19C20 18 21 18 22 18C23 18 24.5 18 25.5 17C26.5 16 26.5 12 25.5 11C24.5 10 22 9 20 9C18 9 15.5 10 14.5 11C13.4393 12.0607 10 11 12 8.5C14 6 16.25 5.41667 17.5 5C18.75 4.58333 21.25 4.75239 22.5 5C23.75 5.24761 26 6 28 8.5C30 11 30 17 28 19.5C26 22 25 21 23.5 21.5ZM20 33.75C19.0054 33.75 18.0516 33.3549 17.3483 32.6516C16.6451 31.9484 16.25 30.9946 16.25 30C16.25 29.0054 16.6451 28.0516 17.3483 27.3483C18.0516 26.6451 19.0054 26.25 20 26.25C20.9946 26.25 21.9484 26.6451 22.6517 27.3483C23.3549 28.0516 23.75 29.0054 23.75 30C23.75 30.9946 23.3549 31.9484 22.6517 32.6516C21.9484 33.3549 20.9946 33.75 20 33.75Z" fill="var(--color-content)"/>
+                <path d="M7.5 0C5.51088 0 3.60322 0.790177 2.1967 2.1967C0.790176 3.60322 0 5.51088 0 7.5V32.5C0 34.4891 0.790176 36.3968 2.1967 37.8033C3.60322 39.2098 5.51088 40 7.5 40H32.5C34.4891 40 36.3968 39.2098 37.8033 37.8033C39.2098 36.3968 40 34.4891 40 32.5V7.5C40 5.51088 39.2098 3.60322 37.8033 2.1967C36.3968 0.790177 34.4891 0 32.5 0H7.5ZM23.5 21.5C22 22 22 22 22 23C22 24 21.0001 25 20 25C19 25 18 24 18 23C18 22 18 20 19 19C20 18 21 18 22 18C23 18 24.5 18 25.5 17C26.5 16 26.5 12 25.5 11C24.5 10 22 9 20 9C18 9 15.5 10 14.5 11C13.4393 12.0607 10 11 12 8.5C14 6 16.25 5.41667 17.5 5C18.75 4.58333 21.25 4.75239 22.5 5C23.75 5.24761 26 6 28 8.5C30 11 30 17 28 19.5C26 22 25 21 23.5 21.5ZM20 33.75C19.0054 33.75 18.0516 33.3549 17.3483 32.6516C16.6451 31.9484 16.25 30.9946 16.25 30C16.25 29.0054 16.6451 28.0516 17.3483 27.3483C18.0516 26.6451 19.0054 26.25 20 26.25C20.9946 26.25 21.9484 26.6451 22.6517 27.3483C23.3549 28.0516 23.75 29.0054 23.75 30C23.75 30.9946 23.3549 31.9484 22.6517 32.6516C21.9484 33.3549 20.9946 33.75 20 33.75Z" fill="var(--color-content)"/>
+            </svg>
+        </div>
+        <div style="grid-area:UsuFA; margin-bottom: 0;" class="game-border mar-basic FAcont">
+            <h3>minha FA</h3>
+            <h1 id="UsuFA">33</h1>
+        </div>
+        <div style="grid-area:Me;" class="game-border mar-basic cmbStats">
+            <h2 id="UsuStat">H 33<br>E 33</h2>
+            <h1 id="UsuName">Aikawa</h1>
+        </div>
+    </div>
+    <div class="inventoryBG" onclick="openInv(true)"></div>
     <script src="cases.js"></script>
     <script src="pages.js"></script>
     <script src="app.js"></script>

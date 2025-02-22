@@ -1,4 +1,15 @@
 var NextPage = [1]
+let Chars = {
+    Hab: localStorage.getItem('Hab'),
+    Ene: localStorage.getItem('Ene'),
+    Sor: localStorage.getItem('Sor'),
+    Fth: localStorage.getItem('Fth')
+}
+let feiticos = ["Grande-Ataque", "Raio-de-Jandor", 'Divisao']
+let aflicoes = []
+let itens = ["Espada-Magica", "Crucifixo-de-Prata", 'Livro-das-Espadas']
+let provisoes = 0
+let ouro = 0
 
 function Paginas(pagNmb) {
 
@@ -12,14 +23,13 @@ function Paginas(pagNmb) {
             NextPage = [101, 256, 60]
             break;
         case 3:
-            botao01.style.visibility = 'visible'
-            if (itens.includes("EspadaMagica")) {
-                botao01.innerText = 'tenho'
-                NextPage01 = 173
-            } else {
-                botao01.innerText = 'não tenho'
-                NextPage01 = 208
+            if (itens.includes("Espada-Magica")) {
+                but = ['tenho']
+                NextPage = [173]
+                return
             }
+            but = ['não tenho']
+            NextPage = [208]
             break;
         case 4:
             FeCur--
@@ -135,7 +145,7 @@ function Paginas(pagNmb) {
             break;
         case 14:
             botao01.style.visibility = 'visible'
-            if (itens.includes("EspadaMagica")) {
+            if (itens.includes("Espada-Magica")) {
                 botao01.innerText = 'tenho'
                 NextPage01 = 84
             } else {
@@ -162,7 +172,7 @@ function Paginas(pagNmb) {
                 botao02.innerText = 'pedir ajuda a Gunthar com alguma Aflição'
                 NextPage02 = 48
             }
-            if (itens.includes("LivroCura") || itens.includes("LivroEspada")) {
+            if (itens.includes("Livro-de-Cura") || itens.includes("Livro-das-Espada")) {
                 botao03.style.visibility = 'visible'
                 botao03.innerText = 'mostrar um livro a Gunthar'
                 NextPage03 = 317

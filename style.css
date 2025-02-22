@@ -7,6 +7,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 100vw;
     height: 100vh;
     transition: .1s;
@@ -50,6 +51,7 @@ button:hover{
 }
 .content{
     visibility: hidden;
+    scale: 0;
 }
 .name{
     display: flex;
@@ -86,22 +88,140 @@ button:hover{
     width: -webkit-fill-available;
     align-items: center;
 }
-.gameButtons button{
+.opt{
     text-transform: uppercase;
     position: relative;
     bottom: 0;
     margin: 10px 10px;
     transition: 0s;
 }
-.exists{
-    visibility: visible;
+.inventoryCont {
+    height: 100%;
+    width: fit-content;
+    display: flex;
+    z-index: 10;
+    left: 0;
 }
-.gameBody::-webkit-scrollbar {
-    width: 4px;               /* width of the entire scrollbar */
+.inventoryBG {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    opacity: 0;
+    transition: .1s linear;
 }
-.gameBody::-webkit-scrollbar-track {
-    background: var(--color-background)        /* color of the tracking area */
+.inventory{
+    background-color: var(--color-background);
+    width: clamp(350px, 100vw, 480px);
+    height: 100vh;
+    z-index: 10;
+    left: 100%;
+    transition: .2s linear;
 }
-.gameBody::-webkit-scrollbar-thumb {
-    background-color: var(--color-content);    /* color of the scroll thumb */
+.statsCont{
+    display: flex;
+    flex-direction: column;
+    height: -webkit-fill-available;
+}
+.backpack-text {
+    display: flex;
+    justify-content: space-between;
+    padding: 1%;
+    font-size: 1.3em;
+}
+.multBoxInv{
+    display:flex;
+    padding: 0px 20px;
+    justify-content:space-between;
+}
+.arrayInv{
+    width: -webkit-fill-available;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    height: 16vh;
+}
+.backpack-text h2{
+    margin: 0;
+}
+#combateContainer{
+    scale: 0;
+    position: fixed;
+    height: fit-content;
+    width: fit-content;
+    z-index: 10;
+    display: grid;
+    grid-auto-columns: min-content;
+    grid-template-areas:
+    "Enm Enm Enm"
+    "EnmFA . diceEnmArea"
+    "main main main"
+    "diceUsuArea . UsuFA"
+    "Me Me Me";
+    background-color: var(--color-background);
+    transition: .2s linear;
+}
+.cmbStats{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: fit-content;
+    padding: 0 5px;
+    h1{
+        margin: 0;
+    }
+    h2{
+        margin: 10px 0px;
+    }
+}
+.FAcont{
+    height: 10vh;
+    width: 10vh;
+    text-align: center;
+    h1{
+        margin: 0px;
+    }
+    h3{
+        margin: 5px;
+        font-size: 1.17em;
+    }
+}
+.cmbArena{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: clamp(150px, 30vh, 363px);
+    width: clamp(150px, 92vw, 620px);
+    button{
+        position: relative;
+    }
+}
+@media (max-width:600px) {
+    .FAcont{
+        h3{
+            font-size: 3.4vw;
+        }
+    }
+}
+.endCmb{
+    text-align: center;
+    position: absolute;
+    button{
+        position: initial;
+        padding: 5px 10px;
+        font-family: "Macondo", serif;
+        margin: 5px 10px;
+    }
+    h2{
+        margin-top: 0;
+        margin-bottom: 2px;
+    }
+}
+.cmbDice{
+    margin: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

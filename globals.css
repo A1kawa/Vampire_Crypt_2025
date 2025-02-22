@@ -3,6 +3,7 @@
     --color-content: #3D3131;
     --opacity-transition: 1;
 }
+
 .macondo-regular {
     font-family: "Macondo", serif;
     font-weight: 400;
@@ -63,7 +64,7 @@ input:checked + .slider:before {
     margin: 0;
     text-align: end;
 }
-svg path {
+path {
     stroke: var(--color-content);
 }
 .flexRow .number{
@@ -84,4 +85,27 @@ svg path {
 }
 .mar-basic{
     margin: 20px;
+}
+h3{
+    text-align: center;
+    font-size: inherit;
+    margin: 10px 0px;
+}
+.gameBody::-webkit-scrollbar {
+    width: 4px;               /* width of the entire scrollbar */
+}
+.gameBody::-webkit-scrollbar-track {
+    background: var(--color-background)        /* color of the tracking area */
+}
+.gameBody::-webkit-scrollbar-thumb {
+    background-color: var(--color-content);    /* color of the scroll thumb */
+}
+.arrayInv::-webkit-scrollbar {
+    width: 4px;               /* width of the entire scrollbar */
+}
+.arrayInv::-webkit-scrollbar-track {
+    background: var(--color-background)        /* color of the tracking area */
+}
+.arrayInv::-webkit-scrollbar-thumb {
+    background-color: var(--color-content);    /* color of the scroll thumb */
 }
