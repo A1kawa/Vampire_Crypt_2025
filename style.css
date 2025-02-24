@@ -196,6 +196,8 @@ button:hover{
     width: clamp(150px, 92vw, 620px);
     button{
         position: relative;
+        bottom: 0;
+        z-index: 11;
     }
 }
 @media (max-width:600px) {

@@ -1,4 +1,8 @@
+//DETERMINA O TITULO DO COMBATE PRA MUDAR DE ACORDO COM NECESSIDADE
+const tittle = document.getElementById('tittleCmb')
 const paragr = document.getElementById('body')
+let FA01
+let FA02
 let loadGameState = true
 let toggleDarkMode = false
 let textIndexInit = 0
@@ -55,7 +59,7 @@ function typingEffect(body, i = 0) {
             paragr.innerHTML = body.slice(0, i + 4)
             i = i + 3
         }
-        setTimeout(() => typingEffect(body, (i + 1)), 50)
+        setTimeout(() => typingEffect(body, (i + 1)), 20)
         return
     }
     paragr.innerHTML += body[i]
@@ -67,7 +71,7 @@ function typingEffect(body, i = 0) {
         initButtons(but)
         return
     }
-    setTimeout(() => typingEffect(body, (i + 1)), 25)
+    setTimeout(() => typingEffect(body, (i + 1)), 20)
 }
 
 function initButtons(which) {
@@ -97,7 +101,10 @@ function Continue(whichButtonPressed) {
     }
     buttons[0].textContent = 'OPT1'
     buttons[0].classList.add('opt')
-
+    if (combate == true) {
+        cmbInit()
+        return
+    }
     if (textIndexInit < 5) { //CHECA SE ESTA NO COMECO E PASSA O TEXTO DE INICIO (HISTORICO)
         textIndexInit++
         const text = pagTxtInit[textIndexInit]
@@ -108,7 +115,6 @@ function Continue(whichButtonPressed) {
     typingEffect(pagTxtGame[NextPage[whichButtonPressed]])
     Paginas(NextPage[whichButtonPressed]) //CHAMA O SWITCH PRINCIPAL PARA A PROXIMA PAG PASSANDO O PARAMETRO DE QUAL BOTAO FOI APERTADO
 }
-
 function openInv(close = false) {
     const larguraJanela = window.innerWidth;
     const Inv = document.getElementsByClassName('inventory')[0]
@@ -159,14 +165,175 @@ function attInv(init = false) {
 }
 function cmbInit(close = false){
     const cmb = document.getElementById('combateContainer')
-    const cmbBG = document.getElementsByClassName('inventoryBG')[0]
+    const EnmName = document.getElementById('EnmName')
+    const EnmStat = document.getElementById('EnmStat')
+    const UsuName = document.getElementById('UsuName')
+    const UsuStat = document.getElementById('UsuStat')
+    const cmbBG = document.getElementsByClassName('inventoryBG')[1]
     if (close) {
         cmb.style.scale = 0
         cmbBG.style.zIndex = -5
         cmbBG.style.opacity = 0
+        Paginas(NextPage[0])
         return
     }
     cmb.style.scale = 1
     cmbBG.style.zIndex = 5
     cmbBG.style.opacity = 1
+    EnmName.textContent = Enemy.name
+    EnmStat.innerHTML = `H ${Enemy.Hab}<br>E ${Enemy.Ene}`
+    UsuName.textContent = Chars.Name
+    UsuStat.innerHTML = `H ${Chars.Hab}<br>E ${Chars.Ene}`
+    document.getElementById('cond').classList.add('content')
+    if (condition.has == true){
+        document.getElementById('cond').classList.remove('content')
+        document.getElementById('cond').textContent = condition.which
+    }
+}
+async function initCmb() {
+    const sorteTesteBtn = document.getElementById('SorteTeste')//DETERMINA O BOTAO DE TESTAR SORTE COMO VARIAVEL
+    //DETERMINA AS CAIXA DE FORCA DE ATAQUE DO INIMIGO E DO USUARIO COMO VARIAVEIS E RESETA SEUS VALORES
+    const EneFA = document.getElementById('EneFA')
+    const UsuFA = document.getElementById('UsuFA')
+    EneFA.textContent = ''
+    UsuFA.textContent = ''
+    
+    document.getElementsByClassName('endCmb')[0].classList.add('content')
+    document.getElementById('diceBut').classList.add('content') //ESCONDE O BOTAO DE COMBATE
+
+    //ROLA OS DADOS DO INIMIGO
+    const EneDice01 = await rollDice("Enedice01")
+    const EneDice02 = await rollDice("Enedice02")
+    FA01 = EneDice01 + EneDice02 + Enemy.Hab //DETERMINA A FORCA DE ATAQUE DO INIMIGO
+
+    EneFA.textContent = FA01 //PRINTA A FORCA DE ATAQUE DO INIMIGO
+
+    //ROLA OS DADOS DO USUARIO
+    const UsuDice01 = await rollDice("Usudice01")
+    const UsuDice02 = await rollDice("Usudice02")
+    FA02 = UsuDice01 + UsuDice02 + Chars.Hab //DETERMINA A FORCA DE ATAQUE DO USUARIO
+
+    UsuFA.textContent = FA02 //PRINTA A FORCA DE ATAQUE DO USUARIO
+    
+    if (Chars.Sor === 0) { //VE SE O USUARIO TEM SORTE O SUFICIENTE PARA MOSTRAR O BOTAO DE TESTE DA MESMA
+        sorteTesteBtn.classList.add('content')
+        sorteTesteBtn.style.position = 'absolute'
+    } else {
+        sorteTesteBtn.classList.remove('content')
+        sorteTesteBtn.style.position = ''
+    }
+    if (FA01 < FA02) { //PRINTA O RESULTADO DE VITORIA DO COMBATE
+        tittle.innerHTML = `VOCÊ VENCEU A RODADA`
+        if (Chars.Sor > 0) { //SE O USUARIO TIVER SORTE, PERGUNTA SE VAI TESTA-LA
+            tittle.innerHTML += `<br>gostaria de testar sua sorte?`
+        }
+        document.getElementById('VaryingButton').textContent = `infringir dano natural`
+        document.getElementsByClassName('endCmbButtons')[0].classList.remove('content')
+    }
+    if (FA01 > FA02) { //PRINTA O RESULTADO DE PERDA DO COMBATE
+        tittle.innerHTML = `VOCÊ PERDEU A RODADA`
+        if (Chars.Sor > 0) { //SE O USUARIO TIVER SORTE, PERGUNTA SE VAI TESTA-LA
+            tittle.innerHTML += `<br>gostaria de testar sua sorte?`
+        }
+        document.getElementById('VaryingButton').textContent = `receber dano natural`
+        document.getElementsByClassName('endCmbButtons')[0].classList.remove('content')
+    }
+    if (FA01 == FA02) { //PRINTA O RESULTADO DE EMPATE
+        tittle.innerHTML = `NINGUEM VENCEU A RODADA`
+        document.getElementsByClassName('endCmbButtons')[0].classList.add('content')
+        document.getElementById('diceBut').classList.remove('content')
+    }
+    
+    document.getElementsByClassName('endCmb')[0].classList.remove('content')
+    document.getElementById('cmbSorte').textContent = `sua sorte é ${Chars.Sor}`
+}
+async function TestarSorte(){
+    document.getElementsByClassName('endCmbButtons')[0].classList.add('content')//RESETA A TELA DE FIM DE COMBATE
+    tittle.textContent = 'testando...'
+    document.getElementsByClassName('endCmb')[1].classList.remove('content')
+    const dice01 = await rollDice("Teste01")
+    const dice02 = await rollDice("Teste02")
+    if ((dice01 + dice02) > Chars.Sor) {
+        tittle.textContent = 'A SORTE NÃO ESTAVA DO SEU LADO'
+        Chars.Sor--
+        document.getElementById('cmbSorte').textContent = `sua sorte agora é ${Chars.Sor}`
+        await new Promise(resolve => setTimeout(resolve, 2000))
+        document.getElementsByClassName('endCmb')[1].classList.add('content')
+        damage(true)
+        return
+    }
+    tittle.textContent = 'A SORTE LHE FAVORECEU'
+    Chars.Sor--
+    document.getElementById('cmbSorte').textContent = `sua sorte agora é ${Chars.Sor}`
+    await new Promise(resolve => setTimeout(resolve, 2000))
+    document.getElementsByClassName('endCmb')[1].classList.add('content')
+    damage(true, true)
+}
+async function damage(sorte = false, result = false) {
+    const EnmCont = document.getElementsByClassName('cmbStats')[0]
+    const UsuCont = document.getElementsByClassName('cmbStats')[1]
+    let cont = 0
+    let i = 2
+    document.getElementsByClassName('endCmb')[0].classList.add('content')
+    if (sorte) { //VE SE O USUARIO TESTOU A SORTE
+        i = 3
+        if (FA01 < FA02) {
+            i = 1
+        }
+        if (result) { //SE O USUARIO TESTOU A SORTE, VE SE FOI BEM SUCEDIDO 
+            i = 1
+            if (FA01 < FA02) { //SE SUCESSO NA SORTE, CHECA SE GANHOU COMBATE
+                i = 4
+            }
+        }
+    }
+    console.log(i)
+    if (FA01 > FA02) {
+        while (cont < i){
+            UsuCont.style.backgroundColor = 'var(--color-content)'
+            UsuCont.style.color = 'var(--color-background)'
+            Chars.Ene--
+            document.getElementById('UsuStat').innerHTML = `H ${Chars.Hab}<br>E ${Chars.Ene}`
+            await new Promise(resolve => setTimeout(resolve, 100))
+            UsuCont.style.backgroundColor = 'var(--color-background)'
+            UsuCont.style.color = 'var(--color-content)'
+            await new Promise(resolve => setTimeout(resolve, 500))
+            if (Chars.Ene == 0) {
+                cmbInit(true)
+                typingEffect(pagTxtGame[401])
+                Paginas(401)
+                return
+            }
+            cont++
+        }
+        document.getElementById('diceBut').classList.remove('content')
+        return
+    }
+    while (cont < i){
+        EnmCont.style.backgroundColor = 'var(--color-content)'
+        EnmCont.style.color = 'var(--color-background)'
+        Enemy.Ene--
+        document.getElementById('EnmStat').innerHTML = `H ${Enemy.Hab}<br>E ${Enemy.Ene}`
+        await new Promise(resolve => setTimeout(resolve, 100))
+        EnmCont.style.backgroundColor = 'var(--color-background)'
+        EnmCont.style.color = 'var(--color-content)'
+        await new Promise(resolve => setTimeout(resolve, 500))
+        if (Enemy.Ene == 0) {
+            cmbInit(true)
+        }
+        cont++
+    }
+    document.getElementById('diceBut').classList.remove('content')
+}
+async function rollDice(roll) {
+    const dice = document.getElementById(roll)
+    let cont = 0
+    let result = 0
+    while (cont < 10){
+        result = Math.floor(Math.random() * 6) + 1
+        dice.innerHTML = dices[result]
+        cont++
+        await new Promise(resolve => setTimeout(resolve, 100))
+    }
+    return result
 }

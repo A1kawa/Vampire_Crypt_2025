@@ -18,9 +18,9 @@ var pagTxtGame = [`Undefined`,
     Existem três saídas do hall.  <br> <br>
     <strong>Escolha sua proxima ação:</strong>`, //2
     `Você tem uma <strong>Espada Mágica</strong>?`, //3
-    `Você morde os biscoitos açucarados e crocantes com sua fina e escura camada de chocolate - e alcança o centro macio de<br>
-    sangue coagulado. A guloseima favorita do Conde, mas que o enoja e o deixa nauseado. <br> <br>
-    Você fica trêmulo de horror; <strong>perca 1 ponto de FÉ</strong>.`, //4
+    `Você morde os biscoitos açucarados e crocantes com sua fina e escura camada de chocolate - e alcança o centro macio de
+    sangue coagulado.<br> A guloseima favorita do Conde, mas que o enoja e o deixa nauseado. <br> <br>
+    Você fica trêmulo de horror, <strong>perdendo 1 ponto de FÉ</strong>.`, //4
     `Assim que cruza o portal, você percebe um pentagrama no chão - tarde demais!
     Uma forma esfumaçada se materializa dentro dele, e um corcel espectral com olhos chamejantes, bafo de fogo e uma fumaça nauseante, 
     atira-se para a frente a fim de atacá-lo. Você não tem tempo de fugir - deve enfrentar o terrível <strong>Corcel Demônio</strong> do Conde.<br><br>
