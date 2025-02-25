@@ -123,8 +123,8 @@ var pagTxtGame = [`Undefined`,
      Você vai atacá-la ou conversar com ela?`, //34
      `“Você possui tudo que é necessário para destruir Reiner em seu caixão” diz-lhe suavemente o fantasma, “mas pode enfrentá-lo?”<br><br>
      Você tem o Livro das Espadas?`, //35
-     `Pode tentar negociar com Karl-Rinna se assim o desejar; mas é preciso que Teste sua Sorte para fazê-lo. 
-     Se for azarado, ou se não desejar arriscar-se em ofender Karl-Rinna ao tentar pechinchar, pode escolher simplesmente alegar pobreza e oferecer-lhe um pagamento mais baixo.`, //36
+     `Pode tentar negociar com Karl-Heinz se assim o desejar; mas é preciso que Teste sua Sorte para fazê-lo. 
+     Se for azarado, ou se não desejar arriscar-se em ofender Karl-Heinz ao tentar pechinchar, pode escolher simplesmente alegar pobreza e oferecer-lhe um pagamento mais baixo.`, //36
      `Tentar parar o barulho tocando no teclado não o leva a lugar nenhum, e você perde 1 ponto de ENERGIA devido às mordidas de rato que levou, enquanto fazia essa tentativa!
      <br><br>
      Escolha sua proxima ação:`, //37
@@ -278,7 +278,7 @@ var pagTxtGame = [`Undefined`,
      que se empoleira em uma viga no quarto de Wilhelm e salta para atacá-lo!<br><br>
      Se você vencer, vai sair e tentar a porta no final do corredor, que segue para sul.<br><br>
      Se o corvo o ferir, haverão consequências.`, //78
-     `Karl-Rinna, o Alquimista, deixa-o e entra em seu laboratório pela porta norte deste aposento; meia hora mais tarde, ele retoma com um líquido verde 
+     `Karl-Heinz, o Alquimista, deixa-o e entra em seu laboratório pela porta norte deste aposento; meia hora mais tarde, ele retoma com um líquido verde 
      borbulhante em um vaso cônico de vidro. Em seu ombro empoleira-se um homúnculo verde e alado; ele rosna ameaçadoramente quando você entrega suas 8 
      Moedas de Ouro e bebe a coisa fedorenta. O sabor é horroroso e você se sente nauseado e fraco depois de bebê-la.<br><br>
      Perca 4 pontos de ENERGIA.<br>
@@ -375,42 +375,111 @@ var pagTxtGame = [`Undefined`,
      O último brilho verde malévolo se apaga nas órbitas e a grande foice negra cai no chão com um estrondo.`, //109
      `Jogue dois dados.<br><br>
      Um teste de Habilidade.`, //110
-     `111`, 
+     `A rota de fuga do Conde é bloqueada pela Parede de Força que o rodeia! Ele retorna à forma humana, rosnando com fúria, e corre para voltar a atacar.`, //111
      `112`, 
-     `113`, 
-     `114`, 
-     `115`, 
-     `116`, 
+     `Snivel, o Gnomo, puxa seu punhal e você pode ver que a lâmina não tem cor - veneno! <br>
+     Se Snivel conseguir acerta-lo, você deve perder 4 pontos de ENERGIA, em vez dos habituais 2, devido aos efeitos do veneno. <br>
+     E mais, o Gnomo é atlético e se agacha e desvia, então não é assim tão fácil acertá-lo!`, //113
+     `Você entra em uma câmara grande, iluminada por um globo de luz mágico, suspenso no ar.<br>
+     O aposento está entupido de "objets d'art". Quadros, ornamentos de cristal, vasos, antiguidades e outras coisas de valor encontram-se em pedestais e prateleiras ou estão afixadas nas paredes.<br>
+     Uma fortuna - que infelizmente você não pode carregar.<br>
+     Você começa a olhar em volta à procura de alguma coisa pequena, que possa carregar e levar como tesouro.<br>
+     Enquanto está fazendo isso, uma das esculturas de madeira estremece e avança para atacá-lo;<br>
+     ela está entre você e a porta, então terá que enfrentá-la!`, //114
+     `Você abre a porta e logo a fecha atrás de si para manter a horda acossada.<br><br>
+     Encontra-se agora em uma câmara com uma escada de madeira, em espiral, que sobe; ela é escura e cheia de teias, é preciso uma lanterna para iluminar o local.<br>
+     Quando segue na direção dos degraus imundos, duas figuras, semelhantes a homens, saem das sombras.<br>
+     O fedor de morte que os envolve é forte, e suas mãos meio apodrecidas seguram espadas enferrujadas!<br><br>
+     Jogue dois dados e some 2.<br>
+     Um teste de FÉ.`, //115
+     `Lothar pede-lhe que fique de costas enquanto ele pega alguma coisa de uma reentrância na parede com uma porta secreta.<br>
+     Ele volta com um molhe de chaves e uma estaca de madeira com uma ponta de prata.<br>
+     “Elas o levarão aos aposentos do Conde” diz ele, entregando-lhe as Chaves do Castelão(já anotadas em seus equipamentos)<br>
+     “O Conde dorme na Cripta, mas a Chave da Cripta fica em seus aposentos, para o sul. Você precisará ir para o sul e abrir a porta, no final do corredor externo.”<br>
+     A Estaca de Prata, ele explica, pode destruir o Conde enquanto ele dorme em seu caixão(também já anotada em seus equipamentos).<br><br>
+     Lothar pensa por um instante e então lhe diz:<br>
+     “Eu ouvi o Conde murmurar sobre alguma coisa que ele escondeu, não muito longe daqui, com uma fechadura mágica. 'Para frente e para trás' ele disse, 'para frente e para trás'. Ele repetiu isso várias vezes e então riu consigo mesmo. Não sei o que poderia significar, mas ele certamente quis dizer alguma coisa - ele pode ser mau, mas não é louco!”<br>
+     Esta história não faz nenhum sentido, mas quem sabe o que você poderá encontrar depois?<br><br>
+     Você agradece Lothar por sua inestimável ajuda, deseja- lhe boa sorte e segue suas indicações para a porta no final sul do corredor externo.`, //116
      `Escolha sua proxima ação:`, //117
-     `118`, 
-     `119`, 
-     `120`, 
-     `121`, 
-     `122`, 
-     `123`, 
-     `124`, 
-     `125`, 
+     `Você entra em um grande aposento cheio de todo o tipo de equipamento esquisito: mesas e mapas mostrando os planetas nos céus, variedades de ervas, formações rochosas e muitas coisas mais.<br>
+     Tudo isso está jogado sobre bancos e mesas, preso nas paredes e até mesmo espalhado pelo chão!<br>
+     Sentado em uma mesa encontra-se um homem alto, magro e de cabelos brancos, com óculos de pince-nez que pendem precariamente de seu nariz recurvo;<br>
+     ele está estudando cuidadosamente alguns diagramas intrincados e murmurando consigo mesmo.<br>
+     Ele olha para você.<br>
+     “Ahn, prazer em encontrá-lo, eu espero. Sou Karl-Heinz Matthaus, Alquimista residente. Posso fazer algo por você?”<br>
+     Ele parece não ter armas e ser um homem muito gentil.<br>
+     Ele volta a olhar seu trabalho, claramente desinteressado com sua presença. <br><br>
+     Escolha sua proxima ação:`, //118
+     `Katarina começa a maquinar, planejar.<br>
+     “Existe algo que pode matar Reiner: uma Estaca com ponta de prata que foi abençoada por um homem sagrado. Aliás, existe somente uma dessas no Castelo, e é guardada por meu mais mortal inimigo, Lothar, o Castelão.<br>
+     Há meses que ele vem tramando contra minha vida.<br>
+     Eu lhe imploro, mate-o por mim e então poderá obter a Estaca e matar Reiner. Lothar jamais a dará livremente!”<br><br>
+     Você vai concordar em matar Lothar ou se recusa a matá-lo?`, //119
+     `CURA VERDADEIRA é um poderoso feitiço que recuperará pontos de ENERGIA até metade de seu valor Inicial (arredondando para cima).<br>
+     Então, por exemplo, se seu valor Inicial de ENERGIA era 17, o feitiço irá recuperar até 9 pontos.<br>
+     Você pode lançá-lo a qualquer hora, exceto durante um combate.`, //120
+     `Neste caso, você deve enfrentar os dois lobos juntos de uma vez.<br><br>
+     Se você for mordido mais de duas vezes durante o combate, ao vencer haverá consequências.`, //121
+     `Sua FÉ é inútil contra este Ghoul Fedorento, uma criatura inflamada por uma má fé que se tornou insaciável com os anos de aprisionamento, então você terá que enfrentá-lo!<br><br>
+     Devido ao fedor nauseante do Ghoul, você deve subtrair 2 pontos de sua HABILIDADE, apenas durante este combate. <br><br>
+     Se o Ghoul atingi-lo três vezes haverá consequências.`, //122
+     `Há um grupo de runas obscuras na placa; consegue decodificá-las em letras, mas elas não fazem qualquer sentido.<br>
+     Você acha que deve ter alguma frase escondida nessas letras, para libertar a tranca mágica do baú e portanto, libertar o tesouro em seu interior.<br>
+     Seja lá o que for, deve ser de grande valor para estar protegido deste modo! As letras lidas são:<br><br>
+     z dnuz ed nzmgb cp ubkfmud <br>
+     uqfxfmunt d dhopvdosb dmnt rfobqbcpr <br> 
+     gdjsp ofkpr nzjr izchmhentnt zslfhsnt <br>
+     Rfqboi z bqnzetsz ed Thffgqjde
+     <br><br>
+     Simples, não?<br>
+     Para reclamar o tesouro dentro da arca, sussurre o nome da pessoa a qual a mensagem se refere.<br>
+     Se você resolver desistir e deixar o belo tesouro para trás, siga para a Cripta`, //123
+     `A Aparição o ataca com suas garras agourentas. <br>
+     Você tem uma Espada Mágica?`, //124
+     `O feitiço é inútil.<br>
+     Apesar de um esqueleto, este é um monstro especialmente encantado, e não uma criatura morta-viva. <br><br>
+     Você terá de enfrentá-la.`, //125
      `Você tosse e o homem, tendo acordado, olha nervosamente para você. Ele lhe oferece pão e um pouco de sopa quente de uma panela junto ao fogo 
      (que recuperam 4 pontos de sua ENERGIA) e lhe diz quem é e o que está fazendo aqui.<br>
      O homem da floresta, Barandrun, diz que já foi um guerreiro, mas que se cansou de batalhas e derramamentos de sangue. Ele agora prefere viver só, em paz com as criaturas 
      da floresta. Porém, a grande maioria delas desapareceu e ele está triste e preocupado. Ele tem certeza que é o mal, no Castelo Heydrich, o que os está amedrontando. 
-     Você se sente confiante para contar-lhe sobre sua busca. Ele comenta sobre sua bravura e diz que talvez possa ajuda-lo um pouco. 
-     Ele sabe que existe pelo menos um homem bom no Castelo e que talvez possa ajuda-lo. Lothar, o Castelão do Castelo, costumava ser simpático com Barandrun.<br>
-     “Mas não o tenho visto há alguns meses; nem mesmo sei se ele ainda vive. Talvez também tenha caído sob o jugo do Conde, ou então foi morto. Mas se encontra-lo, 
-     ele talvez possa ajuda-lo.”<br>
+     Você se sente confiante para contar-lhe sobre sua busca. Ele comenta sobre sua bravura e diz que talvez possa ajudá-lo um pouco. <br>
+     Ele sabe que existe pelo menos um homem bom no Castelo e que talvez o homem possa ajudá-lo. Lothar, o Castelão do Castelo, costumava ser simpático com Barandrun.<br>
+     “Mas não o tenho visto há alguns meses; nem mesmo sei se ele ainda vive. Talvez também tenha caído sob o jugo do Conde, ou então foi morto. Mas se encontrá-lo, 
+     ele talvez possa o ajudar.”<br>
      Barandrun também lhe dá um presente: um fio de dentes de alho que ele pegara de uma pequena horta, na parte de trás de sua cabana. 
      Por sua insistência, você o coloca em volta do pescoço; anote Alho em seus Equipamentos. Barandrun lhe oferece um lugar seguro para ficar. 
      Se ainda não dormiu na cabana do Gnomo, dormirá aí recuperá 4 pontos de ENERGIA. Tendo ou não dormido aí, volte a sua jornada pela tarde.`, //126
      `O terceiro e último golpe do Ghoul o paralisa, e a coisa repulsiva se prepara para devorar-lhe o corpo imóvel.<br><br>
      Você ainda está consciente quando é comido vivo.<br><br>
-     Um final horrendo para sua aventura!`, 
-     `128`, 
-     `129`, 
-     `130`, 
-     `131`, 
+     Um final horrendo para sua aventura!`, //127
+     `Você destranca a porta enferrujada e encontra escuridão mais além; precisa de uma fonte de luz. <br>
+      Entrando, você vê várias armaduras e troféus militares pela parede - a cabeça de um veado com grande galhada, a cabeça eriçada de um imenso javali selvagem e outros bichos. <br>
+      O aposento está úmido e empoeirado e há teias de aranha por toda parte. <br>
+      De repente ouve-se um estalido enferrujado e uma das armaduras de placa de metal, armada com um “bardiche”, avança em sua direção!<br><br>
+      Você pode tentar enfrentá-la ou tentar bater a porta e trancá-la atrás de você, fugindo desta criação mágica e maligna.`, //128
+     `Você consegue atingir a Aparição covarde antes que ela o atacasse, reduzindo 2 em sua ENERGIA total. <br><br>
+     Entretanto a criatura ainda esbraveja contra você.`, //129
+     `Você recua rápido para evitar uma pequena nuvem de gás verde que foi liberada de uma garrafa quebrada; ela logo dispersa você avança cuidadosamente para investigar o que o Conde escondeu por aqui.<br><br>
+     Você encontra um monte de cartas de várias pessoas de Mauristatia, servos do Conde; as autoridades ficarão interessadas nelas!<br>
+     Encontra também, envolta em seda branca, uma garrafa ornamentada de cristal, contendo um líquido sem cor e sem cheiro.<br>
+     Pelos desenhos na garrafa, você suspeita que possa ser Água-benta, que o Conde escondeu para evitar que qualquer pessoa a use contra ele. Você a pega (Água-benta foi adicionada aos seus equipamentos).<br>
+     Por fim, você pega um esquisito broche de ouro montado com rodocrositas e um topázio; ele vale 7 Moedas de Ouro.<br>
+     Você agora tenta abrir o cofre.`, //130
+     `Você entra em um salão onde carpetes indefinidos e mobília de madeira simples enchem o cenário.<br>
+     Você nota ganchos de parede mostrando uma grande variedade de ervas e outras plantas, e uma porta aberta para oeste. Entra um homem pela passagem; ele parece não notar sua presença. <br>
+     É um homem de meia-idade e tem uma longa cabeleira de fios negros, que estão começando a ficar grisalhos e que se afinam até um pico de viúva, no alto de seu rosto, que é dominado por pálidos olhos verdes. <br>
+     Ele está simplesmente trajado em robes brancos e verdes, e carrega uma bandeja com uma garrafa ornamental e cálices, que ele deposita em algum lugar e o saúda.<br>
+     “Sou Gunthar Heydrich. Quais são seus negócios aqui?”<br>
+     Ele lhe parece bastante gentil.<br><br>
+     Você vai falar com ele ou  vai atacá-lo, desconfiando de todos os membros da família Heydrich?`, //131
      `132`, 
-     `133`, 
-     `Karl-Rinna concorda em fazer a poção por uma taxa reduzida, mas ele levará todos os tesouros que você tiver.`, //134
+     `Os morcegos o cercam e você não consegue ver nada quando tenta enfrentá-los.<br>
+     Seus pequenos e pontiagudos dentes estão ensanguentados por alimentarem-se de alguma coisa - ou alguém.<br>
+     Eles são muitos para que os enfrente; você tem que recuar para as escadas.<br><br>
+     Pode tentar subir uma vez mais para a torre do sino, na esperança de que os morcegos vão embora; ou voltar ao pátio principal.`, //133
+     `Karl-Heinz concorda em fazer a poção por uma taxa reduzida, mas ele levará todos os tesouros que você tiver.`, //134
      `135`, 
      `136`, 
      `137`, 

@@ -1,4 +1,4 @@
-var NextPage = [107]
+var NextPage = [123]
 let Chars = {
     Name: 'Aikawa',
     Hab: Number.parseInt(localStorage.getItem('Hab')),
@@ -1188,23 +1188,45 @@ function Paginas(pagNmb) {
             }
             break;
         case 111:
-            botao01.style.visibility = 'visible'
-            botao01.innerText = 'termine sua luta com ele'
-            NextPage01 = 212
+            but = ['termine sua luta com ele']
+            NextPage = [212]
             break;
         case 112:
-            NextPage01 = 164
+            NextPage = [164]
             break;
         case 113:
-            
+            if (combate) {
+                but = ['Examinar a casa do Gnomo', 'Pegar o barco e atravessar o rio', 'Atravessar o rio raso a pé']
+                combate = false
+                NextPage = [358, 138, 187]
+                const text = 'O gnomo foi vencido. <br><br> Escolha sua próxima ação:'
+                typingEffect(text)
+                personalizado = true
+                break
+            }
+            but = ['INICIAR COMBATE']
+            combate = true
+            Enemy = {name: 'Snivel, o Gnomo', Hab: 8, Ene:6}
+            condition = {has:true, which: 'dano aumentado', id: 4, ref:4}
             break;
         case 114:
-            NextPage01 = 168
+            if (combate) {
+                combate = false
+                NextPage = [168]
+                Continue(0)
+                personalizado = true
+                break
+            }
+            combate = true
+            but = ['INICIAR COMBATE']
+            Enemy = {name:'Golem de Madeira', Hab:8, Ene:6}
             break;
         case 115:
             
             break;
         case 116:
+            itens.push('Chaves-do-Castelao', 'Estaca-de-Prata')
+            attInv()
             but = ['SEGUIR']
             NextPage = [319]
             break;
@@ -1215,7 +1237,7 @@ function Paginas(pagNmb) {
                     botao01.style.visibility = 'visible'
                     botao01.innerText = 'consumir provisão'
                 }
-                if (itens.includes('Pocao')) {
+                if (itens.includes('Poção-de-Cura')) {
                     botao02.style.visibility = 'visible'
                     botao02.innerText = 'beber Poção de Cura'
                 }
@@ -1249,70 +1271,114 @@ function Paginas(pagNmb) {
             }
             break;
         case 118:
-
+            but = ['atacar o homem', 'conversar com ele', 'Sair pela porta na parede oeste deste aposento']
+            NextPage = [251, 205, 373]
             break;
         case 119:
-            
+            but = ['concordar', 'recusar']
+            NextPage = [198, 248]
             break;
         case 120:
-            feiticos.push("CuraVdd")
+            feiticos.push("Cura-Verdadeira")
             but = ['CONTINUAR']
             NextPage = [102]
             break;
         case 121:
-            
+            if (combate) {
+                combate = false
+                NextPage = [314]
+                if (Chars.encontros.includes('mordido')) {
+                    Chars.encontros = Chars.encontros.filter(item => item !== "mordido")
+                    NextPage = [266]
+                }
+                Continue(0)
+                personalizado = true
+                break
+            }
+            combate = true
+            but = ['INCIAR COMBATE']
+            Enemy = {name:'Lobos Gigantes', Hab:7, Ene:13}
+            condition = {has:true, which:'vezes atingido', id:4, ref:3}
             break;
         case 122:
-            
+            if (combate) {
+                Chars.Hab = Chars.Hab + 2
+                attInv()
+                combate = false
+                NextPage = [180]
+                Continue(0)
+                personalizado = true
+                break
+            }
+            Chars.Hab = Chars.Hab - 2
+            attInv()
+            combate = true
+            but = ['iniciar combate']
+            Enemy = {name: 'Ghoul Fedorento', Hab: 8, Ene:9}
+            condition = {has:true, which: 'vezes atingido', id: 1, times: 3, ref: 127}
             break;
         case 123:
-            
+            but = ['desistir', 'tentar sussurrar']
+            NextPage = [191, 402]
             break;
         case 124:
-            
+            but = ['não tenho']
+            NextPage = [231]
+            if (itens.includes("Espada-Magica")) {
+                but = ['tenho']
+                NextPage = [200]
+            }
             break;
         case 125:
-            NextPage01 = 22
+            but = ['CONTINUAR']
+            NextPage = [22]
             break;
         case 126:
-            botao01.style.visibility = "visible"
-            botao01.innerText = "continuar"
-            Chars.Ene = Chars.Ene + 8
-            Aumentou = true
-            itens.push("alho")
-            if (Chars.Ene >= sessionStorage.getItem("EneUsuario")) {
-                localStorage.setItem("Chars.Enerent", sessionStorage.getItem("EneUsuario"))
-                attInv()
-            } else {
-                localStorage.setItem("Chars.Enerent", Chars.Ene)
-                attInv()
+            but = ['RETORNAR A JORNADA']
+            NextPage = [228]
+            Chars.Ene = Chars.Ene + 4
+            if (!Chars.encontros.includes('sleep')) {
+                Chars.Ene = Chars.Ene + 4
             }
-            NextPage01 = 228
+            if (Chars.Ene > Chars.initEne) {
+                Chars.Ene = Chars.initEne
+            }
+            itens.push("Alho")
+            attInv()
             break;
         case 127:
             but = ['C0NT1NU4R']
             NextPage = [401]
             break;
         case 128:
-            
+            but = ['tentar enfrentá-la', 'tentar fugir']
+            NextPage = [153, 215]
             break;
         case 129:
-            NextPage01 = 200
+            but = ['CONTINUAR']
+            NextPage = [200]
+            Chars.encontros.push('danoPrevio')
             break;
         case 130:
+            itens.push('Agua-Benta')
+            ouro = ouro + 7
+            attInv()
             but = ['CONTINUAR']
             NextPage = [271]
             break;
         case 131:
-            
+            but = ['tentar conversar com o homem', 'atacá-lo imediatamente']
+            NextPage = [15, 92]
             break;
         case 132:
             
             break;
         case 133:
-            
+            but = ['tentar subir para a torre do sino', 'voltar ao pátio principal']
+            NextPage = [33, 380]
             break;
         case 134:
+            ouro = 0
             but = ['CONTINUAR']
             NextPage = [79]
             break;
