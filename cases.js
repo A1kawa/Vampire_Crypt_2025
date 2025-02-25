@@ -1,26 +1,28 @@
-var NextPage = [5]
+var NextPage = [107]
 let Chars = {
     Name: 'Aikawa',
-    Hab: localStorage.getItem('Hab'),
-    Ene: localStorage.getItem('Ene'),
-    Sor: localStorage.getItem('Sor'),
-    Fth: localStorage.getItem('Fth'),
-    initHab: localStorage.getItem('Hab'),
-    initEne: localStorage.getItem('Ene'),
-    initSor: localStorage.getItem('Sor'),
-    initFth: localStorage.getItem('Fth'),
+    Hab: Number.parseInt(localStorage.getItem('Hab')),
+    Ene: Number.parseInt(localStorage.getItem('Ene')),
+    Sor: Number.parseInt(localStorage.getItem('Sor')),
+    Fth: Number.parseInt(localStorage.getItem('Fth')),
+    initHab: Number.parseInt(localStorage.getItem('Hab')),
+    initEne: Number.parseInt(localStorage.getItem('Ene')),
+    initSor: Number.parseInt(localStorage.getItem('Sor')),
+    initFth: Number.parseInt(localStorage.getItem('Fth')),
+    encontros: []
 }
 let Enemy = {name: 'Dog', Hab: 17, Ene:88}
 let condition = {has:false, which: '', id: 0}
 let combate = false
 let feiticos = ["Grande-Ataque", "Raio-de-Jandor", 'Divisao']
 let aflicoes = []
-let itens = ["Espada-Magica", "Crucifixo-de-Prata", 'Livro-das-Espadas']
+let itens = ['Livro-das-Espadas']
 let provisoes = 0
 let ouro = 0
 
 function Paginas(pagNmb) {
-
+    let personalizado = false
+    condition = {has:false, which: '', id: 0}
     switch (pagNmb) {
         case 1:
             but = ['Atacar o Cavaleiro Sem Cabeça', 'Entrar no coche', 'Ignorar o coche, perguntar a alguém o caminho']
@@ -31,13 +33,12 @@ function Paginas(pagNmb) {
             NextPage = [101, 256, 60]
             break;
         case 3:
+            but = ['não tenho']
+            NextPage = [208]
             if (itens.includes("Espada-Magica")) {
                 but = ['tenho']
                 NextPage = [173]
-                return
             }
-            but = ['não tenho']
-            NextPage = [208]
             break;
         case 4:
             Chars.Fth--
@@ -48,6 +49,7 @@ function Paginas(pagNmb) {
         case 5:
             if (combate == true) {
                 typingEffect('Você derrota o corcel e analisa a sala mas não encontra nada de interessante aqui.')
+                personalizado = true
                 Chars.Hab = Chars.Hab + 2
                 attInv()
                 but = ['seguir para a Cripta', 'abrir as portas de bronze', 'abrir a porta ao sul']
@@ -62,15 +64,14 @@ function Paginas(pagNmb) {
             Enemy = {name: 'Corcel Demônio', Hab: 8, Ene:10}
             break;
         case 6:
-            if (IfCombate == 1) {
+            if (combate == 1) {
                 combate = false
-                NextPage03 = 10
-                Continua03()
-            } else {
-                combate = true
-                sessionStorage.setItem("CondicaoDano", 0)
-                localStorage.setItem("CondicaoSerieAtaque", 1)
+                NextPage = [10]
+                Continue(0)
+                break
             }
+            combate = true
+            condition = {has:true, which: 'dano por rodada', id: 2, ref:1}
             break;
         case 7:
             but = ['CONTINUAR']
@@ -89,7 +90,7 @@ function Paginas(pagNmb) {
         case 10:
             but = ['tentar abrir a porta', 'seguir o corredor']
             NextPage = [34, 31]
-            Chars.Fth = CharsFth - 3
+            Chars.Fth = Chars.Fth - 3
             attInv()
             break;
         case 11:
@@ -103,89 +104,67 @@ function Paginas(pagNmb) {
             attInv()
             break;
         case 13:
-            if (Valderesse == true) {
-                Texto = `Quando você se aproxima, um pequeno e envelhecido <strong>Gnomo</strong> corre de dentro de sua cabana para a luz cinzenta da madrugada e anda meio de lado até você,
-    sorrindo de modo bastante malicioso. Ele lhe pede 2 Moedas de Ouro para levá-lo para o outro lado do rio, em seu barco, mas acrescenta que você
-    pode ficar e dormir em sua cabana se o desejar - e você está muito cansado!<br>
-    Antes de consegui se decidir sobre o que fazer Valderesse entrevem`
-                TextoPersonalizado()
-                PersonalizarTexto = true
-                botao01.style.visibility = 'visible'
-                botao01.innerText = 'continuar'
-                NextPage01 = 64
-            } else {
-                botao01.style.visibility = 'visible'
-                botao01.innerText = 'atacar o Gnomo'
-                NextPage01 = 113
-                botao02.style.visibility = 'visible'
-                botao02.innerText = 'aceitar sua oferta'
-                NextPage02 = 211
-                botao03.style.visibility = 'visible'
-                botao03.innerText = 'pagá-lo e atravessar o rio'
-                NextPage03 = 162
+            if (Chars.encontros.includes('valderesse')) {
+                const text = `Quando você se aproxima, um pequeno e envelhecido <strong>Gnomo</strong> corre de dentro de sua cabana para a luz cinzenta da madrugada e anda meio de lado até você,sorrindo de modo bastante malicioso. Ele lhe pede 2 Moedas de Ouro para levá-lo para o outro lado do rio, em seu barco, mas acrescenta que você pode ficar e dormir em sua cabana se o desejar - e você está muito cansado!<br>
+                Antes de consegui se decidir sobre o que fazer Valderesse entrevem`
+                typingEffect(text)
+                personalizado = true
+                but = ['CONTINUAR']
+                NextPage = [64]
+                return
             }
+            but = ['atacar o Gnomo', 'aceitar sua oferta', 'pagá-lo e atravessar o rio']
+            NextPage = [113, 211, 162]
             break;
         case 14:
-            botao01.style.visibility = 'visible'
+            but = ['não tenho']
+            NextPage = [61]
             if (itens.includes("Espada-Magica")) {
-                botao01.innerText = 'tenho'
-                NextPage01 = 84
-            } else {
-                botao01.innerText = 'não tenho'
-                NextPage01 = 61
+                but = ['tenho']
+                NextPage = [84]
             }
             break;
         case 15:
-            itens.push("CrucifixoPrata")
-            EneCur = EneCur + 4
-            Aumentou = true
-            if (EneCur >= sessionStorage.getItem("EneUsuario")) {
-                localStorage.setItem("EneCurrent", sessionStorage.getItem("EneUsuario"))
-                attChar()
-            } else {
-                localStorage.setItem("EneCurrent", EneCur)
-                attChar()
+            itens.push("Crucifixo-de-Prata")
+            Chars.Ene = Chars.Ene + 4
+            if (Chars.Ene > Chars.initEne) {
+                Chars.Ene = Chars.initEne
             }
-            botao01.style.visibility = 'visible'
-            botao01.innerText = 'sair e abrir a porta oeste'
-            NextPage01 = 294
-            if (aflicoes.length() > 0) {
-                botao02.style.visibility = 'visible'
-                botao02.innerText = 'pedir ajuda a Gunthar com alguma Aflição'
-                NextPage02 = 48
+            attInv()
+            but = ['sair e abrir a porta oeste']
+            NextPage = [294]
+            if (aflicoes.length > 0) {
+                but.push('pedir ajuda a Gunthar com alguma Aflição')
+                NextPage.push(48)
             }
-            if (itens.includes("Livro-de-Cura") || itens.includes("Livro-das-Espada")) {
-                botao03.style.visibility = 'visible'
-                botao03.innerText = 'mostrar um livro a Gunthar'
-                NextPage03 = 317
+            if (itens.includes("Livro-de-Cura") || itens.includes("Livro-das-Espadas")) {
+                but.push('mostrar um livro a Gunthar')
+                NextPage.push(317)
             }
             break;
         case 16:
-            EneCur = EneCur - 2
-            localStorage.setItem("EneCurrent", EneCur)
-            attChar()
-            localStorage.setItem("CondicaoSerieAtaque", 1)
-            botao01.style.visibility = 'visible'
-            botao01.innerText = 'continuar'
-            NextPage01 = 150
+            Chars.Ene = Chars.Ene - 2
+            attInv()
+            condition = {has:true, which: 'dano por rodada', id: 2, ref:1}
+            but = ['CONTINUAR']
+            NextPage = [150]
             break;
         case 17:
             if (!itens.includes("Espelho")) {
-                NextPage03 = 26
-                Continua03()
+                NextPage = [26]
+                Continue(0)
+                personalizado = true
+                break
             }
-            botao01.style.visibility = 'visible'
-            botao01.innerText = 'atacar o Conde'
-            NextPage01 = 26
+            but = ['atacar o Conde']
+            NextPage = [26]
             if (itens.includes("AguaBenta")) {
-                botao02.style.visibility = "visible"
-                botao02.innerText = 'jogar-lhe Água-benta'
-                NextPage02 = 216
+                but.push('jogar-lhe a Água-benta')
+                NextPage.push(216)
             }
-            if (magias.includes("GrandeAtaque") || magias.includes("RaioJandor")) {
-                botao03.style.visibility = 'visible'
-                botao03.innerText = 'lançar-lhe um feitiço'
-                NextPage03 = 158
+            if (feiticos.includes("Grande-Ataque") || feiticos.includes("Raio-de-Jandor")) {
+                but.push('lançar-lhe um feitiço')
+                NextPage.push(158)
             }
             break;
         case 18:
@@ -194,7 +173,7 @@ function Paginas(pagNmb) {
             break;
         case 19:
             but = ['CONTINUAR']
-            if (itens.includes("Cruz") || itens.includes("Escudo") && itens.includes("EstacaPrata") || itens.includes("EspadaMagica")) {
+            if (itens.includes("Crucifixo-de-Prata") || itens.includes("Escudo-da-Fé") && itens.includes("Estaca-de-Prata") || itens.includes("Espada-Magica")) {
                 NextPage = [32]
             } else {
                 NextPage = [69]
@@ -203,36 +182,31 @@ function Paginas(pagNmb) {
         case 20:
             but = ['CONTINUAR']
             NextPage = [106]
-            EneCur = EneCur - 2
-            localStorage.setItem("EneCurrent", EneCur)
-            attChar()
+            Chars.Ene = Chars.Ene - 2
+            attInv()
             break;
         case 21:
             but = ['examinar os aposentos', 'sair e abrir a porta leste oposta no corredor', 'sair e abrir a porta no final sul do corredor', 'retomar para o hall e abrir a porta norte']
             NextPage = [78, 118, 252, 101]
             break;
         case 22:
-            if (IfCombate == 1) {
-                botao01.style.visibility = 'visible'
-                botao01.innerText = 'continuar jornada'
+            if (combate == true) {
+                but = ['CONTINUAR JORNADA']
                 combate = false
-                NextPage01 = 224
-            } else {
-                botao01.style.visibility = 'visible'
-                botao01.innerText = 'iniciar combate'
-                combate = true
-                sessionStorage.setItem("nomeInimigo", 'Thassalos Maior')
-                sessionStorage.setItem("HabEnemy", 10)
-                sessionStorage.setItem("EneEnemy", 15)
-                sessionStorage.setItem("PaginaSalva", pagNmb)
+                NextPage = [224]
+                personalizado = true
+                initButtons(but)
+                break
             }
+            but = ['INICIAR COMBATE']
+            combate = true
+            Enemy = {name: 'Thassalos Maior', Hab: 10, Ene:15}
+            condition = {has:true, which: 'dado por rodada', id: 3, ref: 6}
             break;
         case 23:
-            if (itens.includes('EspadaMagica')) {
-                HabCur++
-                Aumentou = true
-                localStorage.setItem('HabCurrent', HabCur)
-                attChar()
+            if (itens.includes('Espada-Magica')) {
+                Chars.Hab++
+                attInv()
             }
             but = ['CONTINUAR']
             NextPage = [106]
@@ -240,7 +214,7 @@ function Paginas(pagNmb) {
         case 24:
             if (TestesDados01 == true) {
                 botao01.style.visibility = 'visible'
-                botao01.innerText = 'continuar'
+                but = ['continuar']
                 TestesDados01 = false
                 if (Compare <= 2) {
                     NextPage01 = 362
@@ -255,18 +229,24 @@ function Paginas(pagNmb) {
             }
             break;
         case 25:
-            itens.push("EstacaPrata", "ChavesCastelao")
-            console.log(itens)
+            itens.push("Estaca-de-Prata", "Chaves-do-Castelao")
+            attInv()
+            but = ['ir embora']
+            NextPage = [319]
+            if (Chars.encontros.includes('Katarina')) {
+                const text = pagTxtGame[pagNmb] + 'Você também pode levar o Livro das Espadas para Katarina Heydrich.'
+                typingEffect(text)
+                but.push('Levar o livro a Katarina')
+                NextPage.push(41)
+                personalizado = true
+            }
             break;
         case 26:
-            TestesDados01 = false
-            botao01.style.visibility = 'visible'
-            if (itens.includes("EspadaMagica")) {
-                botao01.innerText = 'tenho'
-                NextPage01 = 372
-            } else {
-                botao01.innerText = 'não tenho'
-                NextPage01 = 284
+            but = ['não tenho']
+            NextPage = [284]
+            if (itens.includes("Espada-Magica")) {
+                but = ['tenho']
+                NextPage = [372]
             }
             break;
         case 27:
@@ -276,28 +256,25 @@ function Paginas(pagNmb) {
             NextPage = [126, 77] 
             break;
         case 28:
-            botao01.style.visibility = 'visible'
-            botao01.innerText = 'não usar'
-            NextPage01 = 63
-            if (magias.includes('ParedeForca')) {
-                botao02.style.visibility = 'visible'
-                botao02.innerText = 'lançar feitiço'
-                NextPage02 = 111
-            } else {
-                botao01.innerText = 'continuar'
+            but = ['continuar']
+            NextPage = [63, 111]
+            if (feiticos.includes('Parede-de-Força')) {
+                but = ['não usar', 'usar feitiço']
             }
             break;
         case 29:
-            if (feiticos.includes('ParedeForca')) {
+            but = []
+            NextPage = []
+            if (feiticos.includes('Parede-de-Força')) {
                 but.push('usar parede de Força')
                 NextPage.push(155)
             }
-            if (feiticos.includes('GrandeAtaque')) {
+            if (feiticos.includes('Grande-Ataque')) {
                 but.push('usar grande ataque')
                 NextPage.push(112)
             }
-            if (feiticos.includes('RaioJandor')) {
-                but.push('usar raio de Jando')
+            if (feiticos.includes('Raio-de-Jandor')) {
+                but.push('usar raio de Jandor')
                 NextPage.push(395)
             }
             break;
@@ -314,39 +291,32 @@ function Paginas(pagNmb) {
             NextPage = [58, 227, 319, 114]
             break;
         case 32:
-            Aumentou = true
-            FeCur = FeCur + 2
-            SorCur = SorCur + 2
-            if (FeCur >= localStorage.getItem('FeCurrent')) {
-                localStorage.setItem('FeCurrent', sessionStorage.getItem('FeUsuario'))
-            } else {
-                localStorage.setItem('FeCurrent', FeCur)
+            Chars.Fth = Chars.Fth + 2
+            Chars.Sor = Chars.Sor + 2
+           Chars.Fth =Chars.Fth + 2
+            Chars.Sor = Chars.Sor + 2
+            if (Chars.Sor > Chars.initSor) {
+                Chars.Sor = Chars.initSor
             }
-            if (SorCur >= localStorage.getItem('SorCurrent')) {
-                localStorage.setItem('SorCurrent', sessionStorage.getItem('SorUsuario'))
-            } else {
-                localStorage.setItem('SorCurrent', SorCur)
-            }
-            attChar()
-            botao01.style.visibility = 'visible'
-            botao01.innerText = 'continuar'
-            NextPage01 = 132
+            attInv()
+            but = ['continuar']
+            NextPage = [132]
             break;
         case 33:
             if (TestesDados02 == true) {
-                SorCur--
-                localStorage.setItem('SorCurrent', SorCur)
-                attChar()
+                Chars.Sor--
+                localStorage.setItem('Chars.Sorrent', Chars.Sor)
+                attInv()
                 botao01.style.visibility = 'visible'
-                botao01.innerText = 'continuar'
+                but = ['continuar']
                 TestesDados02 = false
-                if (Compare <= SorCur) {
+                if (Compare <= Chars.Sor) {
                     NextPage01 = 86
                 } else {
                     NextPage01 = 133
                 }
             } else {
-                TestesDadosComparativo = SorCur
+                TestesDadosComparativo = Chars.Sor
                 TestesDados02 = true
                 botao06.style.visibility = 'visible'
                 botao06.innerText = 'jogar dados'
@@ -367,17 +337,17 @@ function Paginas(pagNmb) {
             break;
         case 36:
             if (TestesDados02 == true) {
-                SorCur--
-                localStorage.setItem('SorCurrent', SorCur)
-                attChar()
+                Chars.Sor--
+                localStorage.setItem('Chars.Sorrent', Chars.Sor)
+                attInv()
                 botao01.style.visibility = 'visible'
-                botao01.innerText = 'continuar'
+                but = ['continuar']
                 TestesDados02 = false
-                if (Compare <= SorCur) {
+                if (Compare <= Chars.Sor) {
                     NextPage01 = 134
                 }
             } else {
-                TestesDadosComparativo = SorCur
+                TestesDadosComparativo = Chars.Sor
                 TestesDados02 = true
                 botao01.style.visibility = 'visible'
                 botao01.innerText = 'alegar pobreza'
@@ -387,9 +357,8 @@ function Paginas(pagNmb) {
             }
             break;
         case 37:
-            EneCur--
-            localStorage.setItem('EneCurrent', EneCur)
-            attChar()
+            Chars.Ene--
+            attInv()
             but = ['tentar encontrar os foles', 'tentar silenciar o órgão', 'correr para a porta norte']
             NextPage = [65, 149, 335]
             break;
@@ -402,43 +371,27 @@ function Paginas(pagNmb) {
             NextPage = [90, 2, 18]
             break;
         case 40:
-            if (IfCombate == 1) {
-                botao01.style.visibility = 'visible'
-                botao02.style.visibility = 'visible'
-                botao01.innerText = 'entrar no barco'
-                botao02.innerText = 'atravessar o rio'
-                NextPage01 = 138
-                NextPage02 = 187
-            } else if (Inimigos == 1) {
-                Texto = `O cão é um <strong>Mastim Selvagem</strong>, com grosso pelo cinzento e grandes dentes amarelados, que late ferozmente e baba diante da possibilidade de tê-lo como refeição!`
-                TextoPersonalizado()
-                PersonalizarTexto = true
-                botao01.style.visibility = 'visible'
-                botao01.innerText = 'iniciar combate'
-                Inimigos = 0
+            but = ['entrar no barco', 'atravessar o rio']
+            NextPage = [138, 187]
+            if (Chars.encontros.includes('mastimTrue')) {
+                Chars.encontros = Chars.encontros.filter(item => item !== "mastimTrue")
                 combate = true
-                sessionStorage.setItem("nomeInimigo", 'Mastim Selvagem')
-                sessionStorage.setItem("HabEnemy", 7)
-                sessionStorage.setItem("EneEnemy", 7)
-            } else if (Inimigos == 2) {
-                Texto = `Por escolher atacar o cão, em vez de tentar passar sorrateiramente por ele, você terá um golpe livre e poderá 
-                <strong>subtrair 2 pontos da ENERGIA dele</strong> antes de enfrentá-lo.<br>`
-                TextoPersonalizado()
-                PersonalizarTexto = true
-                botao01.style.visibility = 'visible'
-                botao01.innerText = 'iniciar combate'
-                Inimigos = 0
+                but = ['iniciar combate']
+                NextPage = [40]
+                const text = `O cão é um <strong>Mastim Selvagem</strong>, com grosso pelo cinzento e grandes dentes amarelados, que late ferozmente e baba diante da possibilidade de tê-lo como refeição!`
+                Enemy = {name: 'Mastim Selvagem', Hab: 7, Ene:7}
+                typingEffect(text)
+                personalizado = true
+            }
+            if (Chars.encontros.includes('mastimFalse')) {
+                Chars.encontros = Chars.encontros.filter(item => item !== "mastimFalse")
                 combate = true
-                sessionStorage.setItem("nomeInimigo", 'Mastim Selvagem')
-                sessionStorage.setItem("HabEnemy", 7)
-                sessionStorage.setItem("EneEnemy", 5)
-            } else {
-                botao01.style.visibility = 'visible'
-                botao02.style.visibility = 'visible'
-                botao01.innerText = 'entrar no barco'
-                botao02.innerText = 'atravessar o rio'
-                NextPage01 = 138
-                NextPage02 = 187
+                but = ['iniciar combate']
+                NextPage = [40]
+                const text = `Por escolher atacar o cão, em vez de tentar passar sorrateiramente por ele, você terá um golpe livre e poderá subtrair 2 pontos da ENERGIA dele antes de enfrentá-lo`
+                Enemy = {name: 'Mastim Selvagem', Hab: 7, Ene:5}
+                typingEffect(text)
+                personalizado = true
             }
             break;
         case 41:
@@ -446,45 +399,37 @@ function Paginas(pagNmb) {
             NextPage = [319]
             break;
         case 42:
-            if (IfCombate == 1) {
-                HabCur--
-                localStorage.setItem("HabCurrent", HabCur)
-                attChar()
+            if (combate) {
+                Chars.Hab--
+                attInv()
                 combate = false
-                NextPage03 = 10
-                Continua03()
-            } else if (IfCombate == 2) {
-                NextPage03 = 165
-                Continua03()
-            } else {
-                botao01.style.visibility = 'visible'
-                botao01.innerText = 'iniciar combate'
-                HabCur++
-                localStorage.setItem("HabCurrent", HabCur)
-                attChar()
-                combate = true
-                localStorage.setItem("CondicaoDano", 2)
-                sessionStorage.setItem("nomeInimigo", 'Névoa Vampira')
-                sessionStorage.setItem("HabEnemy", 7)
-                sessionStorage.setItem("EneEnemy", 9)
-                sessionStorage.setItem("PaginaSalva", pagNmb)
+                NextPage = [10]
+                Continue(0)
+                personalizado = true
+                break
             }
+            Chars.Hab++
+            attInv()
+            but = ['iniciar combate']
+            Enemy = {name: 'Névoa Vampira', Hab: 7, Ene:9}
+            condition = {has:true, which: 'vezes atingido', id: 1, times: 2, ref: 165}
+            combate = true
             break;
         case 43:
             if (TestesDados02 == true) {
-                SorCur--
-                localStorage.setItem('SorCurrent', SorCur)
-                attChar()
+                Chars.Sor--
+                localStorage.setItem('Chars.Sorrent', Chars.Sor)
+                attInv()
                 botao01.style.visibility = 'visible'
-                botao01.innerText = 'continuar'
+                but = ['continuar']
                 TestesDados02 = false
-                if (Compare <= SorCur) {
+                if (Compare <= Chars.Sor) {
                     NextPage01 = 147
                 } else {
                     NextPage01 = 91
                 }
             } else {
-                TestesDadosComparativo = SorCur
+                TestesDadosComparativo = Chars.Sor
                 TestesDados02 = true
                 botao06.style.visibility = 'visible'
                 botao06.innerText = 'jogar dados'
@@ -495,94 +440,61 @@ function Paginas(pagNmb) {
             NextPage = [83, 316, 101]
             break;
         case 45:
-            if (IfCombate == 1) {
+            if (combate) {
                 combate = false
-                NextPage03 = 135
-                Continua03()
-            } else if (IfCombate == 2) {
-                NextPage03 = 85
-                Continua03()
-            } else {
-                botao01.style.visibility = 'visible'
-                botao01.innerText = 'iniciar combate'
-                combate = true
-                localStorage.setItem("CondicaoDano", 2)
-                sessionStorage.setItem("nomeInimigo", 'Morcego Vampiro Chifrudo')
-                sessionStorage.setItem("HabEnemy", 8)
-                sessionStorage.setItem("EneEnemy", 7)
-                sessionStorage.setItem("PaginaSalva", pagNmb)
+                NextPage = [135]
+                Continue(0)
+                personalizado = true
+                break
             }
+            but = ['iniciar combate']
+            Enemy = {name: 'Morcego Vampiro Chifrudo', Hab: 8, Ene:7}
+            condition = {has:true, which: 'vezes atingido', id: 1, times: 2, ref: 85}
+            combate = true
             break;
         case 46:
-            if (itens.includes('EspadaMagica')) {
-                botao01.innerText = 'tenho'
-                botao01.style.visibility = 'visible'
-                NextPage01 = 298
-            } else {
-                botao01.innerText = 'não tenho'
-                botao01.style.visibility = 'visible'
-                NextPage01 = 208
+            but = ['não tenho']
+            NextPage = [208]
+            if (itens.includes("Espada-Magica")) {
+                but = ['tenho']
+                NextPage = [298]
             }
             break;
         case 47:
-            if (IfCombate == 1) {
-                botao01.style.visibility = 'visible'
-                if (Inimigos == 1) {
-                    botao01.innerText = 'próximo combate'
-                    Inimigos = 0
-                    combate = true
-                    sessionStorage.setItem("nomeInimigo", 'Zumbi Dois')
-                    sessionStorage.setItem("HabEnemy", 7)
-                    sessionStorage.setItem("EneEnemy", 6)
-                } else {
-                    Texto = 
-                    `Você derrota os lobos e analisa seus arredores mas não encontra nada de interessante aqui.<br><br>
-                    <strong>Escolha sua proxima ação:</strong>`
-                    TextoPersonalizado()
-                    botao02.style.visibility = 'visible'
-                    botao03.style.visibility = 'visible'
-                    botao01.innerText = 'seguir para a Cripta'
-                    botao02.innerText = 'abrir as portas ao sul do pátio'
-                    botao03.innerText = 'abrir as portas de bronze ao norte'
-                    combate = false
-                    NextPage01 = 90
-                    NextPage02 = 18
-                    NextPage03 = 2
+            if (combate) {
+                if (Chars.encontros.includes('nextEnemy')) {
+                    Chars.encontros = Chars.encontros.filter(item => item !== "nextEnemy")
+                    Enemy = {name: 'Zumbi Dois', Hab: 7, Ene:6}
+                    but = ['próximo combate']
+                    personalizado = true
+                    initButtons(but)
+                    break
                 }
-            } else {
-                botao01.style.visibility = 'visible'
-                botao01.innerText = 'iniciar combate'
-                Inimigos++
-                combate = true
-                sessionStorage.setItem("nomeInimigo", 'Zumbi Um')
-                sessionStorage.setItem("HabEnemy", 6)
-                sessionStorage.setItem("EneEnemy", 6)
+                combate = false
+                NextPage = [348]
+                Continue(0)
+                personalizado = true
+                break
             }
-            NextPage01 = 348
+            but = ['iniciar combate']
+            Enemy = {name: 'Zumbi Um', Hab: 6, Ene:6}
+            Chars.encontros.push('nextEnemy')
+            combate = true
             break;
         case 48:
-            if (!itens.includes('LivroCura')) {
-                Texto = `Gunthar parece nervoso. Ele diz que qualquer magia que usasse para ajudar alertaria Katarina, que pode ser muito perigosa... ele reluta visivelmente. 
-     Você tem o <strong>Livro dos Curandeiros</strong>?<br>
-     Se não o tiver, pode sair daqui e abrir a porta oeste do patamar.`
-                TextoPersonalizado()
-                botao01.style.visibility = 'visible'
-                botao01.innerText = 'continuar'
-                NextPage01 = 294
-                if (itens.includes('LivroEspada')) {
-                    Texto = `Gunthar parece nervoso. Ele diz que qualquer magia que usasse para ajudar alertaria Katarina, que pode ser muito perigosa... ele reluta visivelmente. 
-     Você tem o <strong>Livro dos Curandeiros</strong>?<br>
-     Se não o tiver, pode sair daqui e abrir a porta oeste do patamar.<br>
-     Você pode também, mesmo sem o Livro dos Curandeiros, tentar mostrar a Gunther qualquer outro livro que tenha encontrado no Castelo`
-                    TextoPersonalizado()
-                    botao02.style.visibility = 'visible'
-                    botao02.innerText = 'mostrar o outro livro'
-                    NextPage02 = 188
-                }
-            } else {
-                botao01.style.visibility = 'visible'
-                botao01.innerText = 'continuar'
-                NextPage01 = 375
+            but = ['ir embora']
+            NextPage = [294]
+            if (itens.includes('Livro-dos-Curandeiros')){
+                but.push('Mostrar o Livro dos Curandeiros')
+                NextPage.push(375)
+            }
+            if (itens.includes('Livro-das-Espadas')) {
+                const text = pagTxtGame[pagNmb] + ` <br> Mesmo sem o Livro dos Curandeiros você pode tentar mostrar a Gunther outro livro que tenha encontrado no Castelo`
+                typingEffect(text)
+                personalizado = true
+                but.push('mostrar o outro livro')
+                NextPage.push(188)
+                break
             }
             break;
         case 49:
@@ -596,12 +508,12 @@ function Paginas(pagNmb) {
         case 50:
             if (TestesDados01 == true) {
                 botao01.style.visibility = 'visible'
-                botao01.innerText = 'continuar'
+                but = ['continuar']
                 TestesDados01 = false
-                if (Compare <= FeCur) {
+                if (Compare <=Chars.Fth) {
                     NextPage01 = 99
                 } else {
-                    Texto = `Você continua circulando o castelo cuidadosamente mas acaba voltando aos portões principais 
+                    const text = `Você continua circulando o castelo cuidadosamente mas acaba voltando aos portões principais 
      sem encontrar nada que lhe indique um meio de entrar.`
                     TextoPersonalizado()
                     NextPage01 = 326
@@ -614,61 +526,42 @@ function Paginas(pagNmb) {
             }
             break;
         case 51:
-            FeCur = FeCur + 1
-            SorCur = SorCur + 1
-            localStorage.setItem('')
-            itens.push('EscudoFe')
-            if (FeCur <= sessionStorage.getItem('FeUsuario')) {
-                localStorage.setItem('FeCurrent', FeCur)
-            } else {
-                localStorage.setItem('FeCurrent', sessionStorage.getItem('FeUsuario'))
+            Chars.Sor++
+            Chars.Fth++
+            itens.push('Escudo-da-Fé')
+            if (Chars.Sor > Chars.initSor) {
+                Chars.Sor = Chars.initSor
             }
-            if (SorCur <= sessionStorage.getItem('SorUsuario')) {
-                localStorage.setItem('SorCurrent', SorCur)
-            } else {
-                localStorage.setItem('SorCurrent', sessionStorage.getItem('SorUsuario'))
-            }
-            Aumentou = true
-            attChar()
-            botao01.style.visibility = 'visible'
-            botao01.innerText = 'continuar'
-            NextPage01 = 101
+            attInv()
+            but = ['CONTINUAR']
+            NextPage = [101]
             break;
         case 52:
-            if (IfCombate == 1) {
+            if (combate == true) {
+                Chars.Hab = Chars.Hab + 2
+                attInv()
+                but = ['examinar a câmara', 'ir embora']
                 combate = false
-                botao01.style.visibility = 'visible'
-                botao01.innerText = 'examinar a câmara'
-                botao02.style.visibility = 'visible'
-                botao02.innerText = 'ir embora'
-                NextPage01 = 352
-                NextPage02 = 320
-            } else if (IfCombate == 2) {
-                NextPage03 = 401
-                Continua03()
-            } else {
-                botao01.style.visibility = 'visible'
-                botao01.innerText = 'iniciar combate'
-                combate = true
-                sessionStorage.setItem("nomeInimigo", 'Thassaloss Menor')
-                sessionStorage.setItem("HabEnemy", 8)
-                sessionStorage.setItem("EneEnemy", 11)
-                sessionStorage.setItem("PaginaSalva", pagNmb)
+                NextPage = [352, 320]
+                personalizado = true
+                initButtons(but)
+                break
             }
+            Chars.Hab = Chars.Hab - 2
+            attInv()
+            but = ['INICIAR COMBATE']
+            combate = true
+            Enemy = {name: 'Thassalos Menor', Hab: 8, Ene:11}
+            condition = {has:true, which: 'dado por rodada', id: 3, ref:4}
             break;
         case 53:
-            EneCur = EneCur + 4
-            if (EneCur <= sessionStorage.getItem('EneUsuario')) {
-                localStorage.setItem('EneCurrent', EneCur)
-            } else {
-                localStorage.setItem('EneCurrent', sessionStorage.getItem('EneUsuario'))
+            Chars.Ene = Chars.Ene + 4
+            if (Chars.Ene > Chars.initEne) {
+                Chars.Ene = Chars.initEne
             }
-            botao01.style.visibility = 'visible'
-            botao01.innerText = 'comer os biscoitos'
-            botao02.style.visibility = 'visible'
-            botao02.innerText = 'ir para a porta oeste'
-            NextPage01 = 4
-            NextPage02 = 45
+            attInv()
+            but = ['comer os biscoitos', 'ir para a porta oeste']
+            NextPage = [4, 45]
             break;
         case 54:
             but = ['atacar os lobos', 'fechar a porta e ir embora', 'procurar algo que possa usar contra os lobos']
@@ -705,7 +598,7 @@ function Paginas(pagNmb) {
         case 62:
             if (TestesDados01 == true) {
                 botao01.style.visibility = 'visible'
-                botao01.innerText = 'continuar'
+                but = ['continuar']
                 TestesDados01 = false
                 if (Compare <= 2) {
                     NextPage01 = 150
@@ -724,15 +617,15 @@ function Paginas(pagNmb) {
             NextPage = [178]
             break;
         case 64:
+            Chars.encontros.push('snivel')
             but = ['CONTINUAR']
             NextPage = [383]
             break;
         case 65:
             but = ['CONTINUAR']
             NextPage = [335]
-            EneCur = EneCur - 3
-            localStorage.setItem("EneCurrent", EneCur)
-            attChar()
+            Chars.Ene = Chars.Ene - 3
+            attInv()
             break;
         case 66:
             but = ['CONTINUAR']
@@ -751,31 +644,28 @@ function Paginas(pagNmb) {
             NextPage = [401]
             break;
         case 70:
-            if (IfCombate == 1) {
+            if (combate) {
                 combate = false
-                NextPage03 = 159
-                Continua03()
-            } else if (IfCombate == 2) {
-                NextPage03 = 127
-                Continua03()
-            } else {
-                botao01.style.visibility = 'visible'
-                botao01.innerText = 'iniciar combate'
-                combate = true
-                localStorage.setItem("CondicaoDano", 3)
-                sessionStorage.setItem("nomeInimigo", 'Ghoul Imenso')
-                sessionStorage.setItem("HabEnemy", 8)
-                sessionStorage.setItem("EneEnemy", 11)
-                sessionStorage.setItem("PaginaSalva", pagNmb)
+                NextPage = [159]
+                Continue(0)
+                personalizado = true
+                break
+            }
+            combate = true
+            but = ['iniciar combate']
+            Enemy = {name: 'Ghoul Imenso', Hab: 8, Ene:11}
+            condition = {has:true, which: 'vezes atingido', id: 1, times: 3, ref: 127}
+            if (Chars.encontros.includes('GhoulDano')) {
+                Enemy.Ene = Enemy.Ene - 2
+                Chars.encontros = Chars.encontros.filter(item => item !== 'GhoulDano')
             }
             break;
         case 71:
-            if (itens.includes('EspadaMagica')) {
+            but = ['não tenho']
+            NextPage = [208]
+            if (itens.includes("Espada-Magica")) {
                 but = ['tenho']
                 NextPage = [298]
-            } else {
-                but = ['não tenho']
-                NextPage = [208]
             }
             break;
         case 72:
@@ -842,18 +732,18 @@ function Paginas(pagNmb) {
                     NextPage06 = 146
                 }
                 if (ArrayDeDados.includes(5) && ArrayDeDados.includes(4) && ArrayDeDados.includes(3) && ArrayDeDados.includes(2) && ArrayDeDados.includes(1) && itens.includes("ChavePrata")) {
-                    Texto = `O Sábio agradece por você ter pago pelas informações e você o deixa envolvido com seus velhos e bolorentos livros e manuscritos.`
+                    const text = `O Sábio agradece por você ter pago pelas informações e você o deixa envolvido com seus velhos e bolorentos livros e manuscritos.`
                     TextoPersonalizado()
-                    PersonalizarTexto = true
+                    personalizado = true
                     botao01.style.visibility = 'visible'
                     botao01.innerText = 'ir à biblioteca'
                     NextPage01 = 332
                 }
             } else {
                 if (ArrayDeDados.includes(7)) {
-                    Texto = `Após ter pago pelas informações você deixa o Sábio envolvido com seus velhos e bolorentos livros e manuscritos.`
+                    const text = `Após ter pago pelas informações você deixa o Sábio envolvido com seus velhos e bolorentos livros e manuscritos.`
                     TextoPersonalizado()
-                    PersonalizarTexto = true
+                    personalizado = true
                     if (itens.includes("ChavePrata")) {
                         botao01.style.visibility = 'visible'
                         botao01.innerText = 'ir à biblioteca'
@@ -864,13 +754,13 @@ function Paginas(pagNmb) {
                         NextPage01 = 47
                     }
                 } else {
-                    Texto = `Você pensa sobre o que dizer, mas o Sábio fala livremente, por si mesmo. Na maior parte do tempo comenta como o Conde é malvado e como ele - o Sábio - 
+                    const text = `Você pensa sobre o que dizer, mas o Sábio fala livremente, por si mesmo. Na maior parte do tempo comenta como o Conde é malvado e como ele - o Sábio - 
      necessita de mais dinheiro para livros. Você percebe que terá de pagar por informações, e que não vai ser barato. Enquanto se pergunta quanto lhe oferecer, e como 
      fazê-lo de modo educado, o Sábio anuncia de repente: “É claro, por uma boa quantia em ouro eu poderia levá-lo à biblioteca. Quem sabe o que se pode encontrar lá?” 
      Você pode perguntar ao Sábio sobre vários assuntos, mas terá que pagar para conseguir cada resposta. Ele aceitará Moedas de Ouro, ou quaisquer itens de Tesouro de igual 
      valor. Você pode escolher perguntar-lhe o que desejar da lista que se segue, mas tem que pagar por cada resposta. O Sábio exige pagamento adiantado e ele não pechincha!`
                     TextoPersonalizado()
-                    PersonalizarTexto = true
+                    personalizado = true
                     botao01.style.visibility = 'visible'
                     botao01.innerText = 'não tenho dinheiro'
                     NextPage01 = 47
@@ -885,8 +775,8 @@ function Paginas(pagNmb) {
                 NextPage01 = 26
                 if (Compare <= 4) {
                     sessionStorage.setItem('DanoConde', sessionStorage.getItem('DanoConde') + 6)
-                    if (magias.includes('GrandeAtaque')) {
-                        Texto = `O conde tenta se esquivar da magia, mas não consegue, e sofre o dano total de 6 pontos de ENERGIA.<br><br>
+                    if (feiticos.includes('GrandeAtaque')) {
+                        const text = `O conde tenta se esquivar da magia, mas não consegue, e sofre o dano total de 6 pontos de ENERGIA.<br><br>
                         Você deve então enfrentá-lo.<br><br>
                         Pode usar o feitiço de Grande Ataque se o tiver e desejar usá-lo.`
                         TextoPersonalizado()
@@ -894,13 +784,13 @@ function Paginas(pagNmb) {
                         botao02.innerText = 'usar Grande Ataque'
                         NextPage02 = 346
                     }
-                    Texto = `O conde tenta se esquivar da magia, mas não consegue, e sofre o dano total de 6 pontos de ENERGIA.<br><br>
+                    const text = `O conde tenta se esquivar da magia, mas não consegue, e sofre o dano total de 6 pontos de ENERGIA.<br><br>
                     Você deve então enfrentá-lo.`
                     TextoPersonalizado()
                 } else {
                     sessionStorage.setItem('DanoConde', sessionStorage.getItem('DanoConde') + 3)
-                    if (magias.includes('GrandeAtaque')) {
-                        Texto = `Ele consegue evadir-se da força total do Raio e sofre somente perda de 3 pontos de ENERGIA.<br><br>
+                    if (feiticos.includes('GrandeAtaque')) {
+                        const text = `Ele consegue evadir-se da força total do Raio e sofre somente perda de 3 pontos de ENERGIA.<br><br>
                         Você deve então enfrentá-lo.<br><br>
                         Pode usar o feitiço de Grande Ataque se o tiver e desejar usá-lo.`
                         TextoPersonalizado()
@@ -908,7 +798,7 @@ function Paginas(pagNmb) {
                         botao02.innerText = 'usar Grande Ataque'
                         NextPage02 = 346
                     }
-                    Texto = `Ele consegue evadir-se da força total do Raio e sofre somente perda de 3 pontos de ENERGIA.<br><br>
+                    const text = `Ele consegue evadir-se da força total do Raio e sofre somente perda de 3 pontos de ENERGIA.<br><br>
                     Você deve então enfrentá-lo.`
                     TextoPersonalizado()
                 }
@@ -920,135 +810,112 @@ function Paginas(pagNmb) {
             }
             break;
         case 77:
-            if (IfCombate == 1) {
-                botao01.style.visibility = 'visible'
-                botao02.style.visibility = 'visible'
-                botao01.innerText = 'examinar a cabana'
-                botao02.innerText = 'continuar jornada'
+            if (combate) {
                 combate = false
-                NextPage01 = 177
-                NextPage02 = 228
-            } else {
-                botao01.style.visibility = 'visible'
-                botao01.innerText = 'continuar'
-                combate = true
-                sessionStorage.setItem("nomeInimigo", 'Homem da Floresta')
-                sessionStorage.setItem("HabEnemy", 10)
-                sessionStorage.setItem("EneEnemy", 7)
-                sessionStorage.setItem("PaginaSalva", pagNmb)
+                but = ['examinar a cabana', 'continuar jornada']
+                NextPage = [177, 228]
+                initButtons(but)
+                personalizado = true
+                break
             }
+            combate = true
+            but = ['iniciar combate']
+            Enemy = {name: 'Homem da Floresta', Hab: 10, Ene:7}
             break;
         case 78:
-            if (IfCombate == 1) {
-                botao01.style.visibility = 'visible'
-                botao01.innerText = 'continuar'
+            if (combate) {
                 combate = false
-                NextPage01 = 252
-            } else if (IfCombate == 2) {
-                NextPage03 = 360
-                Continua03()
-            } else {
-                botao01.style.visibility = 'visible'
-                botao01.innerText = 'continuar'
-                combate = true
-                localStorage.setItem("CondicaoDano", 1)
-                sessionStorage.setItem("nomeInimigo", 'Corvo Gigante Filhote')
-                sessionStorage.setItem("HabEnemy", 7)
-                sessionStorage.setItem("EneEnemy", 6)
-                sessionStorage.setItem("PaginaSalva", pagNmb)
+                NextPage = [252]
+                Continue(0)
+                personalizado = true
+                break
             }
+            ouro = ouro + 4
+            attInv()
+            combate = true
+            but = ['iniciar combate']
+            Enemy = {name: 'Corvo Gigante Filhote', Hab: 7, Ene:6}
+            condition = {has:true, which: 'vezes atingido', id: 1, times: 1, ref: 360}
             break;
         case 79:
             ouro = ouro - 8
-            EneCur = EneCur - 4
-            if (EneCur <= 0) {
-                NextPage03 = 401
-                Continua03()
-            } else {
-                aflicoes = aflicoes.filter(item => item !== 'Lican')
-                localStorage.setItem('EneCurrent', EneCur)
-                attChar()
-            }
-            botao01.style.visibility = 'visible'
-            botao01.innerText = 'continuar'
-            NextPage01 = 373
+            Chars.Ene = Chars.Ene - 4
+            aflicoes = aflicoes.filter(item => item !== 'Licantropia-Maior' && item !== "Licantropia")
+            attInv()
+            but = ['CONTINUA']
+            NextPage = [373]
             break;
         case 80:
             but = ['CONTINUAR']
             NextPage = [31]
             break;
         case 81:
-            if (IfCombate == 1) {
-                botao01.style.visibility = 'visible'
-                if (Inimigos == 1) {
-                    botao01.innerText = 'próximo combate'
-                    Inimigos++
-                    combate = true
-                    sessionStorage.setItem("nomeInimigo", 'Zumbi Dois')
-                    sessionStorage.setItem("HabEnemy", 7)
-                    sessionStorage.setItem("EneEnemy", 5)
-                } else if (Inimigos == 2) {
-                    botao01.innerText = 'último combate'
-                    Inimigos = 0
-                    combate = true
-                    sessionStorage.setItem("nomeInimigo", 'Zumbi Três')
-                    sessionStorage.setItem("HabEnemy", 6)
-                    sessionStorage.setItem("EneEnemy", 6)
-                } else {
-                botao01.innerText = 'continuar'
-                combate = false
-                NextPage01 = 11
+            if (combate) {
+                if (Chars.encontros.includes('firstEnemy')) {
+                    Chars.encontros = Chars.encontros.filter(item => item !== "firstEnemy")
+                    Chars.encontros.push('secondEnemy')
+                    Enemy = {name: 'Zumbi Dois', Hab: 7, Ene:5}
+                    but = ['próximo combate']
+                    personalizado = true
+                    initButtons(but)
+                    break
                 }
-            } else {
-                botao01.style.visibility = 'visible'
-                botao01.innerText = 'iniciar combate'
-                Inimigos++
-                combate = true
-                sessionStorage.setItem("nomeInimigo", 'Zumbi Um')
-                sessionStorage.setItem("HabEnemy", 6)
-                sessionStorage.setItem("EneEnemy", 5)
+                if (Chars.encontros.includes('secondEnemy')) {
+                    Chars.encontros = Chars.encontros.filter(item => item !== "secondEnemy")
+                    Enemy = {name: 'Zumbi Três', Hab: 6, Ene:6}
+                    but = ['próximo combate']
+                    personalizado = true
+                    initButtons(but)
+                    break
+                }
+                combate = false
+                NextPage = [11]
+                Continue(0)
+                personalizado = true
+                break
             }
+            but = ['iniciar combate']
+            Enemy = {name: 'Zumbi Um', Hab: 6, Ene:5}
+            Chars.encontros.push('firstEnemy')
+            combate = true
             break;
         case 82:
             but = ['descer pela escada leste', 'descer pela escada sul']
             NextPage = [108, 161]
             break;
         case 83:
-            if (itens.includes('EspadaMagica')) {
-                botao01.innerText = 'tenho'
-                botao01.style.visibility = 'visible'
-                NextPage01 = 129
-            } else {
-                botao01.innerText = 'não tenho'
-                botao01.style.visibility = 'visible'
-                NextPage01 = 231
+            but = ['não tenho']
+            NextPage = [231]
+            if (itens.includes("Espada-Magica")) {
+                but = ['tenho']
+                NextPage = [129]
             }
             break;
         case 84:
-            FeCur = FeCur - 2
-            SorCur--
-            localStorage.setItem('FeCurrent', FeCur)
-            localStorage.setItem('SorCurrent', SorCur)
-            attChar()
+            Chars.Fth = Chars.Fth - 2
+            Chars.Sor--
+            attInv()
             botao01.style.visibility = 'visible'
-            botao01.innerText = 'continuar'
-            NextPage01 = 25
+            but = ['continuar']
+            NextPage = [25]
             break;
         case 85:
-            if (aflicoes.includes('Curandeiro')) {
-                NextPage03 = 186
-                Continua03()
-            } else {
-                NextPage03 = 206
-                Continua03()
+            if (aflicoes.includes('Maldição-do-Curandeiro')) {
+                NextPage = [186]
+                Continue(0)
+                personalizado = true
+                break
             }
+            NextPage = [206]
+            Continue(0)
+            personalizado = true
             break;
         case 86:
             if (TestesDados01 == true) {
                 botao01.style.visibility = 'visible'
-                botao01.innerText = 'continuar'
+                but = ['continuar']
                 TestesDados01 = false
-                if (Compare <= FeCur) {
+                if (Compare <=Chars.Fth) {
                     NextPage01 = 179
                 } else {
                     NextPage01 = 233
@@ -1065,22 +932,15 @@ function Paginas(pagNmb) {
             NextPage = [128, 302, 244]
             break;
         case 88:
-            EneCur = EneCur - 2
-            if (EneCur <= 0) {
-                NextPage03 = 401
-                Continua03()
-            } else {
-                localStorage.setItem('EneCurrent', EneCur)
-                attChar()
-            }
-            botao01.style.visibility = 'visible'
-            botao01.innerText = 'continuar'
-            NextPage01 = 122
+            Chars.Ene = Chars.Ene - 2
+            attInv()
+            but = ['continuar']
+            NextPage = [122]
             break;
         case 89:
             if (TestesDados02 == true) {
                 botao01.style.visibility = 'visible'
-                botao01.innerText = 'continuar'
+                but = ['continuar']
                 TestesDados02 = false
                 if (Compare <= HabCur) {
                     Inimigos = 0
@@ -1103,14 +963,14 @@ function Paginas(pagNmb) {
             NextPage = [141, 18, 2]
             break;
         case 91:
-            if (!itens.includes("AguaBenta") && !itens.includes("Conhaque")) {
-                const texto = `Dando um passo para a frente, seu peso aciona uma armadilha-alçapão escondida.<br>
-                Você cai com força no chão de pedra, três metros abaixo, <strong>perdendo 4 pontos de ENERGIA</strong>.<br><br>
+            if (!itens.includes("Agua-Benta") && !itens.includes("Conhaque")) {
+                const text = `Dando um passo para a frente, seu peso aciona uma armadilha-alçapão escondida.<br>
+                Você cai com força no chão de pedra, três metros abaixo, perdendo 4 pontos de ENERGIA.<br> <br>
                 Você consegue arrastar-se para fora do fosso: uma simples, porém eficiente armadilha.`
                 typingEffect(texto)
+                personalizado = true
             }
-            const itensFiltrados = itens.filter(item => item !== "Conhaque" && item !== "AguaBenta")
-            itens = itensFiltrados
+            itens = itens.filter(item => item !== "Conhaque" && item !== "Agua-Benta")
             but = ['continuar']
             NextPage = [157]
             break;
@@ -1119,69 +979,56 @@ function Paginas(pagNmb) {
             NextPage = [294]
             break;
         case 93:
-            if (magias.includes('ParedeForca')) {
-                botao01.style.visibility = 'visible'
-                botao01.innerText = 'Parede de Força'
-                NextPage01 = 194
+            if (feiticos.includes('Parede-de-Força')) {
+                but.push('Parede de Força')
+                NextPage.push(194)
             }
-            if (magias.includes('RaioJandor')) {
-                botao02.style.visibility = 'visible'
-                botao02.innerText = 'Raio de Jandor'
-                NextPage02 = 125
+            if (feiticos.includes('Raio-de-Jandor')) {
+                but.push('Raio de Jandor')
+                NextPage.push(125)
             }
-            if (magias.includes('Divisao')) {
-                botao03.style.visibility = 'visible'
-                botao03.innerText = 'Divisão'
-                NextPage03 = 109
+            if (feiticos.includes('Divisao')) {
+                but.push('Divisão')
+                NextPage.push(109)
             }
             break;
         case 94:
-            botao01.style.visibility = 'visible'
-            botao01.innerText = 'entregar seu sangue'
-            NextPage01 = 328
+            but = ['entregar seu sangue']
+            NextPage = [328]
             if (itens.includes('Estaca')) {
-                botao02.style.visibility = 'visible'
-                botao02.innerText = 'manter-se com a Estaca de Prata'
-                NextPage02 = 14
-            } else {
-                Texto = `<strong>“Você tem o Livro”</strong> diz a aparição, de modo aprovador.<br>
-                <strong> “Minha espada está presa dentro dele. A magia de Reiner usou sangue para colocá-la aí dentro, e sangue será necessário para libertá-la novamente.”</strong><br><br>
-                Siegfried aponta para um cálice de prata ornamentado, que está sobre a mesa.
-                <strong>“Você deve dar seu sangue para libertar Nightstar. Isso lhe custará energia, mas a arma é incomparável.”</strong><br><br>
-                Se estiver pronto para fazê-lo pode seguir em frente com o ritual.<br>
-                Se não quiser reduzir sua ENERGIA, pode perguntar a Siegfried se existe algum outro meio de se obter uma arma que possa destruir o Vampiro.`
-                TextoPersonalizado()
-                PersonalizarTexto = true
-                botao02.style.visibility = 'visible'
-                botao02.innerText = 'perguntar sobre outras armas'
-                NextPage02 = 374
+                but.push('manter-se ccom a Estaca de Prata')
+                NextPage.push(14)
+                const text = pagTxtGame + `<br> Se não quiser reduzir sua ENERGIA, pode escolher se manter apenas com a Estaca de Prata que encontrou.`
+                typingEffect(text)
+                personalizado = true
+                break
             }
+            but.push('perguntar sobre outras armas')
+            NextPage.push(374)
+            const text = pagTxtGame + `<br> Se não quiser reduzir sua ENERGIA, pode perguntar a Siegfried se existe algum outro meio de se obter uma arma que possa destruir o Vampiro.`
+            typingEffect(text)
+            personalizado = true
             break;
         case 95:
             but = ['abrir a porta leste do corredor', 'correr para o sul do corredor']
             NextPage = [351, 166]
-            FeCur--
-            SorCur--
-            localStorage.setItem("FeCurrent", FeCur)
-            localStorage.setItem("SorCurrent", SorCur)
-            aflicoes.push("LicanMaior")
-            attChar()
+            Chars.Fth--
+            Chars.Sor--
+            aflicoes.push("Licantropia-Maior")
+            attInv()
             break;
         case 96:
             but = ['abrir a porta leste', 'abrir a porta sul']
             NextPage = [371, 8]
-            FeCur--
-            SorCur--
-            localStorage.setItem("FeCurrent", FeCur)
-            localStorage.setItem("SorCurrent", SorCur)
-            attChar()
+            Chars.Fth--
+            Chars.Sor--
+            attInv()
             break;
         case 97:
             but = ['CONTINUAR']
             NextPage = [47]
             break;
         case 98:
-            prov = true
             but = ['atacar diretamente', 'consultar provisões']
             NextPage = [3, 117]
             break;
@@ -1190,18 +1037,18 @@ function Paginas(pagNmb) {
             NextPage = [326]
             break;
         case 100:
-            if (IfCombate == 1) {
+            if (combate) {
                 combate = false
-                NextPage03 = 10
-                Continua03()
-            } else {
-                EneCur = EneCur - 2
-                localStorage.setItem("EneCurrent", EneCur)
-                attChar()
-                combate = true
-                sessionStorage.setItem("CondicaoDano", 0)
-                localStorage.setItem("CondicaoSerieAtaque", 2)
+                NextPage = [10]
+                Continue(0)
+                personalizado = true
+                break
             }
+            Chars.Ene = Chars.Ene - 2
+            attInv()
+            combate = true
+            condition = {has:true, which:'dano por rodada', id:2, ref:2}
+            but = ['voltar ao combate']
             break;
         case 101:
             but = ['abrir a porta norte', 'abrir a porta leste', 'abrir a porta oeste', 'descer pela passagem leste']
@@ -1235,7 +1082,7 @@ function Paginas(pagNmb) {
                     MagiaRepetida()
                 }
             } else {
-                if (magias >= 3) {
+                if (feiticos >= 3) {
                     ArrayDeDados = []
                     botao01.style.visibility = 'visible'
                     botao01.innerText = 'continuar jornada'
@@ -1249,58 +1096,75 @@ function Paginas(pagNmb) {
             }
             break;
         case 103:
-            if (IfCombate == 1) {
-                botao01.style.visibility = 'visible'
-                if (Inimigos == 1) {
-                    botao01.innerText = 'próximo combate'
-                    Inimigos = 0
-                    combate = true
-                    sessionStorage.setItem("nomeInimigo", 'Lobo Dois')
-                    sessionStorage.setItem("HabEnemy", 7)
-                    sessionStorage.setItem("EneEnemy", 6)
-                } else {
-                    Texto = 
-                    `Você derrota os lobos e analisa seus arredores mas não encontra nada de interessante aqui.<br><br>
-                    <strong>Escolha sua proxima ação:</strong>`
-                    TextoPersonalizado()
-                    botao02.style.visibility = 'visible'
-                    botao03.style.visibility = 'visible'
-                    botao01.innerText = 'seguir para a Cripta'
-                    botao02.innerText = 'abrir as portas ao sul do pátio'
-                    botao03.innerText = 'abrir as portas de bronze ao norte'
-                    combate = false
-                    NextPage01 = 90
-                    NextPage02 = 18
-                    NextPage03 = 2
+            if (combate) {
+                if (Chars.encontros.includes('nextEnemy')) {
+                    Chars.encontros = Chars.encontros.filter(item => item !== "nextEnemy")
+                    Enemy = {name: 'Lobo Dois', Hab: 7, Ene:6}
+                    but = ['próximo combate']
+                    personalizado = true
+                    initButtons(but)
+                    break
                 }
-            } else {
-                botao01.style.visibility = 'visible'
-                botao01.innerText = 'iniciar combate'
-                Inimigos++
-                combate = true
-                sessionStorage.setItem("nomeInimigo", 'Lobo Um')
-                sessionStorage.setItem("HabEnemy", 6)
-                sessionStorage.setItem("EneEnemy", 5)
+                const text = `Você derrota os lobos e analisa seus arredores mas não encontra nada de interessante aqui.<br><br>Escolha sua proxima ação:`
+                combate = false
+                but = ['seguir para a Cripta', 'abrir as portas ao sul do pátio', 'abrir as portas de bronze ao norte']
+                NextPage = [90, 18, 2]
+                typingEffect(text)
+                personalizado = true
+                break
             }
+            but = ['iniciar combate']
+            Enemy = {name: 'Lobo Um', Hab: 6, Ene:5}
+            Chars.encontros.push('nextEnemy')
+            combate = true
             break;
         case 104:
             
             break;
         case 105:
-            NextPage01 = 81
+            if (combate) {
+                if (Chars.encontros.includes('nextEnemy')) {
+                    Chars.encontros = Chars.encontros.filter(item => item !== "nextEnemy")
+                    Chars.encontros.push('secondEnemy')
+                    Enemy = {name: 'Zumbi Dois', Hab: 6, Ene:6}
+                    but = ['próximo combate']
+                    personalizado = true
+                    initButtons(but)
+                    break
+                }
+                combate = false
+                NextPage = [11]
+                Continue(0)
+                personalizado = true
+                break
+            }
+            but = ['iniciar combate']
+            Enemy = {name: 'Zumbi Um', Hab: 7, Ene:5}
+            Chars.encontros.push('nextEnemy')
+            combate = true
             break;
         case 106:
-            but = ['iniciar combate']
-            combate = true
-            Chars.Hab = Chars.Hab - 2
-            attInv()
-            Enemy = {name: 'Corcel Demônio', Hab: 8, Ene:10}
+            but = ['usar a espada', 'lançar um feitiço']
+            NextPage = [164, 29]
+            if (itens.includes('Agua-Benta')) {
+                but.push('jogar Água benta sobre ela')
+                NextPage.push(23)
+            }
+            if (itens.includes('Espelho-Prateado')) {
+                but.push('Usar o espelho prateado')
+                NextPage.push(145)
+            }
+            Chars.encontros.push('KatarinaPrimeiroAtaque')
+            Enemy = {name: 'Katarina Heydrich', Hab: 10, Ene:10}
             break;
         case 107:
-            NextPage01 = 70
+            but = ['continuar']
+            NextPage = [70]
+            Chars.encontros.push('GhoulDano')
             break;
         case 108:
-            
+            but = ['Tentar abrir o sarcófago', 'Sair, subir a escada e ir para o sul', 'Sair, subir a escada e ir para o norte']
+            NextPage = [213, 161, 257]
             break;
         case 109:
             but = ['CONTINUAR']
@@ -1309,7 +1173,7 @@ function Paginas(pagNmb) {
         case 110:
             if (TestesDados02 == true) {
                 botao01.style.visibility = 'visible'
-                botao01.innerText = 'continuar'
+                but = ['continuar']
                 TestesDados02 = false
                 if (Compare <= HabCur) {
                     NextPage01 = 156
@@ -1357,23 +1221,23 @@ function Paginas(pagNmb) {
                 }
                 prov = false  
             } else {
-                EneCur = EneCur + 4
+                Chars.Ene = Chars.Ene + 4
                 if (minus == true) {
                     provisoes--
                 } else {
                     itens = itens.filter(item => item !== 'Pocao')
                 }
-                if (EneCur >= sessionStorage.getItem('EneUsuario')) {
-                    localStorage.setItem('EneCurrent', sessionStorage.getItem('EneUsuario'))
+                if (Chars.Ene >= sessionStorage.getItem('EneUsuario')) {
+                    localStorage.setItem('Chars.Enerent', sessionStorage.getItem('EneUsuario'))
                 } else {
-                    localStorage.setItem('EneCurrent', EneCur)
+                    localStorage.setItem('Chars.Enerent', Chars.Ene)
                 }
                 Aumentou = true
-                attChar()
-                Texto = `Você tem uma <strong>Espada Mágica</strong>?`
+                attInv()
+                const text = `Você tem uma <strong>Espada Mágica</strong>?`
                 TextoPersonalizado()
-                PersonalizarTexto = true
-                if (itens.includes("EspadaMagica")) {
+                personalizado = true
+                if (itens.includes("Espada-Magica")) {
                     botao01.innerText = 'tenho'
                     botao01.style.visibility = 'visible'
                     NextPage01 = 298
@@ -1391,7 +1255,7 @@ function Paginas(pagNmb) {
             
             break;
         case 120:
-            magias.push("CuraVdd")
+            feiticos.push("CuraVdd")
             but = ['CONTINUAR']
             NextPage = [102]
             break;
@@ -1413,15 +1277,15 @@ function Paginas(pagNmb) {
         case 126:
             botao01.style.visibility = "visible"
             botao01.innerText = "continuar"
-            EneCur = EneCur + 8
+            Chars.Ene = Chars.Ene + 8
             Aumentou = true
             itens.push("alho")
-            if (EneCur >= sessionStorage.getItem("EneUsuario")) {
-                localStorage.setItem("EneCurrent", sessionStorage.getItem("EneUsuario"))
-                attChar()
+            if (Chars.Ene >= sessionStorage.getItem("EneUsuario")) {
+                localStorage.setItem("Chars.Enerent", sessionStorage.getItem("EneUsuario"))
+                attInv()
             } else {
-                localStorage.setItem("EneCurrent", EneCur)
-                attChar()
+                localStorage.setItem("Chars.Enerent", Chars.Ene)
+                attInv()
             }
             NextPage01 = 228
             break;
@@ -1475,9 +1339,9 @@ function Paginas(pagNmb) {
         case 141:
             if (TestesDados01 == true) {
                 botao01.style.visibility = 'visible'
-                botao01.innerText = 'continuar'
+                but = ['continuar']
                 TestesDados01 = false
-                if (Compare <= FeCur) {
+                if (Compare <=Chars.Fth) {
                     NextPage01 = 192
                 } else {
                     NextPage01 = 243
@@ -1531,7 +1395,7 @@ function Paginas(pagNmb) {
         case 152:
             if (TestesDados02 == true) {
                 botao01.style.visibility = 'visible'
-                botao01.innerText = 'continuar'
+                but = ['continuar']
                 TestesDados02 = false
                 if (Compare <= HabCur) {
                     NextPage01 = 250
@@ -1568,7 +1432,7 @@ function Paginas(pagNmb) {
             
             break;
         case 160:
-            magias.push("GrandeAtaque")
+            feiticos.push("GrandeAtaque")
             but = ['CONTINUAR']
             NextPage = [102]
             break;
@@ -1626,9 +1490,9 @@ function Paginas(pagNmb) {
         case 174:
             if (TestesDados01 == true) {
                 botao01.style.visibility = 'visible'
-                botao01.innerText = 'continuar'
+                but = ['continuar']
                 TestesDados01 = false
-                if (Compare <= FeCur) {
+                if (Compare <=Chars.Fth) {
                     NextPage01 = 223
                 } else {
                     NextPage01 = 362
@@ -1736,9 +1600,9 @@ function Paginas(pagNmb) {
         case 201:
             but = ['CONTINUAR']
             NextPage = [148]
-            FeCur--
-            localStorage.setItem("FeCurrent", FeCur)
-            attChar()
+           Chars.Fth--
+            localStorage.setItem("CharsChars.Fthrent",Chars.Fth)
+            attInv()
             break;
         case 202:
             but = ['CONTINUAR']
@@ -1793,7 +1657,7 @@ function Paginas(pagNmb) {
             console.log(itens)
             if (TestesDados01 == true) {
                 sessionStorage.setItem(`DanoConde`, Compare)
-                Texto = `Agora você pode atacar com sua espada ou lançar um feitiço.`
+                const text = `Agora você pode atacar com sua espada ou lançar um feitiço.`
                 botao01.style.visibility = 'visible'
                 botao01.innerText = 'atacar o Conde'
                 botao02.style.visibility = 'visible'
@@ -1808,12 +1672,12 @@ function Paginas(pagNmb) {
                 if (itens.includes('AguaBenta')) {
                     botao03.style.visibility = 'visible'
                     botao03.innerText = 'usar outra Água-benta'
-                    Texto = `Se desejar, pode jogar o segundo vidro de Água-benta com os mesmos resultados seguido por um ataque com espada ou feitiço, ou fazê-los diretamente.`
+                    const text = `Se desejar, pode jogar o segundo vidro de Água-benta com os mesmos resultados seguido por um ataque com espada ou feitiço, ou fazê-los diretamente.`
                     NextPage03 = 216
                     TestesDadosComparativo = Compare
                 }
                 TextoPersonalizado()
-                PersonalizarTexto = true
+                personalizado = true
                 console.log(sessionStorage.getItem(`DanoConde`))
             } else {
                 let indice = itens.indexOf("AguaBenta")
@@ -1843,7 +1707,7 @@ function Paginas(pagNmb) {
             NextPage01 = 364
             break;
         case 222:
-            magias.push("Divisao")
+            feiticos.push("Divisao")
             botao01.style.visibility = "visible"
             botao01.innerText = "continuar"
             NextPage01 = 102
@@ -1851,9 +1715,9 @@ function Paginas(pagNmb) {
         case 223:
             if (TestesDados01 == true) {
                 botao01.style.visibility = 'visible'
-                botao01.innerText = 'continuar'
+                but = ['continuar']
                 TestesDados01 = false
-                if (Compare <= Number.parseInt(localStorage.getItem("FeCurrent"))) {
+                if (Compare <= Number.parseInt(localStorage.getItem("CharsChars.Fthrent"))) {
                     NextPage01 = 321
                 } else {
                     NextPage01 = 272
@@ -1882,7 +1746,7 @@ function Paginas(pagNmb) {
         case 228:
             if (TestesDados02 == true) {
                 botao01.style.visibility = 'visible'
-                botao01.innerText = 'continuar'
+                but = ['continuar']
                 TestesDados02 = false
                 if (Compare <= HabCur) {
                     NextPage01 = 362
@@ -1907,7 +1771,7 @@ function Paginas(pagNmb) {
             NextPage01 = 101
             break;
         case 232:
-            magias.push("ParedeForca")
+            feiticos.push("Parede-de-Força")
             botao01.style.visibility = "visible"
             botao01.innerText = "continuar"
             NextPage01 = 102
@@ -1972,11 +1836,11 @@ function Paginas(pagNmb) {
 
             break;
         case 251:
-            FeCur = FeCur - 2
-            SorCur = SorCur - 2
-            localStorage.setItem("SorCurrent", SorCur)
-            localStorage.setItem("FeCurrent", FeCur)
-            attChar()
+           Chars.Fth =Chars.Fth - 2
+            Chars.Sor = Chars.Sor - 2
+            localStorage.setItem("Chars.Sorrent", Chars.Sor)
+            localStorage.setItem("CharsChars.Fthrent",Chars.Fth)
+            attInv()
             botao01.style.visibility = 'visible'
             botao01.innerText = "sair da sala e continuar"
             NextPage01 = 373
@@ -1984,9 +1848,9 @@ function Paginas(pagNmb) {
         case 252:
             if (TestesDados01 == true) {
                 botao01.style.visibility = 'visible'
-                botao01.innerText = 'continuar'
+                but = ['continuar']
                 TestesDados01 = false
-                if (Compare <= FeCur) {
+                if (Compare <=Chars.Fth) {
                     NextPage01 = 330
                 } else {
                     NextPage01 = 316
@@ -2066,25 +1930,25 @@ function Paginas(pagNmb) {
         case 272:
             if (TestesDados02 == true) {
                 botao01.style.visibility = 'visible'
-                botao01.innerText = 'continuar'
+                but = ['continuar']
                 TestesDados01 = false
-                if (Compare <= Number.parseInt(localStorage.getItem("SorCurrent"))) {
+                if (Compare <= Number.parseInt(localStorage.getItem("Chars.Sorrent"))) {
                     NextPage01 = 24
                 } else {
                     NextPage01 = 370
                 }
             } else {
-                EneCur--
-                EneCur--
-                localStorage.setItem("EneCurrent", EneCur)
-                attChar()
+                Chars.Ene--
+                Chars.Ene--
+                localStorage.setItem("Chars.Enerent", Chars.Ene)
+                attInv()
                 TestesDados02 = true
                 botao06.style.visibility = 'visible'
                 botao06.innerText = 'jogar dados'
             }
             break;
         case 273:
-            magias.push("RaioJandor")
+            feiticos.push("RaioJandor")
             botao01.style.visibility = "visible"
             botao01.innerText = "continuar"
             NextPage01 = 102
@@ -2099,12 +1963,12 @@ function Paginas(pagNmb) {
             
             break;
         case 277:
-            EneCur--
-            localStorage.setItem("EneCurrent", EneCur)
-            attChar()
+            Chars.Ene--
+            localStorage.setItem("Chars.Enerent", Chars.Ene)
+            attInv()
             TestesDados02 = true
             botao01.style.visibility = 'visible'
-            botao01.innerText = 'continuar'
+            but = ['continuar']
             NextPage01 = 362
             break;
         case 278:
@@ -2155,7 +2019,7 @@ function Paginas(pagNmb) {
             break;
         case 292:
             botao01.style.visibility = 'visible'
-            if (itens.includes("EspadaMagica")) {
+            if (itens.includes("Espada-Magica")) {
                 botao01.innerText = 'tenho'
                 NextPage01 = 388
             } else {
@@ -2287,7 +2151,7 @@ function Paginas(pagNmb) {
             
             break;
         case 323:
-            magias.push("FeiticoSorte")
+            feiticos.push("FeiticoSorte")
             but = ['CONTINUAR']
             NextPage = [102]
             break;
@@ -2305,10 +2169,10 @@ function Paginas(pagNmb) {
             break;
         case 325:
             botao01.style.visibility = 'visible'
-            botao01.innerText = 'continuar'
-            EneCur = EneCur - 2
-            localStorage.setItem("EneCurrent", EneCur)
-            attChar()
+            but = ['continuar']
+            Chars.Ene = Chars.Ene - 2
+            localStorage.setItem("Chars.Enerent", Chars.Ene)
+            attInv()
             NextPage01 = 341
             break;
         case 326:
@@ -2318,9 +2182,9 @@ function Paginas(pagNmb) {
         case 327:
             if (TestesDados01 == true) {
                 botao01.style.visibility = 'visible'
-                botao01.innerText = 'continuar'
+                but = ['continuar']
                 TestesDados01 = false
-                if (Compare <= FeCur) {
+                if (Compare <=Chars.Fth) {
                     NextPage01 = 62
                 } else {
                     NextPage01 = 16
@@ -2342,9 +2206,9 @@ function Paginas(pagNmb) {
         case 330:
             if (TestesDados01 == true) {
                 botao01.style.visibility = 'visible'
-                botao01.innerText = 'continuar'
+                but = ['continuar']
                 TestesDados01 = false
-                if (Compare <= FeCur) {
+                if (Compare <=Chars.Fth) {
                     NextPage01 = 44
                 } else {
                     NextPage01 = 124
@@ -2409,13 +2273,13 @@ function Paginas(pagNmb) {
             break;
         case 344:
             botao01.style.visibility = 'visible'
-            botao01.innerText = 'continuar'
+            but = ['continuar']
             NextPage01 = 13
             Valderesse = true
-            EneCur--
-            EneCur--
-            localStorage.setItem("EneCurrent", EneCur)
-            attChar()
+            Chars.Ene--
+            Chars.Ene--
+            localStorage.setItem("Chars.Enerent", Chars.Ene)
+            attInv()
             break;
         case 345:
             NextPage01 = 196
@@ -2477,7 +2341,7 @@ function Paginas(pagNmb) {
             sessionStorage.setItem("HabUsuario", Hab)
             HabCur = HabCur - 2
             localStorage.setItem("HabCurrent", HabCur)
-            attChar()
+            attInv()
             aflicoes.push("MalCorvo")
             break;
         case 361:
@@ -2517,7 +2381,7 @@ function Paginas(pagNmb) {
             NextPage = [401]
             break;
         case 371:
-            if (magias > 0) {
+            if (feiticos > 0) {
                 botao02.style.visibility = 'visible'
                 botao02.innerText = 'lançar um feitiço'
                 NextPage02 = 93
@@ -2648,6 +2512,10 @@ function Paginas(pagNmb) {
         default:
             break;
     }
+
+    if (!personalizado) {
+        typingEffect(pagTxtGame[pagNmb])
+    }
 }
 
 //FUNCOES RELATIVAS A INTERACAO DO JOGO
@@ -2666,10 +2534,4 @@ async function MagiaRepetida() {
     TestesDados01 = true
     botao06.style.visibility = 'visible'
     botao06.innerText = 'jogar dado'
-}
-
-function TextoPersonalizado() {
-    txtp.innerHTML =
-    `${Texto}<br>
-    ${pagNmb}`
 }

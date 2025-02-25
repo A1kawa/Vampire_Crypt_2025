@@ -52,13 +52,8 @@ function typingEffect(body, i = 0) {
         paragr.innerHTML = ''
     }
     if (body[i] === '<') { //CHECA SE A PROXIMA PALAVRA SERA UMA TAG E PULA
-        if (body[i + 1] === 's' || body[i + 1] === '/'){
-            paragr.innerHTML = body.slice(0, i + 8)
-            i = i + 7
-        } else {
-            paragr.innerHTML = body.slice(0, i + 4)
-            i = i + 3
-        }
+        paragr.innerHTML = body.slice(0, i + 4)
+        i = i + 3
         setTimeout(() => typingEffect(body, (i + 1)), 20)
         return
     }
@@ -111,8 +106,6 @@ function Continue(whichButtonPressed) {
         typingEffect(text)
         return
     }
-
-    typingEffect(pagTxtGame[NextPage[whichButtonPressed]])
     Paginas(NextPage[whichButtonPressed]) //CHAMA O SWITCH PRINCIPAL PARA A PROXIMA PAG PASSANDO O PARAMETRO DE QUAL BOTAO FOI APERTADO
 }
 function openInv(close = false) {
@@ -124,6 +117,7 @@ function openInv(close = false) {
         Inv.style.left = '100%'
         InvBG.style.zIndex = -5
         InvBG.style.opacity = 0
+        document.getElementById('att').classList.add('content')
         return
     }
     if (larguraJanela <= 600) {
@@ -138,6 +132,7 @@ function attInv(init = false) {
     if (init) {
         document.getElementById('iniStats').innerHTML = `${Chars.Hab}<br>${Chars.Ene}<br>${Chars.Sor}<br>${Chars.Fth}`
     }
+    document.getElementById('att').classList.remove('content')
     document.getElementById('curStats').innerHTML = `${Chars.Hab}<br>${Chars.Ene}<br>${Chars.Sor}<br>${Chars.Fth}`
     document.getElementById('provisions').textContent = provisoes
     document.getElementById('treasures').textContent = ouro
@@ -287,7 +282,7 @@ async function damage(sorte = false, result = false) {
             }
         }
     }
-    console.log(i)
+
     if (FA01 > FA02) {
         while (cont < i){
             UsuCont.style.backgroundColor = 'var(--color-content)'
