@@ -371,7 +371,8 @@ var pagTxtGame = [`Undefined`,
      dentro dela há um sarcófago de pedra no qual há um guerreiro esculpido em pedra no topo, segurando uma longa espada.<br>
      Nas paredes desta câmara, há uma grande quantidade de armas - espadas e arcos - e um par de escudos com desenhos heráldicos apagados; mas eles estão enferrujados e não são úteis para um combate.<br><br>
      Escolha sua proxima ação:`, //108
-     `109`, 
+     `O feitiço atinge a espinha do monstro, destruindo-o no mesmo instante. <br>
+     O último brilho verde malévolo se apaga nas órbitas e a grande foice negra cai no chão com um estrondo.`, //109
      `Jogue dois dados.<br><br>
      Um teste de Habilidade.`, //110
      `111`, 
