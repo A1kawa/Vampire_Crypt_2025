@@ -192,6 +192,9 @@ async function initCmb() {
     const UsuFA = document.getElementById('UsuFA')
     EneFA.textContent = ''
     UsuFA.textContent = ''
+    if (condition.id > 0) {
+        condition.has = true
+    }
     
     document.getElementsByClassName('endCmb')[0].classList.add('content')
     document.getElementById('diceBut').classList.add('content') //ESCONDE O BOTAO DE COMBATE
@@ -236,6 +239,9 @@ async function initCmb() {
     if (FA01 == FA02) { //PRINTA O RESULTADO DE EMPATE
         tittle.innerHTML = `NINGUEM VENCEU A RODADA`
         document.getElementsByClassName('endCmbButtons')[0].classList.add('content')
+        if (condition.has) {
+            await conditionTest()
+        }
         document.getElementById('diceBut').classList.remove('content')
     }
     
@@ -264,11 +270,10 @@ async function TestarSorte(){
     document.getElementsByClassName('endCmb')[1].classList.add('content')
     damage(true, true)
 }
-async function damage(sorte = false, result = false) {
+async function damage(sorte = false, result = false, i = 2) {
     const EnmCont = document.getElementsByClassName('cmbStats')[0]
     const UsuCont = document.getElementsByClassName('cmbStats')[1]
     let cont = 0
-    let i = 2
     document.getElementsByClassName('endCmb')[0].classList.add('content')
     if (sorte) { //VE SE O USUARIO TESTOU A SORTE
         i = 3
@@ -282,7 +287,6 @@ async function damage(sorte = false, result = false) {
             }
         }
     }
-
     if (FA01 > FA02) {
         while (cont < i){
             UsuCont.style.backgroundColor = 'var(--color-content)'
@@ -301,6 +305,9 @@ async function damage(sorte = false, result = false) {
             }
             cont++
         }
+        if (condition.has) {
+            await conditionTest()
+        }
         document.getElementById('diceBut').classList.remove('content')
         return
     }
@@ -318,6 +325,9 @@ async function damage(sorte = false, result = false) {
         }
         cont++
     }
+    if (condition.has) {
+        await conditionTest()
+    }
     document.getElementById('diceBut').classList.remove('content')
 }
 async function rollDice(roll) {
@@ -331,4 +341,77 @@ async function rollDice(roll) {
         await new Promise(resolve => setTimeout(resolve, 100))
     }
     return result
+}
+async function damageSelf(i) {
+    const UsuCont = document.getElementsByClassName('cmbStats')[1]
+    let cont = 0
+    while (cont < i){
+        UsuCont.style.backgroundColor = 'var(--color-content)'
+        UsuCont.style.color = 'var(--color-background)'
+        Chars.Ene--
+        document.getElementById('UsuStat').innerHTML = `H ${Chars.Hab}<br>E ${Chars.Ene}`
+        await new Promise(resolve => setTimeout(resolve, 100))
+        UsuCont.style.backgroundColor = 'var(--color-background)'
+        UsuCont.style.color = 'var(--color-content)'
+        await new Promise(resolve => setTimeout(resolve, 500))
+        if (Chars.Ene == 0) {
+            cmbInit(true)
+            typingEffect(pagTxtGame[401])
+            Paginas(401)
+            return
+        }
+        cont++
+    }
+}
+async function conditionTest(){
+    switch (condition.id) {
+        case 5:
+            if (FA01 > FA02) {
+                damage(condition.ref)
+            }
+        break;
+        case 4:
+            if (FA01 > FA02) {
+                condition.times--
+            }
+            if (condition.times == 0) {
+                Chars.encontros.push('reached')
+                condition.id = 0
+            }
+        break;
+        case 3:
+            damageSelf(condition.ref)
+        break;
+        case 2:
+            if (FA01 > FA02) {
+                condition.times--
+            }
+            if (condition.times == 0) {
+                combate = false
+                NextPage = [condition.ref]
+                cmbInit(true)
+            }
+        break;
+        case 1:
+            document.getElementById('condTest').classList.remove('content')
+            const result = await rollDice('condTest')
+            await new Promise(resolve => setTimeout(resolve, 1500))
+            document.getElementById('condTest').classList.add('content')
+            document.getElementById('condTittle').textContent = 'Vitória.'
+            if (result < condition.ref) {
+                document.getElementById('condTittle').textContent = 'Derrota.'
+            }
+            document.getElementById('condTittle').classList.remove('content')
+            await new Promise(resolve => setTimeout(resolve, 500))
+            if (result < condition.ref) {
+                damageSelf(condition.times)
+            }
+            await new Promise(resolve => setTimeout(resolve, 1000))
+            document.getElementById('condTittle').classList.add('content')
+        break;
+    
+        default:
+            return
+    }
+    condition.has = false
 }

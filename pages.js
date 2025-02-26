@@ -474,14 +474,24 @@ var pagTxtGame = [`Undefined`,
      “Sou Gunthar Heydrich. Quais são seus negócios aqui?”<br>
      Ele lhe parece bastante gentil.<br><br>
      Você vai falar com ele ou  vai atacá-lo, desconfiando de todos os membros da família Heydrich?`, //131
-     `132`, 
+     `Jogado sobre os restos do Conde, você é acordado de seu exaustivo sono pela voz de Nastassia, que o chama.<br>
+     Seus profundos olhos azuis olham nos seus, e ela então lança os braços a sua volta, jogando-lhe mil bênçãos por tê-la salvado de um terrível destino.<br><br>
+     Por sorte, ela é uma curandeira e cuida de seus ferimentos com experiência; recupere 4 pontos de ENERGIA.<br><br>
+     Você lhe diz como está feliz por tê-la salvado do maléfico Conde Vampiro; mas os olhos de Nastassia arregalam-se e ela grita:
+      “Oh, não, não era ele que ia me matar. Era sua irmã!”<br><br>
+      Você tem uma sensação desagradável no fundo de seu estômago... e então ela está aqui, bem a sua frente no aposento, fitando-o bem nos olhos!`, //132
      `Os morcegos o cercam e você não consegue ver nada quando tenta enfrentá-los.<br>
      Seus pequenos e pontiagudos dentes estão ensanguentados por alimentarem-se de alguma coisa - ou alguém.<br>
      Eles são muitos para que os enfrente; você tem que recuar para as escadas.<br><br>
      Pode tentar subir uma vez mais para a torre do sino, na esperança de que os morcegos vão embora; ou voltar ao pátio principal.`, //133
      `Karl-Heinz concorda em fazer a poção por uma taxa reduzida, mas ele levará todos os tesouros que você tiver.`, //134
-     `135`, 
-     `136`, 
+     `Você examina este aposento e pega algumas bugigangas valendo 4 Moedas de Ouro.<br><br>
+     Há somente uma porta de saída deste aposento, na parede oeste, e você resolve abri-lá.<br><br>
+     Faça um teste de sorte.`, //135
+     `Uma grande sombra de repente escurece a passagem.<br>
+     Um imenso rato rosnando, tão grande quanto um cão, galopa pela passagem em sua direção.<br>
+     Seus olhos vermelhos brilham com má-fé e, apesar de um de seus afiados incisivos amarelos estar parcialmente quebrado, sua mordida parece bastante desagradável!<br><br>
+     Ele é tão rápido que não há tempo de fugir; você deve enfrentá-lo.`, //136
      `137`, 
      `138`, 
      `139`, 

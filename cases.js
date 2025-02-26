@@ -1,4 +1,4 @@
-var NextPage = [123]
+var NextPage = [136]
 let Chars = {
     Name: 'Aikawa',
     Hab: Number.parseInt(localStorage.getItem('Hab')),
@@ -22,7 +22,7 @@ let ouro = 0
 
 function Paginas(pagNmb) {
     let personalizado = false
-    condition = {has:false, which: '', id: 0}
+    condition = {has:false, which: '', id: 0, times:0, ref:0}
     switch (pagNmb) {
         case 1:
             but = ['Atacar o Cavaleiro Sem Cabeça', 'Entrar no coche', 'Ignorar o coche, perguntar a alguém o caminho']
@@ -71,7 +71,7 @@ function Paginas(pagNmb) {
                 break
             }
             combate = true
-            condition = {has:true, which: 'dano por rodada', id: 2, ref:1}
+            condition = {has:true, which: 'dano por rodada', id: 3, ref:1}
             break;
         case 7:
             but = ['CONTINUAR']
@@ -145,7 +145,7 @@ function Paginas(pagNmb) {
         case 16:
             Chars.Ene = Chars.Ene - 2
             attInv()
-            condition = {has:true, which: 'dano por rodada', id: 2, ref:1}
+            condition = {has:true, which: 'dano por rodada', id: 5, ref:1}
             but = ['CONTINUAR']
             NextPage = [150]
             break;
@@ -192,6 +192,7 @@ function Paginas(pagNmb) {
         case 22:
             if (combate == true) {
                 but = ['CONTINUAR JORNADA']
+                attInv()
                 combate = false
                 NextPage = [224]
                 personalizado = true
@@ -201,7 +202,7 @@ function Paginas(pagNmb) {
             but = ['INICIAR COMBATE']
             combate = true
             Enemy = {name: 'Thassalos Maior', Hab: 10, Ene:15}
-            condition = {has:true, which: 'dado por rodada', id: 3, ref: 6}
+            condition = {has:true, which: 'dado por rodada', id: 1, times: 1, ref: 6}
             break;
         case 23:
             if (itens.includes('Espada-Magica')) {
@@ -412,7 +413,7 @@ function Paginas(pagNmb) {
             attInv()
             but = ['iniciar combate']
             Enemy = {name: 'Névoa Vampira', Hab: 7, Ene:9}
-            condition = {has:true, which: 'vezes atingido', id: 1, times: 2, ref: 165}
+            condition = {has:true, which: 'vezes atingido', id: 2, times: 2, ref: 165}
             combate = true
             break;
         case 43:
@@ -449,7 +450,7 @@ function Paginas(pagNmb) {
             }
             but = ['iniciar combate']
             Enemy = {name: 'Morcego Vampiro Chifrudo', Hab: 8, Ene:7}
-            condition = {has:true, which: 'vezes atingido', id: 1, times: 2, ref: 85}
+            condition = {has:true, which: 'vezes atingido', id: 2, times: 2, ref: 85}
             combate = true
             break;
         case 46:
@@ -552,7 +553,7 @@ function Paginas(pagNmb) {
             but = ['INICIAR COMBATE']
             combate = true
             Enemy = {name: 'Thassalos Menor', Hab: 8, Ene:11}
-            condition = {has:true, which: 'dado por rodada', id: 3, ref:4}
+            condition = {has:true, which: 'dado por rodada', id: 1, ref:4}
             break;
         case 53:
             Chars.Ene = Chars.Ene + 4
@@ -654,7 +655,7 @@ function Paginas(pagNmb) {
             combate = true
             but = ['iniciar combate']
             Enemy = {name: 'Ghoul Imenso', Hab: 8, Ene:11}
-            condition = {has:true, which: 'vezes atingido', id: 1, times: 3, ref: 127}
+            condition = {has:true, which: 'vezes atingido', id: 2, times: 3, ref: 127}
             if (Chars.encontros.includes('GhoulDano')) {
                 Enemy.Ene = Enemy.Ene - 2
                 Chars.encontros = Chars.encontros.filter(item => item !== 'GhoulDano')
@@ -835,7 +836,7 @@ function Paginas(pagNmb) {
             combate = true
             but = ['iniciar combate']
             Enemy = {name: 'Corvo Gigante Filhote', Hab: 7, Ene:6}
-            condition = {has:true, which: 'vezes atingido', id: 1, times: 1, ref: 360}
+            condition = {has:true, which: 'vezes atingido', id: 2, times: 1, ref: 360}
             break;
         case 79:
             ouro = ouro - 8
@@ -1047,7 +1048,7 @@ function Paginas(pagNmb) {
             Chars.Ene = Chars.Ene - 2
             attInv()
             combate = true
-            condition = {has:true, which:'dano por rodada', id:2, ref:2}
+            condition = {has:true, which:'dano por rodada', id:3, ref:2}
             but = ['voltar ao combate']
             break;
         case 101:
@@ -1207,7 +1208,7 @@ function Paginas(pagNmb) {
             but = ['INICIAR COMBATE']
             combate = true
             Enemy = {name: 'Snivel, o Gnomo', Hab: 8, Ene:6}
-            condition = {has:true, which: 'dano aumentado', id: 4, ref:4}
+            condition = {has:true, which: 'dano aumentado', id: 6, ref:2}
             break;
         case 114:
             if (combate) {
@@ -1287,8 +1288,8 @@ function Paginas(pagNmb) {
             if (combate) {
                 combate = false
                 NextPage = [314]
-                if (Chars.encontros.includes('mordido')) {
-                    Chars.encontros = Chars.encontros.filter(item => item !== "mordido")
+                if (Chars.encontros.includes('reached')) {
+                    Chars.encontros = Chars.encontros.filter(item => item !== "reached")
                     NextPage = [266]
                 }
                 Continue(0)
@@ -1298,7 +1299,7 @@ function Paginas(pagNmb) {
             combate = true
             but = ['INCIAR COMBATE']
             Enemy = {name:'Lobos Gigantes', Hab:7, Ene:13}
-            condition = {has:true, which:'vezes atingido', id:4, ref:3}
+            condition = {has:true, which:'vezes atingido', id:4, times:3}
             break;
         case 122:
             if (combate) {
@@ -1315,7 +1316,7 @@ function Paginas(pagNmb) {
             combate = true
             but = ['iniciar combate']
             Enemy = {name: 'Ghoul Fedorento', Hab: 8, Ene:9}
-            condition = {has:true, which: 'vezes atingido', id: 1, times: 3, ref: 127}
+            condition = {has:true, which: 'vezes atingido', id: 2, times: 3, ref: 127}
             break;
         case 123:
             but = ['desistir', 'tentar sussurrar']
@@ -1371,7 +1372,11 @@ function Paginas(pagNmb) {
             NextPage = [15, 92]
             break;
         case 132:
-            
+            but = ['continuar']
+            NextPage = [66]
+            if (Chars.encontros.includes('Katarina')) {
+                NextPage = [176]
+            }
             break;
         case 133:
             but = ['tentar subir para a torre do sino', 'voltar ao pátio principal']
@@ -1383,13 +1388,23 @@ function Paginas(pagNmb) {
             NextPage = [79]
             break;
         case 135:
-            
+            ouro - ouro + 4
+
             break;
         case 136:
+            if (combate) {
+                combate = false
+                NextPage = [97]
+                Continue(0)
+                personalizado = true
+                break
+            }
             but = ['INICIAR COMBATE']
-            NextPage = [97]
+            Enemy = {name: 'Rato Gigante', Hab: 7, Ene:8}
+            combate = true
             break;
         case 137:
+            
             NextPage01 = 45
             break;
         case 138:
@@ -1746,7 +1761,7 @@ function Paginas(pagNmb) {
                 personalizado = true
                 console.log(sessionStorage.getItem(`DanoConde`))
             } else {
-                let indice = itens.indexOf("AguaBenta")
+                let indice = itens.indexOf("Agua-Benta")
                 if (indice !== -1) { // Verifica se o item existe no array
                     itens.splice(indice, 1); // Remove o item no índice encontrado
                 }
