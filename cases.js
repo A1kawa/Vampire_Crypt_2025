@@ -1676,7 +1676,7 @@ function Paginas(pagNmb) {
             break;
         case 178:
             if (combate) {
-                NextPage = 212
+                NextPage = [212]
             }
             but = ['INICIAR COMBANTE']
             combate = true
@@ -1691,21 +1691,24 @@ function Paginas(pagNmb) {
             NextPage = [210, 230]
             break;
         case 181:
-            
+            but = ['JOGAR DADO']
+            testStat = {ref:2, testNext: [136, 47]}
+            NextPage = [404]
             break;
         case 182:
             but = ['enfrentá-lo como está', 'tentar fugir depressa']
             NextPage = [52, 139]
             break;
         case 183:
-            
+            but = ['abrir a porta oposta, na parede oeste', 'abrir a porta da parede leste', 'retornar para o hall de entrada e lá abrir a porta norte']
+            NextPage = [240, 252, 101]
             break;
         case 184:
             but = ['Terminar a busca pelo aposento', 'Sair daqui e abrir a porta leste', 'Sair e abrir a porta sul']
             NextPage = [142, 371, 8]
             break;
         case 185:
-            ArrayDeDados.push(1)
+            Chars.encontros.push(1)
             ouro = ouro - 2
             but = ['CONTINUAR']
             NextPage = [75]
@@ -1715,28 +1718,40 @@ function Paginas(pagNmb) {
             NextPage = [401]
             break;
         case 187:
-            
+            but = ['enfrentar a Cobra do Rio', 'tentar fugir']
+            NextPage = [236, 285]
             break;
         case 188:
             but = ['CONTINUAR']
             NextPage = [294]
             break;
         case 189:
-            
+            but = ['não tenho']
+            NextPage = [259]
+            if (itens.includes("Crucifixo-de-Prata") || itens.includes("Escudo-da-Fé")) {
+                but = ['tenho']
+                NextPage = [220]
+            }
             break;
         case 190:
             but = ['CONTINUAR']
             NextPage = [81]
             break;
         case 191:
-            
+            but = ['CONTINUAR']
+            NextPage = [43]
+            if (aflicoes.includes("Licantropia-Maior")) {
+                NextPage = [204]
+            }
             break;
         case 192:
             but = ["lutar com a Sombra", "correr para as portas ao sul", "correr para as portas de bronze, ao norte"]
             NextPage = [292, 18, 2]
             break;
         case 193:
-            
+            but = ['JOGAR DADOS']
+            testStat = {ref:Chars.Hab, testNext: [249, 300], testAddition: 0}
+            NextPage = [405]
             break;
         case 194:
             
@@ -1750,7 +1765,9 @@ function Paginas(pagNmb) {
             NextPage = [116]
             break;
         case 197:
-            
+            but = ['JOGAR DADOS']
+            testStat = {ref:Chars.Hab, testNext: [13, 344], testAddition: 3}
+            NextPage = [405]
             break;
         case 198:
             but = ['SEGUIR']
@@ -1761,14 +1778,26 @@ function Paginas(pagNmb) {
             NextPage = [226]
             break;
         case 200:
-            but = ['INICIAR COMBATE']
-            NextPage = [290, 316]
+            if (combate) {
+                combate = false
+                NextPage = [316]
+                if (Chars.encontros.includes('reached')) {
+                    Chars.encontros = Chars.encontros.filter(item => item !== "reached")
+                    NextPage = [290]
+                }
+                Continue(0)
+                personalizado = true
+                break
+            }
+            combate = true
+            but = ['INCIAR COMBATE']
+            Enemy = {name:'Aparição', Hab:8, Ene:9}
+            condition = {has:true, which:'vezes atingido', id:4, times:1}
             break;
         case 201:
             but = ['CONTINUAR']
             NextPage = [148]
-           Chars.Fth--
-            localStorage.setItem("CharsChars.Fthrent",Chars.Fth)
+            Chars.Fth--
             attInv()
             break;
         case 202:

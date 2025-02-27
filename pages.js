@@ -626,32 +626,60 @@ var pagTxtGame = [`Undefined`,
      Um clarão de luz e calor; perca 4 pontos de ENERGIA.<br>
      Você fica parcialmente cego e mal pode ver o aposento escuro. Porém, pode perceber a forma de uma figura esquelética de quatro braços, armado com uma foice e dirigindo-se para você.<br><br>
      Pode enfrentá-la, enfraquecido como está ou tentar fechar a porta e fugir.`, //182
-     `183`, //183
+     `Karl-Heinz recusa sua oferta.<br>
+      “Não se pega fígados de basilisco e tinta de lula por nada, sabe. Tenho que cobrir meus gastos” lamenta.<br>
+     Ele olha pensativo e então continua:<br>
+     “Vou lhe dizer uma coisa. Nas cozinhas existem algumas ervas que desejo, mas elas são protegidas pelos guardas do Conde. Vá e pegue-as para mim e eu lhe darei a poção em troca. Há muitos jarros lá, mas há somente um que preciso. Eles estão todos numerados, e desejo o jarro número 169. Vá e pegue-o para mim”. <br><br>
+     Ele lhe diz como chegar até as cozinhas; saia pela porta oeste deste aposento, volte até o hall de entrada, passe pela porta norte e pegue a primeira porta para o leste, no corredor mais além.<br><br>
+     Você sai e volta até o corredor norte-sul do lado de fora do aposento do Alquimista.<br>
+     Se ainda não o tiver feito, pode abrir a porta oposta a você na parede oeste, ir para a ponta sul do corredor e lá abrir a porta da parede leste ou retornar para o hall de entrada e lá abrir a porta norte.<br>
+     Escolha sua proxima ação:`, //183
      `Tendo destruído os repugnantes restos do Doktor Faustus, você quer:`, //184
-     `185`, //185
+     `O Sábio pondera.<br>
+     “Ah, sim, uma jovem mulher foi trazida recentemente, e o Conde a levou para a Cripta. Ele mantém as pessoas prisioneiras lá embaixo, e então bebe o seu sangue ou as entrega para Katarina. Criatura estranha, Katarina, pode ser bastante charmosa às vezes!”<br><br>
+     Ele olha de modo quase apaixonado ao pensar em Katarina.`, //185
      `A terrível mordida do morcego acerta-lhe o pescoço já ferido, e a odienta ameaça esvoaçante abre sua jugular.<br>
      Você cai em agonia, enquanto seu sangue da vida jorra no chão.<br><br>
      Sua jornada termina aqui.`, //186
-     `187`, //187
-     `188`, //188
-     `189`, //189
-     `190`, //190
-     `191`, //191
+     `Você caminha cuidadosamente sobre o leito pedregoso do rio raso, com medo de buracos.<br>
+     Você está quase chegando ao outro lado quando vê uma sombra deslizante vir serpenteando pela água em sua direção, e pode-se ver as costas verde-amareladas de uma forma reptílica, sob a superfície da água.<br><br>
+     Você pode ficar e enfrentar a Cobra do Rio ou tentar fugir do réptil e chegar até a margem.`, //187
+     `Gunthar fita intensamente o livro com a página mágica.<br>
+     “Mas esta é a espada Siegfried!” diz ele, surpreso, olhando a página.<br>
+     “Uma grande feitiçaria a aprisionou dentro do livro!”<br>
+     Ele então fica infeliz e diz-lhe que o único meio que pensa para libertá-la seria com a ajuda da magia de Katarina.<br>
+     “Ela lhe pedirá algum serviço em troca - e estremeço só de pensar no que poderá ser” diz ele, acrescentando que a irmã de Reiner é ainda mais maléfica do que o próprio Conde.<br>
+     Gunthar senta, com a cabeça entre as mãos, desesperado. Ele pode estar deprimido demais para fazer alguma coisa, mas você é um guerreiro e está aqui com um propósito!<br>
+     Você retorna para o patamar e lá abre a porta oeste.`, //188
+     `Você tem um Crucifixo e/ou o Escudo da Fé?`, //189
+     `Você é lento demais! Os Zumbis estão sobre você antes que possa fechar a porta e fugir.`, //190
+     `Você alcança o patamar, corre pela escada e volta para o pátio. Pega a Chave da Cripta e segue em direção à Cripta proibida, com seus pesados portões de grades de ferro e cabeças de gárgulas olhando de soslaio.<br>
+     Uma imensa sombra agiganta-se atrás de você, fazendo-o girar sobre seu eixo, em pânico - mas é apenas um morcego em voo baixo, em contraste com a lua.<br>
+     O luar hoje está esmaecido, e não há outras coisas sobrevoando, na luz pálida, em meio às sombras que o cercam.`, //191
      `Os esforços para penetrar na Cripta não passam despercebidos. Uma forma pequena, parecendo um anão, de uma figura espectral, preta e quase sem feições, 
      vem flutuando pelos degraus.<br>
      Você pode sentir o mal arrepiante no ar que ela desloca; suas pequenas garras negras estendem-se para agarrá-lo!<br><br>
      Escolha sua proxima ação:`, //192
-     `193`, //193
-     `194`, //194
-     `195`, //195
-     `196`, //196
-     `197`, //197
-     `198`, //198
-     `199`, //199
-     `200`, //200
-     `Você tenta acertar o Cavaleiro com sua espada, mas ele simplesmente ri, quando sua espada atravessa o ar! Você não pode feri-lo. 
+     `Jogue dois dados.<br><br>
+     Um teste de HABILIDADE.`, //193
+     `A parede de Força mantém o Thassaloss Maior acuado, mas não por muito tempo.<br>
+     À sua frente, pode ver que o corredor leva às escadas que descem para norte, leste e sul, e você precisa escolher um desses lances de escada, mantendo o Thassaloss, a uma certa distância, com a sua ajuda mágica.`, //194
+     `O grito da Baobhan Sith é horrendo e de gelar o sangue.
+     <br><br>
+     Você fica terrivelmente enfraquecido com ele, meio paralisado, e não consegue resistir, quando ela caminha sobre você e saca um punhal afiadíssimo de seu vestido para matá-lo!`, //195
+     `Lothar lhe diz para manter-se longe de Katarina; ela é perigosa, e pegar tanto ela quanto o irmão seria extremamente difícil.<br>
+     Conta-lhe que se pudesse destruir Reiner, então ele e Gunthar, o curandeiro que é irmão de Reiner, provavelmente fariam um trato com Katarina.<br>
+     Ele diz também que tem alguns itens que lhe serão valiosos.`, //196
+     `Você corre pela floresta adentro. Na pressa, deixa cair alguns suprimentos, então retire 2 de suas Provisões.<br><br>
+     Jogue dois dados e some 3 ao total.<br><br>
+     Um teste de HABILIDADE.`, //197
+     `Katarina sorri, feliz. Ela lhe diz para ir pelo corredor, seguir para sul e abrir a segunda porta à leste.`, //198
+     `A mulher ri e tira um punhal azul gélido das dobras de seu vestido. Enfrente-a normalmente; ela tem HABILIDADE 10.`, //199
+     `A Aparição é um inimigo altamente perigoso, e seu braço da espada deve servir-lhe muito bem neste combate!`, //200
+     `Você tenta acertar o Cavaleiro com sua espada, mas ele simplesmente ri, quando sua espada atravessa o ar! Você não pode feri-lo. <br>
      Ele chicoteia os cavalos para um galope, deixando-o de pé, olhando tolamente. A crença em suas próprias capacidades fica estremecido por tal falha inicial,
-     reduzindo 1 ponto de sua FÉ. Você precisa encontrar outro meio de ir para o castelo.`, 
+     reduzindo 1 ponto de sua FÉ.<br>
+     Você precisa encontrar outro meio de ir para o castelo.`, 
      `202`, 
      `203`, 
      `204`, 

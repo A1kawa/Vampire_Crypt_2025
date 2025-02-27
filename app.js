@@ -169,6 +169,7 @@ function cmbInit(close = false){
         cmb.style.scale = 0
         cmbBG.style.zIndex = -5
         cmbBG.style.opacity = 0
+        attInv()
         Paginas(NextPage[0])
         return
     }
