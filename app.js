@@ -182,7 +182,7 @@ function cmbInit(close = false){
     document.getElementById('cond').classList.add('content')
     if (condition.has == true){
         document.getElementById('cond').classList.remove('content')
-        document.getElementById('cond').textContent = condition.which
+        document.getElementById('cond').textContent = `condição de combate: ${condition.which}`
     }
 }
 async function initCmb() {
@@ -219,6 +219,14 @@ async function initCmb() {
     } else {
         sorteTesteBtn.classList.remove('content')
         sorteTesteBtn.style.position = ''
+    }
+    if (condition.id == 7) {
+        await new Promise(resolve => setTimeout(resolve, 1500))
+        if (FA01 < FA02) {
+            Chars.encontros.push('reached')
+        }
+        cmbInit(true)
+        return
     }
     if (FA01 < FA02) { //PRINTA O RESULTADO DE VITORIA DO COMBATE
         tittle.innerHTML = `VOCÊ VENCEU A RODADA`

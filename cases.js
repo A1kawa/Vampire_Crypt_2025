@@ -1,4 +1,4 @@
-var NextPage = [136]
+var NextPage = [153]
 let Chars = {
     Name: 'Aikawa',
     Hab: Number.parseInt(localStorage.getItem('Hab')),
@@ -218,9 +218,9 @@ function Paginas(pagNmb) {
                 but = ['continuar']
                 TestesDados01 = false
                 if (Compare <= 2) {
-                    NextPage01 = 362
+                    NextPage = 362
                 } else {
-                    NextPage01 = 73
+                    NextPage = 73
                 }
             } else {
                 TestesDados01 = true
@@ -312,9 +312,9 @@ function Paginas(pagNmb) {
                 but = ['continuar']
                 TestesDados02 = false
                 if (Compare <= Chars.Sor) {
-                    NextPage01 = 86
+                    NextPage = 86
                 } else {
-                    NextPage01 = 133
+                    NextPage = 133
                 }
             } else {
                 TestesDadosComparativo = Chars.Sor
@@ -345,14 +345,14 @@ function Paginas(pagNmb) {
                 but = ['continuar']
                 TestesDados02 = false
                 if (Compare <= Chars.Sor) {
-                    NextPage01 = 134
+                    NextPage = 134
                 }
             } else {
                 TestesDadosComparativo = Chars.Sor
                 TestesDados02 = true
                 botao01.style.visibility = 'visible'
                 botao01.innerText = 'alegar pobreza'
-                NextPage01 = 183
+                NextPage = 183
                 botao06.style.visibility = 'visible'
                 botao06.innerText = 'testar sorte'
             }
@@ -425,9 +425,9 @@ function Paginas(pagNmb) {
                 but = ['continuar']
                 TestesDados02 = false
                 if (Compare <= Chars.Sor) {
-                    NextPage01 = 147
+                    NextPage = 147
                 } else {
-                    NextPage01 = 91
+                    NextPage = 91
                 }
             } else {
                 TestesDadosComparativo = Chars.Sor
@@ -512,12 +512,12 @@ function Paginas(pagNmb) {
                 but = ['continuar']
                 TestesDados01 = false
                 if (Compare <=Chars.Fth) {
-                    NextPage01 = 99
+                    NextPage = 99
                 } else {
                     const text = `Você continua circulando o castelo cuidadosamente mas acaba voltando aos portões principais 
      sem encontrar nada que lhe indique um meio de entrar.`
                     TextoPersonalizado()
-                    NextPage01 = 326
+                    NextPage = 326
                 }
             } else {
                 TestesDados01 = true
@@ -602,9 +602,9 @@ function Paginas(pagNmb) {
                 but = ['continuar']
                 TestesDados01 = false
                 if (Compare <= 2) {
-                    NextPage01 = 150
+                    NextPage = 150
                 } else {
-                    NextPage01 = 195
+                    NextPage = 195
                 }
             } else {
                 TestesDados01 = true
@@ -690,7 +690,7 @@ function Paginas(pagNmb) {
                     }
                     botao01.style.visibility = 'visible'
                     botao01.innerText = 'Nastassia, a garota desaparecida(2 Moedas)'
-                    NextPage01 = 185
+                    NextPage = 185
                 }
                 if (ouro >= 2 && !ArrayDeDados.includes(2)) {
                     if (!ArrayDeDados.includes(7)) {
@@ -738,7 +738,7 @@ function Paginas(pagNmb) {
                     personalizado = true
                     botao01.style.visibility = 'visible'
                     botao01.innerText = 'ir à biblioteca'
-                    NextPage01 = 332
+                    NextPage = 332
                 }
             } else {
                 if (ArrayDeDados.includes(7)) {
@@ -748,11 +748,11 @@ function Paginas(pagNmb) {
                     if (itens.includes("ChavePrata")) {
                         botao01.style.visibility = 'visible'
                         botao01.innerText = 'ir à biblioteca'
-                        NextPage01 = 332
+                        NextPage = 332
                     } else {
                         botao01.style.visibility = 'visible'
                         botao01.innerText = 'retornar à passagem externa'
-                        NextPage01 = 47
+                        NextPage = 47
                     }
                 } else {
                     const text = `Você pensa sobre o que dizer, mas o Sábio fala livremente, por si mesmo. Na maior parte do tempo comenta como o Conde é malvado e como ele - o Sábio - 
@@ -764,7 +764,7 @@ function Paginas(pagNmb) {
                     personalizado = true
                     botao01.style.visibility = 'visible'
                     botao01.innerText = 'não tenho dinheiro'
-                    NextPage01 = 47
+                    NextPage = 47
                 }
             }
             break;
@@ -773,7 +773,7 @@ function Paginas(pagNmb) {
                 TestesDados01 = false
                 botao01.style.visibility = 'visible'
                 botao01.innerText = 'atacá-lo'
-                NextPage01 = 26
+                NextPage = 26
                 if (Compare <= 4) {
                     sessionStorage.setItem('DanoConde', sessionStorage.getItem('DanoConde') + 6)
                     if (feiticos.includes('GrandeAtaque')) {
@@ -917,9 +917,9 @@ function Paginas(pagNmb) {
                 but = ['continuar']
                 TestesDados01 = false
                 if (Compare <=Chars.Fth) {
-                    NextPage01 = 179
+                    NextPage = 179
                 } else {
-                    NextPage01 = 233
+                    NextPage = 233
                 }
             } else {
                 TestesDados01 = true
@@ -945,12 +945,12 @@ function Paginas(pagNmb) {
                 TestesDados02 = false
                 if (Compare <= HabCur) {
                     Inimigos = 0
-                    NextPage01 = 40
+                    NextPage = 40
                 } else {
                     Inimigos = 1
                     botao01.style.visibility = 'visible'
                     botao01.innerText = 'enfrentar o cachorro'
-                    NextPage01 = 40
+                    NextPage = 40
                 }
             } else {
                 TestesDados02 = true
@@ -1062,22 +1062,22 @@ function Paginas(pagNmb) {
                 TestesDados01 = false
                 if (Compare == 1 && !ArrayDeDados.includes(1)) {
                     ArrayDeDados.push(Compare)
-                    NextPage01 = 232
+                    NextPage = 232
                 } else if (Compare == 2 && !ArrayDeDados.includes(2)) {
                     ArrayDeDados.push(Compare)
-                    NextPage01 = 160
+                    NextPage = 160
                 } else if (Compare == 3 && !ArrayDeDados.includes(3)) {
                     ArrayDeDados.push(Compare)
-                    NextPage01 = 273
+                    NextPage = 273
                 } else if (Compare == 4 && !ArrayDeDados.includes(4)) {
                     ArrayDeDados.push(Compare)
-                    NextPage01 = 323
+                    NextPage = 323
                 } else if (Compare == 5 && !ArrayDeDados.includes(5)) {
                     ArrayDeDados.push(Compare)
-                    NextPage01 = 222
+                    NextPage = 222
                 } else if (Compare == 6 && !ArrayDeDados.includes(6)) {
                     ArrayDeDados.push(Compare)
-                    NextPage01 = 120
+                    NextPage = 120
                 } else {
                     ResetButtonsInt()
                     MagiaRepetida()
@@ -1087,7 +1087,7 @@ function Paginas(pagNmb) {
                     ArrayDeDados = []
                     botao01.style.visibility = 'visible'
                     botao01.innerText = 'continuar jornada'
-                    NextPage01 = 59
+                    NextPage = 59
                 } else {
                 TestesDados01 = true
                 botao06.style.visibility = 'visible'
@@ -1177,9 +1177,9 @@ function Paginas(pagNmb) {
                 but = ['continuar']
                 TestesDados02 = false
                 if (Compare <= HabCur) {
-                    NextPage01 = 156
+                    NextPage = 156
                 } else {
-                    NextPage01 = 214
+                    NextPage = 214
                 }
             } else {
                 TestesDados02 = true
@@ -1233,7 +1233,7 @@ function Paginas(pagNmb) {
             break;
         case 117:
             if (prov == true) {
-                NextPage01 = 117
+                NextPage = 117
                 if (provisoes > 0) {
                     botao01.style.visibility = 'visible'
                     botao01.innerText = 'consumir provisão'
@@ -1263,11 +1263,11 @@ function Paginas(pagNmb) {
                 if (itens.includes("Espada-Magica")) {
                     botao01.innerText = 'tenho'
                     botao01.style.visibility = 'visible'
-                    NextPage01 = 298
+                    NextPage = 298
                 } else {
                     botao01.innerText = 'não tenho'
                     botao01.style.visibility = 'visible'
-                    NextPage01 = 208
+                    NextPage = 208
                 }
             }
             break;
@@ -1404,8 +1404,10 @@ function Paginas(pagNmb) {
             combate = true
             break;
         case 137:
-            
-            NextPage01 = 45
+            Chars.Fth--
+            attInv()
+            but = ['CONTINUAR']
+            NextPage = [45]
             break;
         case 138:
             but = ['CONTINUAR']
@@ -1415,7 +1417,12 @@ function Paginas(pagNmb) {
             
             break;
         case 140:
-            
+            but = ['atacar com a espada']
+            NextPage = [26]
+            if (feiticos.includes('Grande-Ataque')) {
+                but.push('lançar o feitiço Grande Ataque')
+                NextPage.push(348)
+            }
             break;
         case 141:
             if (TestesDados01 == true) {
@@ -1423,9 +1430,9 @@ function Paginas(pagNmb) {
                 but = ['continuar']
                 TestesDados01 = false
                 if (Compare <=Chars.Fth) {
-                    NextPage01 = 192
+                    NextPage = 192
                 } else {
-                    NextPage01 = 243
+                    NextPage = 243
                 }
             } else {
                 TestesDados01 = true
@@ -1435,24 +1442,26 @@ function Paginas(pagNmb) {
             }
             break;
         case 142:
-            
+            but = ['usar a espada', 'aguardar']
+            NextPage = [96, 38]
             break;
         case 143:
             but = ['C0NT1NU4R']
             NextPage = [401]
             break;
         case 144:
-            
+            but = ['Examinar este aposento', 'Sair e abrir a porta da ponta leste', 'Sair e seguir pelo corredor para o sul']
+            NextPage = [193, 351, 166]
             break;
         case 145:
-            NextPage01 = 164
+            but = ['CONTINUAR']
+            NextPage = [164]
             break;
         case 146:
             ouro = ouro - 6
-            itens.push("ChavePrata")
-            botao01.style.visibility = "visible"
-            botao01.innerText = "continuar"
-            NextPage01 = 75
+            itens.push("Chave-de-Prata")
+            but = ['CONTINUAR']
+            NextPage = [75]
             break;
         case 147:
             but = ['CONTINUAR']
@@ -1464,10 +1473,27 @@ function Paginas(pagNmb) {
             ouro = 2
             break;
         case 149:
-            
+            but = ['sua espada', 'Os castiçais pesados', 'Algum outro objeto']
+            NextPage = [175, 203, 261]
             break;
         case 150:
-
+            if (combate) {
+                combate = false
+                if (Chars.encontros.includes('reached')) {
+                    NextPage = [263]
+                    Continue(0)
+                    personalizado = true
+                    break
+                }
+                NextPage = [207]
+                Continue(0)
+                personalizado = true
+                break
+            }
+            combate = true
+            but = ['testar Força de Ataque']
+            Enemy = {name: 'Baobhan Sith', Hab: 9, Ene: 0}
+            condition = {has: true, which: 'teste de força de ataque', id:7}
             break;
         case 151:
             but = ['CONTINUAR']
@@ -1479,9 +1505,9 @@ function Paginas(pagNmb) {
                 but = ['continuar']
                 TestesDados02 = false
                 if (Compare <= HabCur) {
-                    NextPage01 = 250
+                    NextPage = 250
                 } else {
-                    NextPage01 = 103
+                    NextPage = 103
                 }
             } else {
                 TestesDados02 = true
@@ -1491,16 +1517,30 @@ function Paginas(pagNmb) {
             }
             break;
         case 153:
-            
+            if (combate) {
+                combate = false
+                const text = 'Ao vencer, você procura mas não há nada de valor ou de interessante aqui - tudo está enferrujado e é inútil. Você pode tentar a porta do lado leste, atravessando a varanda ou a que está na ponta mais ao sul da varanda.'
+                but = ['tentar a porta do lado leste', 'tentar a porta na ponta ao sul']
+                NextPage = [302, 244]
+                typingEffect(text)
+                personalizado = true
+                break
+            }
+            combate = true
+            Enemy = {name: 'Armadura Viva', Hab: 8, Ene: 9}
+            but = ['INICIAR COMBATE']
             break;
         case 154:
-            
+            but = ['abrir a porta no canto sul', 'abrir a porta com maçaneta de prata']
+            NextPage = [294, 131]
             break;
         case 155:
-            NextPage01 = 164
+            but = ['CONTINUAR']
+            NextPage = [164]
             break;
         case 156:
-            
+            but = ['abrir a porta norte', 'pegar a passagem leste']
+            NextPage = [101, 256]
             break;
         case 157:
             but = ['Entrar na tumba de Boris', 'Entrar na tumba do Chanceler Schmidt', 'Para a junção em T, ignorando AS TUMBAS']
@@ -1513,7 +1553,7 @@ function Paginas(pagNmb) {
             
             break;
         case 160:
-            feiticos.push("GrandeAtaque")
+            feiticos.push("Grande-Ataque")
             but = ['CONTINUAR']
             NextPage = [102]
             break;
@@ -1526,10 +1566,14 @@ function Paginas(pagNmb) {
             NextPage = [383]
             break;
         case 163:
-            
+            Chars.Ene = Chars.Ene - 2
+            attInv()
+            but = ['seguir para a cripta', 'seguir para as portas de bronze']
+            NextPage = [90, 2]
             break;
         case 164:
-            NextPage01 = 106
+            but = ['CONTINUAR']
+            NextPage = [106]
             break;
         case 165:
             botao01.style.visibility = "visible"
@@ -1538,9 +1582,9 @@ function Paginas(pagNmb) {
             combate = false
             if (aflicoes.includes("MalCura")) {
                 console.log("Aflicao detectada")
-                NextPage01 = 100
+                NextPage = 100
             } else {
-                NextPage01 = 6
+                NextPage = 6
             }
             break;
         case 166:
@@ -1548,25 +1592,39 @@ function Paginas(pagNmb) {
             NextPage = [118, 252, 240]
             break;
         case 167:
-            
+            but = ['CONTINUAR']
+            NextPage = [72]
+            if (itens.includes('Alho')) {
+                NextPage = [140]
+            }
             break;
         case 168:
-            
+            ouro = ouro + 3
+            'teste de sorte'
             break;
         case 169:
-            
+            Chars.Ene = Chars.Ene - 4
+            aflicoes = aflicoes.filter(item => item !== 'Licantropia-Maior' && item !== "Licantropia")
+            attInv()
+            but = ['Abrir a porta norte', 'Abrir a porta oeste', 'Descer pela passagem do lado leste']
+            NextPage = [332, 221, 353]
             break;
         case 170:
-            NextPage01 = 121
+            Chars.Ene = Chars.Ene - 3
+            but = ['CONTINUAR']
+            NextPage = [121]
             break;
         case 171:
-            NextPage01 = 244
+            Chars.Ene = Chars.Ene - 3
+            but = ['CONTINUAR']
+            NextPage = [244]
             break;
         case 172:
-            
+            'teste de fe'
             break;
         case 173:
-            NextPage01 = 335
+            but = ['continuar']
+            NextPage = [298]
             break;
         case 174:
             if (TestesDados01 == true) {
@@ -1574,9 +1632,9 @@ function Paginas(pagNmb) {
                 but = ['continuar']
                 TestesDados01 = false
                 if (Compare <=Chars.Fth) {
-                    NextPage01 = 223
+                    NextPage = 223
                 } else {
-                    NextPage01 = 362
+                    NextPage = 362
                 }
             } else {
                 TestesDados01 = true
@@ -1586,30 +1644,58 @@ function Paginas(pagNmb) {
             }
             break;
         case 175:
-
+            Chars.Ene = Chars.Ene - 2
+            but = ['CONTINUAR']
+            NextPage = [335]
             break;
         case 176:
-            
+            NextPage = [293]
+            if (Chars.encontros.includes('KatEncantTrue')) {
+                NextPage = [276]
+            }
+            if (Chars.encontros.includes('KatEncantFalse')) {
+                NextPage = [20]
+            }
+            personalizado = true
+            Continue(0)
             break;
         case 177:
+            Chars.Ene = Chars.Ene + 4
+            if (Chars.Ene > Chars.initEne) {
+                Chars.Ene = Chars.initEne
+            }
+            ouro = ouro + 5
+            aflicoes.push('Veneno-Lento')
             but = ['CONTINUAR']
             NextPage = [228]
+            if (Chars.encontros.includes('sleepGnome')) {
+                const text = pagTxtGame[pagNmb] + '<br> Se não dormiu na casa do Gnomo, tem que dormir agora, já que está muito cansado. Quando estiver pronto para continuar, você segue viagem pela tarde.'
+                typingEffect(text)
+                personalizado = true
+            }
             break;
         case 178:
-            NextPage01 = 212
+            if (combate) {
+                NextPage = 212
+            }
+            but = ['INICIAR COMBANTE']
+            combate = true
             break;
         case 179:
             but = ['CONTINUAR']
             NextPage = [280]
             break;
         case 180:
-            
+            ouro = ouro + 5
+            but = ['tentar abrir a tumba', 'seguir pelo corredor para a junção']
+            NextPage = [210, 230]
             break;
         case 181:
             
             break;
         case 182:
-            
+            but = ['enfrentá-lo como está', 'tentar fugir depressa']
+            NextPage = [52, 139]
             break;
         case 183:
             
@@ -1748,7 +1834,7 @@ function Paginas(pagNmb) {
                     console.log(sessionStorage.getItem(`DanoConde`))
                     sessionStorage.setItem(`DanoConde`, TestesDadosComparativo + Compare)
                 }
-                NextPage01 = 26
+                NextPage = 26
                 NextPage02 = 158
                 if (itens.includes('AguaBenta')) {
                     botao03.style.visibility = 'visible'
@@ -1776,7 +1862,7 @@ function Paginas(pagNmb) {
             NextPage = [311]
             break;
         case 218:
-            NextPage01 = 121
+            NextPage = 121
             break;
         case 219:
             
@@ -1785,13 +1871,13 @@ function Paginas(pagNmb) {
             
             break;
         case 221:
-            NextPage01 = 364
+            NextPage = 364
             break;
         case 222:
             feiticos.push("Divisao")
             botao01.style.visibility = "visible"
             botao01.innerText = "continuar"
-            NextPage01 = 102
+            NextPage = 102
             break;
         case 223:
             if (TestesDados01 == true) {
@@ -1799,9 +1885,9 @@ function Paginas(pagNmb) {
                 but = ['continuar']
                 TestesDados01 = false
                 if (Compare <= Number.parseInt(localStorage.getItem("CharsChars.Fthrent"))) {
-                    NextPage01 = 321
+                    NextPage = 321
                 } else {
-                    NextPage01 = 272
+                    NextPage = 272
                 }
             } else {
                 TestesDados01 = true
@@ -1830,9 +1916,9 @@ function Paginas(pagNmb) {
                 but = ['continuar']
                 TestesDados02 = false
                 if (Compare <= HabCur) {
-                    NextPage01 = 362
+                    NextPage = 362
                 } else {
-                    NextPage01 = 277
+                    NextPage = 277
                 }
             } else {
                 TestesDados02 = true
@@ -1849,13 +1935,13 @@ function Paginas(pagNmb) {
             NextPage = [255, 371, 8]
             break;
         case 231:
-            NextPage01 = 101
+            NextPage = 101
             break;
         case 232:
             feiticos.push("Parede-de-Força")
             botao01.style.visibility = "visible"
             botao01.innerText = "continuar"
-            NextPage01 = 102
+            NextPage = 102
             break;
         case 233:
             
@@ -1864,25 +1950,25 @@ function Paginas(pagNmb) {
             
             break;
         case 235:
-            NextPage01 = 294
+            NextPage = 294
             break;
         case 236:
             
             break;
         case 237:
-            NextPage01 = 400
+            NextPage = 400
             break;
         case 238:
             
             break;
         case 239:
-            NextPage01 = 313
+            NextPage = 313
             break;
         case 240:
             
             break;
         case 241:
-            NextPage01 = 55
+            NextPage = 55
             break;
         case 242:
             but = ['C0N71NU@R']
@@ -1924,7 +2010,7 @@ function Paginas(pagNmb) {
             attInv()
             botao01.style.visibility = 'visible'
             botao01.innerText = "sair da sala e continuar"
-            NextPage01 = 373
+            NextPage = 373
             break;
         case 252:
             if (TestesDados01 == true) {
@@ -1932,9 +2018,9 @@ function Paginas(pagNmb) {
                 but = ['continuar']
                 TestesDados01 = false
                 if (Compare <=Chars.Fth) {
-                    NextPage01 = 330
+                    NextPage = 330
                 } else {
-                    NextPage01 = 316
+                    NextPage = 316
                 }
             } else {
                 TestesDados01 = true
@@ -1944,7 +2030,7 @@ function Paginas(pagNmb) {
             }
             break;
         case 253:
-            NextPage01 = 382
+            NextPage = 382
             break;
         case 254:
             ArrayDeDados.push(4)
@@ -1970,17 +2056,28 @@ function Paginas(pagNmb) {
             NextPage = [401]
             break;
         case 260:
-            NextPage01 = 309
+            NextPage = 309
             break;
         case 261:
-            NextPage01 = 335
+            NextPage = 335
             break;
         case 262:
             
             break;
         case 263:
+            if (combate) {
+                combate = false
+                NextPage = [324]
+            }
+            combate = true
             but = ['INICIAR COMBATE']
-            NextPage = [324]
+            if (Chars.encontros.includes('reached')) {
+                Chars.encontros = Chars.encontros.filter(item => item !== 'reached')
+                const text = 'Você a atinge estragando-lhe o feitiço e a dando 2 de dano.<br><br> ' + pagTxtGame[pagNmb]
+                typingEffect(text)
+                personalizado = true
+                break
+            }
             break;
         case 264:
             
@@ -1990,7 +2087,7 @@ function Paginas(pagNmb) {
             NextPage = [311]
             break;
         case 266:
-            NextPage01 = 314
+            NextPage = 314
             break;
         case 267:
             
@@ -2014,9 +2111,9 @@ function Paginas(pagNmb) {
                 but = ['continuar']
                 TestesDados01 = false
                 if (Compare <= Number.parseInt(localStorage.getItem("Chars.Sorrent"))) {
-                    NextPage01 = 24
+                    NextPage = 24
                 } else {
-                    NextPage01 = 370
+                    NextPage = 370
                 }
             } else {
                 Chars.Ene--
@@ -2032,7 +2129,7 @@ function Paginas(pagNmb) {
             feiticos.push("RaioJandor")
             botao01.style.visibility = "visible"
             botao01.innerText = "continuar"
-            NextPage01 = 102
+            NextPage = 102
             break;
         case 274:
             
@@ -2050,20 +2147,20 @@ function Paginas(pagNmb) {
             TestesDados02 = true
             botao01.style.visibility = 'visible'
             but = ['continuar']
-            NextPage01 = 362
+            NextPage = 362
             break;
         case 278:
-            NextPage01 = 239
+            NextPage = 239
             break;
         case 279:
-            NextPage01 = 341
+            NextPage = 341
             break;
         case 280:
             but = ['CONTINUAR']
             NextPage = [337]
             break;
         case 281:
-            NextPage01 = 71
+            NextPage = 71
             break;
         case 282:
             
@@ -2080,19 +2177,19 @@ function Paginas(pagNmb) {
             
             break;
         case 286:
-            NextPage01 = 31
+            NextPage = 31
             break;
         case 287:
-            NextPage01 = 229
+            NextPage = 229
             break;
         case 288:
             
             break;
         case 289:
-            NextPage01 = 244
+            NextPage = 244
             break;
         case 290:
-            NextPage01 = 316
+            NextPage = 316
             break;
         case 291:
             but = ['CONTINUAR']
@@ -2102,10 +2199,10 @@ function Paginas(pagNmb) {
             botao01.style.visibility = 'visible'
             if (itens.includes("Espada-Magica")) {
                 botao01.innerText = 'tenho'
-                NextPage01 = 388
+                NextPage = 388
             } else {
                 botao01.innerText = 'não tenho'
-                NextPage01 = 340
+                NextPage = 340
             }
             break;
         case 293:
@@ -2130,16 +2227,16 @@ function Paginas(pagNmb) {
             
             break;
         case 297:
-            NextPage01 = 154
+            NextPage = 154
             break;
         case 298:
             
             break;
         case 299:
-            if (itens.includes("alho")) {
+            if (itens.includes("Alho")) {
                 botao01.style.visibility = 'visible'
                 botao01.innerText = 'usar o alho'
-                NextPage01 = 349
+                NextPage = 349
             }
             if (itens.includes("amuleto")) {
                 botao02.style.visibility = 'visible'
@@ -2195,7 +2292,7 @@ function Paginas(pagNmb) {
             NextPage = [342, 380]
             break;
         case 312:
-            NextPage01 = 289
+            NextPage = 289
             break;
         case 313:
             
@@ -2205,7 +2302,7 @@ function Paginas(pagNmb) {
             NextPage = [362]
             break;
         case 315:
-            NextPage01 = 382
+            NextPage = 382
             break;
         case 316:
             but = ['abrir a porta corajosamente', 'recuar e abrir a porta no hall']
@@ -2254,7 +2351,7 @@ function Paginas(pagNmb) {
             Chars.Ene = Chars.Ene - 2
             localStorage.setItem("Chars.Enerent", Chars.Ene)
             attInv()
-            NextPage01 = 341
+            NextPage = 341
             break;
         case 326:
             but = ['seguir para as portas de metal', 'abrir a porta sul', 'abrir a primeira porta a oeste', 'abrir a segunda porta a oeste', 'seguir para a Cripta']
@@ -2266,9 +2363,9 @@ function Paginas(pagNmb) {
                 but = ['continuar']
                 TestesDados01 = false
                 if (Compare <=Chars.Fth) {
-                    NextPage01 = 62
+                    NextPage = 62
                 } else {
-                    NextPage01 = 16
+                    NextPage = 16
                 }
             } else {
                 TestesDados01 = true
@@ -2278,7 +2375,7 @@ function Paginas(pagNmb) {
             }
             break;
         case 328:
-            NextPage01 = 82
+            NextPage = 82
             break;
         case 329:
             but = ['atacá-la', 'TENTAR CONVERSAR']
@@ -2290,9 +2387,9 @@ function Paginas(pagNmb) {
                 but = ['continuar']
                 TestesDados01 = false
                 if (Compare <=Chars.Fth) {
-                    NextPage01 = 44
+                    NextPage = 44
                 } else {
-                    NextPage01 = 124
+                    NextPage = 124
                 }
             } else {
                 TestesDados01 = true
@@ -2315,24 +2412,24 @@ function Paginas(pagNmb) {
             botao02.style.visibility = 'visible'
             botao01.innerText = 'voltar e abrir a porta oeste'
             botao02.innerText = 'seguir pela passagem leste'
-            NextPage01 = 221
-            NextPage01 = 353
+            NextPage = 221
+            NextPage = 353
             break;
         case 333:
-            NextPage01 = 123
+            NextPage = 123
             break;
         case 334:
-            NextPage01 = 236
+            NextPage = 236
             break;
         case 335:
-            NextPage01 = 361
+            NextPage = 361
             break;
         case 336:
             but = ['UsaR a chave para abrir a gaveta', 'AbrIR o cofre', 'Abre a primeira gaveta']
             NextPage = [219, 271, 392]
             break;
         case 337:
-            NextPage01 = 380
+            NextPage = 380
             break;
         case 338:
             
@@ -2341,7 +2438,7 @@ function Paginas(pagNmb) {
             
             break;
         case 340:
-            NextPage01 = 2
+            NextPage = 2
             break;
         case 341:
             
@@ -2350,12 +2447,12 @@ function Paginas(pagNmb) {
             
             break;
         case 343:
-            NextPage01 = 106
+            NextPage = 106
             break;
         case 344:
             botao01.style.visibility = 'visible'
             but = ['continuar']
-            NextPage01 = 13
+            NextPage = 13
             Valderesse = true
             Chars.Ene--
             Chars.Ene--
@@ -2363,10 +2460,10 @@ function Paginas(pagNmb) {
             attInv()
             break;
         case 345:
-            NextPage01 = 196
+            NextPage = 196
             break;
         case 346:
-            NextPage01 = 26
+            NextPage = 26
             break;
         case 347:
             
@@ -2375,10 +2472,10 @@ function Paginas(pagNmb) {
             
             break;
         case 349:
-            NextPage01 = 103
+            NextPage = 103
             break;
         case 350:
-            NextPage01 = 191
+            NextPage = 191
             break;
         case 351:
             but = ['TENTAR ATACAR', 'TENTAR CONVERSAR']
@@ -2393,7 +2490,7 @@ function Paginas(pagNmb) {
             NextPage = [307, 258]
             break;
         case 354:
-            NextPage01 = 389
+            NextPage = 389
             break;
         case 355:
             but = ['abrir a porta na junção', 'seguir pelo corredor']
@@ -2440,7 +2537,7 @@ function Paginas(pagNmb) {
             
             break;
         case 365:
-            NextPage01 = 389
+            NextPage = 389
             break;
         case 366:
             but = ['INICIAR COMBATE']
@@ -2469,7 +2566,7 @@ function Paginas(pagNmb) {
             }
             botao01.style.visibility = 'visible'
             botao01.innerText = 'atacar a criatura'
-            NextPage01 = 22
+            NextPage = 22
             break;
         case 372:
             
@@ -2493,10 +2590,10 @@ function Paginas(pagNmb) {
             NextPage = [5, 90, 2, 18]
             break;
         case 378:
-            NextPage01 = 47
+            NextPage = 47
             break;
         case 379:
-            NextPage01 = 21
+            NextPage = 21
             break;
         case 380:
             but = ['INVESTIGAR A CRIPTA', 'SEGUIR PARA O NORTE']
@@ -2517,7 +2614,7 @@ function Paginas(pagNmb) {
                 botao01.innerText = 'Atacar o homem adormecido'
                 botao02.innerText = 'Falar com o homem adormecido'
                 botao03.innerText = 'Ignorar o homem e seguir em frente'
-                NextPage01 = 27
+                NextPage = 27
                 NextPage02 = 126
                 NextPage03 = 228
             } else {
@@ -2525,7 +2622,7 @@ function Paginas(pagNmb) {
                 botao02.style.visibility = 'visible'
                 botao01.innerText = 'Atacar o homem'
                 botao02.innerText = 'Entrar e falar com ele'
-                NextPage01 = 27
+                NextPage = 27
                 NextPage02 = 126
             }
             break;
@@ -2553,7 +2650,7 @@ function Paginas(pagNmb) {
             
             break;
         case 391:
-            NextPage01 = 335
+            NextPage = 335
             break;
         case 392:
             ouro = ouro + 4
@@ -2561,7 +2658,7 @@ function Paginas(pagNmb) {
             NextPage = [336, 271]
             break;
         case 393:
-            NextPage01 = 13
+            NextPage = 13
             break;
         case 394:
             ouro = ouro - 2
@@ -2570,7 +2667,7 @@ function Paginas(pagNmb) {
             NextPage = [75]
             break;
         case 395:
-            NextPage01 = 106
+            NextPage = 106
             break;
         case 396:
             but = ['abrir a porta oposta', 'abrir a porta ao norte', 'seguir pela passagem']

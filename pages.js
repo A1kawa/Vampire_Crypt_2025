@@ -491,21 +491,41 @@ var pagTxtGame = [`Undefined`,
      `Uma grande sombra de repente escurece a passagem.<br>
      Um imenso rato rosnando, tão grande quanto um cão, galopa pela passagem em sua direção.<br>
      Seus olhos vermelhos brilham com má-fé e, apesar de um de seus afiados incisivos amarelos estar parcialmente quebrado, sua mordida parece bastante desagradável!<br><br>
-     Ele é tão rápido que não há tempo de fugir; você deve enfrentá-lo.`, //136
-     `137`, 
-     `138`, 
-     `139`, 
-     `140`, 
+     Ele é tão rápido que não há tempo de fugir; você deve enfrentá-lo. `, //136
+     `Beber vinho tinto no castelo de um Vampiro?<br><br>
+     Isto não é vinho tinto, é sangue, e parece que ainda está quente.<br><br>
+     Você cospe, horrorizado. Perca 1 ponto de FÉ.<br><br>
+     Sem correr mais riscos, você segue para a porta oeste.`, //137
+     `Você sobe no barco, mas não tem remos - nem marinheiro ou leme para guiá-la - e não vai se mover.<br>
+     Você desce para procurar por alguma coisa que lhe sirva de remo - mas quando o faz, o pequeno barco desliza pelo rio e permanece, estacionado, no meio da correnteza.<br>
+     Você entra no rio e tenta pegá-lo mas, toda vez que se aproxima, ele se move para longe, segundo própria vontade!<br>
+     Ele é obviamente um objeto mágico - e você não tem como controlá-lo.<br><br>
+     Você terá que atravessar o rio, afinal.`, //138
+     `Jogue dois dados e some 3 ao total.<br><br>
+     Um teste de HABILIDADE.`, //139
+     `O Vampiro recua de nojo diante do alho, em volta de seu pescoço, e o ataca violentamente por causa da frustração!<br><br>
+     Você perde 2 pontos de sua ENERGIA, mas o encantamento está quebrado.<br><br>
+     O Conde Reiner Heydrich agiganta-se muito próximo a você, então terá de enfrentá-lo com sua espada.`, 
      `Os portões são feitos de sólidas e grossas barras de ferro; você não pode abri-los.<br><br>
      Jogue um dado e some 2.<br><br>
-     Um teste de Fé.`, //141
-     `142`, 
-     `143`, 
-     `144`, 
-     `145`, 
+     Um teste de FÉ.`, //141
+     `Enquanto você passeia pelo local, um dos braços nas prateleiras, de repente, o agarra pelo braço e o segura firmemente.<br>
+     Ele não o fere, mas não o deixará livre.<br><br>
+     Você pode tentar acertar o membro com sua espada, já que ele não o segura pelo braço da espada ou aguardar para ver o que acontece.`, //142
+     `Você ataca Katarina com sua espada, mas ela não é ferida!<br>
+     Rindo, ela desembainha um punhal azul gélido e o ataca.<br>
+     Incapaz de acertá-la, você corre para a porta, mas ao comando dela, um grande tapete envolve suas pernas e o joga no chão.<br>
+     Quando ele começa a se emaranhar e a estrangulá-lo, Katarina pega uma pesada tigela de cobre, coloca-a sob sua garganta e enfia seu punhal, gargalhando!<br><br>
+     Sua aventura termina aqui!`, //143
+     `Os olhos no quadro tornam-se vermelhos e começa a gotejar sangue da moldura!<br>
+     Isto é certamente enervante, mas você consegue vencer seu medo.<br><br>
+     Escolha sua proxima ação:`, //144
+     `Katarina ri, lançando longe o objeto inútil e o golpeiando com seu punhal.<br><br>
+     Perca 2 pontos de ENERGIA.`, //145
      `O Sábio pega uma Chave de Prata de um bolso do colete.<br><br>
      “Isto o fará entrar” diz ele. “Volte pelo corredor para oeste, vire à direita, e abra a porta norte com isto.”`, //146
-     `147`, 
+     `Quando você avança, sente que há algo de errado em seu andar - e você acabou de recuar a tempo de livrar-se de uma armadilha-alçapão coberta!<br><br>
+     Esgueirando-se por volta dela, você continua em segurança pelo corredor.`, 
      `As pessoas estão ansiosas por dizer-lhe como chegar ao Castelo! Eles o advertem que o caminho a ser seguido não oferece segurança. 
      Somente um veículo fantasmagórico pode atravessá-lo a salvo. Eles indicam que há uma trilha que segue para nordeste, pela floresta, que leva direto ao Castelo. 
      Se você tiver sorte, poderá evitar os animais selvagens da floresta; há uma cabana no caminho onde poderá descansar e dormir. Mas terá, porém, que atravessar o rio; 
@@ -515,65 +535,120 @@ var pagTxtGame = [`Undefined`,
      chegando o crepúsculo - e então uma flecha passa assobiando perto de sua orelha e se fixa em um tronco de árvore! No lusco-fusco a sua esquerda, você vê um grande 
      urso balançando em sua direção, e do seu lado, uma figura esguia está preparando outra flecha para lançar em sua direção!<br><br>
      Escolha sua proxima ação:`, //148
-     `149`, 
-     `150`, 
-     `151`, 
+     `O que tentará usar apra atacar o órgão?`, //149
+     `Você agora está lutando com uma criatura morta-viva, terrivelmente má, e a Baobhan Sith lança um feitiço sobre você!<br>
+     Determine qual de vocês dois tem a maior Força de Ataque nesta Série de Ataque.`, //150
+     `Você está com sorte. Wilhelm Heydrich, o pobre primo idiota do Conde, hoje está bastante lúcido.<br>
+     Ele está feliz por ter um visitante e você logo está bebendo conhaque de Analand enquanto Wilhelm fala sobre seu primo.<br><br>
+     “Ele não tem um espelho em casa, não é? Ele fica aterrorizado com espelhos prateados! Não sei porquê. Existe um na sala de relaxamento, logo depois da sala de jantar, e você jamais encontrará Reiner passeando por lá, não mesmo!”<br> Ele bebe sofregamente do vinho fortificado.<br>
+     “E, então, a coisa de Siegfried assusta as coisas vivas internas para longe dele - bem, não são exatamente vivas, são? A espada, sabe, ele tem um medo especial dela. Escondeu-a em um livro, depois de ter mandado Sigfried embora, acredite se quiser. Não sei sobre a armadura. Mas ele levou o escudo para a torre, lá embaixo...” ele aponta para o corredor. <br><br>
+     Wilhelm agora já está bebendo demais e começa a enrolar a língua, então você se despede e parte.<br>
+     De volta ao corredor, resolve verificar a torre e o escudo que Wilhelm mencionou, então você vai para a ponta sul e lá abre a porta leste.`, //151
      `Jogue dois dados.<br><br> 
      Um teste de Habilidade.`, //152
-     `153`, 
-     `154`, 
-     `155`, 
-     `156`, 
-     `157`, 
+     `A Armadura viva avança sobre você e, apesar da lâmina do bardiche, parecido com um cutelo, estar enferrujada, ela ainda parece bastante afiada para causar-lhe um ferimento desagradável!`, //153
+     `Existem duas portas nesta câmara vazia, você resolve abrir uma delas.<br><br>
+     Vai abrir a porta no canto sul da parede oeste ou a porta com maçaneta de prata, no meio da parede sul?`, //154
+     `Faz pouco sentido lançar um feitiço, pois Katarina está muito próximo e não fugirá de jeito nenhum!<br>
+     Ela o atinge; perca 2 pontos de ENERGIA.`, //155
+     `Você faz um achado de sorte no meio de todo esse lixo - uma garrafa de cristal com filigrana de prata, valendo 4 Moedas de Ouro.<br><br>
+     Você retorna ao hall de entrada e lá pode abrir a porta norte ou pegar a passagem leste.`, //156
+     `Uns três metros mais à frente, no corredor, você fica diante de duas portas, uma de cada lado.<br>
+     A porta para norte tem uma placa empoeirada que pode ser lida após tirar as teias; diz simplesmente: “Boris, o Ébrio”.<br>
+     A porta para sul tem uma placa que diz: “Chanceler Conrad Schmidt, o pior homem de Mortvania”.<br>
+     A sua frente pode ver uma junção em T que vira para norte e sul, e também uma porta em seu final.<br><br>
+     Escolha sua proxima ação:`, //157
      `Os únicos feitiços úteis, aqui, são Grande Ataque ou Raio de Jandor.`, //158
-     `159`, 
-     `160`, 
-     `161`, 
-     `162`, 
-     `163`, 
-     `164`, 
+     `Você sobe os degraus de pedra, cheios de teias e imundos, passa por colônias de mofo e fungos nas paredes, e sobe ao topo da torre.<br>
+     O luar se projeta dentro da câmara circular através de vidro tingido, é como se as sombras deste lugar estivessem escapando e observando.<br>
+     Do seu lado oposto, banhada pelo luar, está uma jovem mulher sentada em uma cadeira, presa pelos pulsos e tornozelos por uma massa de teias finas - mas elas podem ser mais fortes do que parecem, talvez até mesmo mágicas.<br>Ela é realmente muito bonita, com longos cabelos ruivos, encaracolados e um rosto suave.<br><br>
+     Jogue um dado e some 4.<br>
+     Um teste de FÉ.`, //159
+     `GRANDE ATAQUE é um feitiço útil em combate.<br>
+     Você lança o feitiço antes de atacar e, se tiver a maior Força de Ataque e atingir um golpe em seu inimigo, nessa Série de Ataque, seu golpe causa a perda de mais 4 pontos extras de ENERGIA.<br>
+     Mas se não acertar o golpe, na Série de Ataque em que tiver usado o feitiço, ele não terá qualquer efeito.<br>
+     Você deve decidir se deseja usar o feitiço antes de começar o combate.`, //160
+     `Você abre a porta com suas chaves e entra em uma antecâmara de pedra, vazia, decorada com entalhes de ratos, morcegos e lobos.<br>
+     Do lado oposto há uma porta e, de uma estreita fresta em sua base, uma maligna luz vermelha é refletida de uma câmara vizinha.<br>
+     Jogue um dado.`, //161
+     `Você paga ao Gnomo - reduzindo 2 Moedas de Ouro de seu Tesouro - e ele o leva pelo rio. <br>
+     Ele não precisa remar, apenas sussurra para seu barco mágico e ele desliza direto em frente! <br>
+     Você pula fora na margem oposta.`, //162
+     `Os ratos o mordiscam com seus dentes afiados e amarelados - perca 2 pontos de ENERGIA; mas você consegue sair em segurança e os chutar para trás.<br><br>
+     Agora pode seguir para a Cripta, se ainda não tiver estado lá, ou seguir para as portas de bronze ao norte.`, //163
+     `Conduza o combate normalmente.<br>
+     Seu oponente não é realmente um Vampiro, então, se tiver a espada mágica, Nightstar, pode acrescentar um bônus de apenas 1 ponto em sua HABILIDADE, durante este combate.`, //164
      `Os tentáculos da criatura de névoa envolvem sua garganta e você tem a sensação de pequenas, mas afiadas, agulhas enterrando-se em sua pele!`, //165
-     `166`, 
-     `167`, 
-     `168`, 
-     `169`, 
-     `170`, 
-     `171`, 
-     `172`, 
-     `173`, 
+     `Olhando pelo corredor, vê que existem portas opostas nos lados oeste e leste, na metade do corredor, e mais outra porta no leste, bem no final.`, //166
+     `O Vampiro o encantou; você não pode atacá-lo!<br>
+     Ele dá um passo à frente, triunfante, e suas presas estão descobertas, quando ele procura por sua garganta.`, //167
+     `Tendo vencido o guardião daqui, você pega dois pássaros de cristal com prata que são bem pequenos o suficiente para carregar.<br>
+     Eles valem 3 Moedas de Ouro o par (já acrescentado a seu Tesouro).<br>
+     Agora Teste sua SORTE.`, //168
+     `Você encontra o jarro e, levando-o, corre de volta até Karl-Heinz, o Alquimista.<br>
+     “Maravilhoso” diz ele, segurando-o com prazer. “O ingrediente final para minha poção de longevidade! Logo voltarei a ser novamente jovem. E também já tenho sua poção pronta.”<br>
+     Você engole a substância verde, lodosa e de cheiro horrível.<br>
+     É algo nojento e lhe dá sérias dores de estômago; perca 4 pontos de ENERGIA.<br>
+     Mas após descansar um pouco, descobre que ela funcionou - acabou-se a Aflição de Licantropia (Maior)! Você agradece ao Alquimista por sua ajuda e retorna ao corredor, indo para norte até o hall de entrada.<br><br>
+     Estando lá, escolha sua proxima ação:`, //169
+     `Tentar escapar é inútil; os lobos são muito mais rápidos do que você e podem seguir-lhe pelo cheiro.<br>
+     Quando corre, tropeça e cai, perdendo 1 ponto de ENERGIA, e o primeiro lobo o morde enquanto se levanta lhe dando ainda mais 2 pontos de dano.`, //170
+     `Você corre para a porta sul, se atrapalhando com as chaves.<br>
+     Perca 3 pontos de ENERGIA pelas mordidas dos ratos; se ainda estiver vivo, suas mãos trêmulas conseguirão pôr a chave na fechadura.`, //171
+     `Você abre a porta e dá de cara com uma cena bastante doméstica - um cozinheiro e dois servos em mesas de trabalho preparando comida.<br>
+     No entanto, existe um desagradável cheiro misturado ao da comida: um odor pútrido e ruim, que chegam ao fundo de sua garganta.<br>
+     Os trabalhadores o fitam com olhos vagos - e você vê que eles são Zumbis!<br><br>
+     Jogue um dado e some 2.<br>
+     Um teste de FÉ`, //172
+     `Você fere o Espectro antes que ele possa materializar-se completamente. Devido ao golpe inicial o Espectro terá 2 de ENERGIA a menos.`, //173
      `Você sobe no coche e os cavalos saem a galope - sem fazer qualquer som enquanto se movem! Você se recosta em um confortável assento forrado de preto. Olhando 
      pelas janelas de pesadas cortinas púrpuras, você nada vê além da densa e envolvente bruma, mas os uivos dos lobos que ouve fazem um arrepio descer por sua coluna.<br><br>
-     Jogue um dado e some 2 ao resultado.<br><br>
-     Um teste de FÉ.`, 
-     `175`, 
-     `176`, 
-     `177`, 
-     `178`, 
-     `179`, 
-     `180`, 
-     `181`, 
-     `182`, 
-     `183`, 
+     Jogue um dado e some 2 ao resultado.<br>
+     Um teste de FÉ.`, //174
+     `Sua espada é inútil contra alguma coisa deste tamanho; você não sabe onde atingir para causar-lhe um ferimento real.<br>
+     Perca 2 pontos de ENERGIA, por causa das mordidas dos ratos, antes de desistir e fugir para norte.`, //175
+     `176`, //176
+     `Você encontra sopa quente, o bastante para uma refeição, e a come (recuperando 4 pontos de ENERGIA).<br>
+     Você encontra uma gaveta na mesa e dela tira uma bolsa contendo 5 Moedas de Ouro - mas também pica seu dedo em uma agulha descolorida que estava dentro da gaveta.<br>
+     Foi anotado no quadro de Aflições de seu inventário, um Veneno de Ação Lenta; ele irá afetá-lo até que encontre uma cura.<br> 
+     Ele age do seguinte modo: a cada vez que tiver uma luta, você deve subtrair 1 ponto de sua ENERGIA no início do combate e também 1 ponto de sua ENERGIA Inicial!<br>
+     Você, portanto, vai ficando cada vez mais enfraquecido.<br>
+     Somente se puder encontrar um tratamento para curá-lo desta Aflição é que poderá recuperar sua ENERGIA Inicial até o nível com que iniciou a aventura.`, //177
+     `O Vampiro reaparece no aposento sob forma humana!<br>
+     Some 8 pontos à ENERGIA de quando ele escapou. Enfrente-o novamente e tente reduzir a ENERGIA para 4, ou menos, uma vez mais.`, //178
+     `O sino de prata irradia uma sensação de bem sobre você.<br>
+     Olha-o cuidadosamente e dentro do sino encontra um nome gravado: SIEGFRIED HEYDRICH. Apesar de poder soar um alarme, você toca o sino de impulso.`, //179
+     `Limpando a última gosma do Ghoul Fedorento de sua espada, você dá uma olhada rápida em volta e encontra uma bolsa de couro dentro do sarcófago.<br>
+     Ela contém 5 Moedas de Ouro, que você acrescenta a seu Tesouro.<br>
+     Pode agora tentar abrir a tumba de Boris, o Ébrio, se ainda não a tiver investigado ou seguir pelo corredor até a junção em T.`, //180
+     `Jogue um dado.`, //181
+     `Você abre a porta... e aciona uma armadilha mágica. <br>
+     Um clarão de luz e calor; perca 4 pontos de ENERGIA.<br>
+     Você fica parcialmente cego e mal pode ver o aposento escuro. Porém, pode perceber a forma de uma figura esquelética de quatro braços, armado com uma foice e dirigindo-se para você.<br><br>
+     Pode enfrentá-la, enfraquecido como está ou tentar fechar a porta e fugir.`, //182
+     `183`, //183
      `Tendo destruído os repugnantes restos do Doktor Faustus, você quer:`, //184
-     `185`, 
-     `186`, 
-     `187`, 
-     `188`, 
-     `189`,  
-     `190`, 
-     `191`, 
+     `185`, //185
+     `A terrível mordida do morcego acerta-lhe o pescoço já ferido, e a odienta ameaça esvoaçante abre sua jugular.<br>
+     Você cai em agonia, enquanto seu sangue da vida jorra no chão.<br><br>
+     Sua jornada termina aqui.`, //186
+     `187`, //187
+     `188`, //188
+     `189`, //189
+     `190`, //190
+     `191`, //191
      `Os esforços para penetrar na Cripta não passam despercebidos. Uma forma pequena, parecendo um anão, de uma figura espectral, preta e quase sem feições, 
      vem flutuando pelos degraus.<br>
      Você pode sentir o mal arrepiante no ar que ela desloca; suas pequenas garras negras estendem-se para agarrá-lo!<br><br>
      Escolha sua proxima ação:`, //192
-     `193`, 
-     `194`, 
-     `195`, 
-     `196`, 
-     `197`, 
-     `198`, 
-     `199`, 
-     `200`,
+     `193`, //193
+     `194`, //194
+     `195`, //195
+     `196`, //196
+     `197`, //197
+     `198`, //198
+     `199`, //199
+     `200`, //200
      `Você tenta acertar o Cavaleiro com sua espada, mas ele simplesmente ri, quando sua espada atravessa o ar! Você não pode feri-lo. 
      Ele chicoteia os cavalos para um galope, deixando-o de pé, olhando tolamente. A crença em suas próprias capacidades fica estremecido por tal falha inicial,
      reduzindo 1 ponto de sua FÉ. Você precisa encontrar outro meio de ir para o castelo.`, 
