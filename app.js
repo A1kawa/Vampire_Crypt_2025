@@ -331,6 +331,7 @@ async function damage(sorte = false, result = false, i = 2) {
         await new Promise(resolve => setTimeout(resolve, 500))
         if (Enemy.Ene == 0) {
             cmbInit(true)
+            return
         }
         cont++
     }

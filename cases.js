@@ -901,7 +901,7 @@ function Paginas(pagNmb) {
             NextPage = [25]
             break;
         case 85:
-            if (aflicoes.includes('Maldição-do-Curandeiro')) {
+            if (aflicoes.includes('Maldicao-do-Curandeiro')) {
                 NextPage = [186]
                 Continue(0)
                 personalizado = true
@@ -1766,7 +1766,7 @@ function Paginas(pagNmb) {
             break;
         case 197:
             but = ['JOGAR DADOS']
-            testStat = {ref:Chars.Hab, testNext: [13, 344], testAddition: 3}
+            testStat = {ref:Chars.Hab, testNext: [13, 344], testAdd: 3}
             NextPage = [405]
             break;
         case 198:
@@ -1805,49 +1805,102 @@ function Paginas(pagNmb) {
             NextPage = [252]
             break;
         case 203:
-            
+            but = ['ir pela porta ao norte', 'ir pela porta ao sul']
+            NextPage = [361, 244]
             break;
         case 204:
             but = ['C0N71NU4R']
             NextPage = [401]
             break;
         case 205:
-            
+            but = ['sair pela porta oeste do aposento']
+            NextPage = [373]
+            if (aflicoes.includes('Licantropia') || aflicoes.includes('Licantropia-Maior')) {
+                const text = pagTxtGame[pagNmb] + '<br> Mas ele pode lhe ser útil se tiver uma Aflição de Licantropia'
+                typingEffect(text)
+                personalizado = true
+                but.push('perguntar sobre aflições')
+                NextPage.push(318)
+            }
             break;
         case 206:
+            if (combate) {
+                Chars.encontros = Chars.encontros.filter(item => item !== 'cmbResume')
+                NextPage = [135]
+                Continue(0)
+                personalizado = true
+                break
+            }
+            aflicoes.push('Maldição-do-Morcego')
+            attInv()
             but = ['CONTINUAR COMBATE']
-            NextPage = [45]
+            combate = true
+            Chars.encontros.push('cmbResume')
             break;
         case 207:
+            Chars.Ene = Chars.Ene - 3
+            Chars.Hab = Chars.Hab - 2
+            attInv()
+            Chars.encontros.push('magiaBaobhan')
             but = ['CONTINUAR']
             NextPage = [263]
             break;
         case 208:
-            
+            Chars.Ene = Chars.Ene - 2
+            attInv()
+            but = ['JOGAR DADO']
+            testStat = {ref:5, testNext: [365, 310]}
+            NextPage = [404]
             break;
         case 209:
-            ArrayDeDados.push(5)
+            Chars.encontros.push(5)
             ouro = ouro - 3
             but = ['CONTINUAR']
             NextPage = [75]
             break;
         case 210:
-            
+            but = ['investigar o sarcófago', 'sair e ir à junção em T', 'ir à tumba do chanceler']
+            NextPage = [262, 230, 359]
             break;
         case 211:
-            
+            Chars.Ene = Chars.Ene + 4
+            if (Chars.Ene > Chars.initEne) {
+                Chars.Ene = Chars.initEne
+            }
+            attInv()
+            but = ['tentar fugir', 'enfrentar a criatura']
+            NextPage = [309, 260]
             break;
         case 212:
-            
+            if (combate) {
+                combate = false
+                NextPage = [339]
+                Continue(0)
+                personalizado = true
+                break
+            }
+            condition = {has:true, which: 'vezes atingido', id: 2, times: 2, ref:268}
+            Enemy.Hab = Enemy.Hab - 2
+            combate = true
+            Chars.encontros.push('cmbResume')
             break;
         case 213:
-            
+            if (itens.includes('Espada-Magica')) {
+                const text = pagTxtGame[pagNmb] + '<br> Acrescentamos a Espada Mágica a seus Equipamentos - a menos que já possua uma Espada Mágica, neste caso você deixa uma para trás.<br> Não há nenhum valor em ter uma segunda Espada Mágica! <br><br> Agora você sobe a escada; daqui você pode descer a escada para norte, se ainda não o tiver feito ou descer a escada para sul.'
+            } else {
+                const text = pagTxtGame[pagNmb] + '<br> Acrescentamos a Espada Mágica a seus Equipamentos. <br><br> Agora você sobe a escada; daqui você pode descer a escada para norte, se ainda não o tiver feito ou descer a escada para sul.'
+            }
+            typingEffect(text)
+            personalizado = true
+            but = ['descer para o norte', 'descer para o sul']
+            NextPage = [257, 161]
             break;
         case 214:
-            
+            but = ['abrir a porta norte', 'seguir pela passagem leste']
+            NextPage = [101, 256]
             break;
         case 215:
-            
+            'teste de habilidade natural'
             break;
         case 216:
             console.log(itens)
@@ -1891,15 +1944,52 @@ function Paginas(pagNmb) {
             NextPage = [311]
             break;
         case 218:
-            NextPage = 121
+            if (combate) {
+                combate = false
+                NextPage = [314]
+                if (Chars.encontros.includes('reached')) {
+                    Chars.encontros = Chars.encontros.filter(item => item !== "reached")
+                    NextPage = [266]
+                }
+                Continue(0)
+                personalizado = true
+                break
+            }
+            combate = true
+            provisoes = provisoes - 2
+            attInv()
+            but = ['INCIAR COMBATE']
+            Enemy = {name:'Lobo Gigante', Hab:7, Ene:8}
+            condition = {has:true, which:'vezes atingido', id:4, times:2}
             break;
         case 219:
             
             break;
         case 220:
-            
+            NextPage = [259]
+            if (itens.includes('Livro-das-Espadas')) {
+                NextPage = [94]
+            }
+            but = ['CONTINUAR ']
             break;
         case 221:
+            if (combate) {
+                combate = false
+                NextPage = [314]
+                if (Chars.encontros.includes('reached')) {
+                    Chars.encontros = Chars.encontros.filter(item => item !== "reached")
+                    NextPage = [266]
+                }
+                Continue(0)
+                personalizado = true
+                break
+            }
+            combate = true
+            provisoes = provisoes - 2
+            attInv()
+            but = ['INCIAR COMBATE']
+            Enemy = {name:'Lobo Gigante', Hab:7, Ene:8}
+            condition = {has:true, which:'vezes atingido', id:4, times:2}
             NextPage = 364
             break;
         case 222:
@@ -2062,7 +2152,7 @@ function Paginas(pagNmb) {
             NextPage = 382
             break;
         case 254:
-            ArrayDeDados.push(4)
+            Chars.encontros.push(4)
             ouro = ouro - 3
             but = ['CONTINUAR']
             NextPage = [75]
@@ -2287,7 +2377,7 @@ function Paginas(pagNmb) {
             
             break;
         case 303:
-            ArrayDeDados.push(2)
+            Chars.encontros.push(2)
             ouro = ouro - 2
             but = ['CONTINUAR']
             NextPage = [75]
@@ -2691,7 +2781,7 @@ function Paginas(pagNmb) {
             break;
         case 394:
             ouro = ouro - 2
-            ArrayDeDados.push(3)
+            Chars.encontros.push(3)
             but = ['CONTINUAR']
             NextPage = [75]
             break;

@@ -679,27 +679,62 @@ var pagTxtGame = [`Undefined`,
      `Você tenta acertar o Cavaleiro com sua espada, mas ele simplesmente ri, quando sua espada atravessa o ar! Você não pode feri-lo. <br>
      Ele chicoteia os cavalos para um galope, deixando-o de pé, olhando tolamente. A crença em suas próprias capacidades fica estremecido por tal falha inicial,
      reduzindo 1 ponto de sua FÉ.<br>
-     Você precisa encontrar outro meio de ir para o castelo.`, 
-     `202`, 
-     `203`, 
-     `204`, 
-     `205`, 
-     `206`, 
-     `207`, 
-     `208`, 
-     `209`, 
-     `210`, 
-     `211`, 
-     `212`, 
-     `213`, 
-     `214`, 
-     `215`, 
+     Você precisa encontrar outro meio de ir para o castelo.`, //201
+     `O pobre jovem Wilhelm, primo do Conde, é bem louco e você só consegue tirar-lhe rasgos de informação, de valor duvidoso.<br>
+     Ele murmura sobre uma espada brilhante, escondida em um livro, e outras coisas sem sentido.<br>
+     Você o deixa com seus murmúrios e tenta a porta na ponta sul do corredor.`, //202
+     `Você consegue levantar o castiçal muito pesado com um grunhido e desce-o sobre o teclado do órgão, que cai, devido ao peso, e se parte ao meio.<br>
+     A música para de repente. Perca 1 ponto de ENERGIA por causa das mordidas dos ratos, mas agora que o som infernal parou, os ratos começam a correr de um lado para o outro, confusos, e o ignoram.<br>
+     Você pode passar pela porta norte que existe aqui ou sair e abrir a porta no final sul da varanda.`, //203
+     `Agora sua transformação é completa.<br>
+     Sua forma lupina luta para libertar-se da armadura de couro; mas você consegue tirá-la e correr pelos jardins e corredores do Castelo, uivando.<br>
+     Logo, um grande morcego voa acima de sua cabeça e mergulha; o Conde veio para assumir o controle de seu mais novo bichinho de estimação!<br><br>
+     O seu destino foi pior do que a morte.`, //204
+     `O Alquimista pouco fala, apesar de contar-lhe que foi empregado por Katarina - a irmã do Conde - para preparar pós e poções que lhe permitissem manter a aparência juvenil, e também um tratamento que Karl-Heinz parece evitar mencionar, deliberadamente.<br>
+     “Katarina parece muito jovem para uma mulher de 76” ele murmura, laconicamente.<br>
+     Você não pode realmente perguntar-lhe sobre o Conde e como matá-lo (Karl-Heinz pode contar a alguém o que você está pretendendo!) e há muito pouca coisa a mais que você pode obter dele.`, //205
+     `Você sente uma horrível sensação de ferroada quando o morcego o morde pela segunda vez.<br>
+     Foi acrescentada a Maldição do Morcego ao quadro de Afliçõesn no seu inventário.<br>
+     Ainda não se é sentido nenhum efeito colateral por causa da mordida, mas quem sabe o que poderá acontecer depois?<br>
+     Por enquanto, termine seu combate.`, //206
+     `A maléfica conjuradora mágica aponta um único dedo indicador para você, e fagulhas verdes de luz saem de sua mão e cercam seu corpo.<br>
+     Elas penetram em seu corpo e você fica todo arrepiado, a ponto de desmaiar de fraqueza.
+     Sua ENERGIA foi reduzida em 3, e também foram perdidos 2 pontos de sua HABILIDADE - mas a perda de HABILIDADE é apenas temporária; ela durará até que você tenha terminado esse combate.<br>
+     Você agora está perto o suficiente para enfrentá-la.`, //207
+     `Sua arma é inútil contra o Espectro, que o ataca; você perde 2 pontos de ENERGIA.<br>
+     Você foge do aposento, tentando voltar para a varanda, e o ágil Espectro rapidamente acompanha seus passos, atacando-o pelas costas.<br><br>
+     Jogue um dado.`, //208
+     `“Bem, tem o pobre jovem Wilhelm, o primo - louco como um chapeleiro, sabe. Bastante inofensivo.<br>
+     Siegfried está morto, é claro - o irmão mais velho de Reiner, ele era o Conde até que... ahn... desapareceu e Reiner assumiu.<br>
+     Então, há Gunthar, que vive lá em cima; é subir e bater na porta com maçaneta de prata. Ele é um curandeiro, assim ele o diz. Não é mal.<br>
+     Katarina, a irmã do Conde, é uma mulher bela e interessante. Muito caprichosa, com temperamento de um gato selvagem, mas também muito cativante. Ela tem um apartamento lá em cima, no final do corredor, passando o patamar por onde sobe.”`, //209
+     `Você destranca a porta com suas chaves.<br>
+     Ela abre para uma pequena câmara de pedra vazia, com um sarcófago simples de pedra no centro.<br>
+     Você pode examinar o sarcófago, mas se preferir sair poderá descer o corredor até a junção em T, ou, se ainda não o tiver feito, abrir a porta da tumba do Chanceler.`, //210
+     `O Gnomo o leva até um catre, onde você se acomoda para dormir - após calçar a porta e a janela para manter os intrusos do lado de fora!<br>
+     Você dorme bem e recupera 4 pontos de ENERGIA, mas por volta da meia-noite é, repentinamente, acordado por um rosnado e abre os olhos a tempo de ver um imenso lobo materializando-se no aposento, formando- se de uma nuvem de gás que esgueirou-se por debaixo da porta!<br><br>
+     Você pode escolher agarrar sua mochila e arma e tentar fugir pela porta ou ficar e tentar enfrentar esta criatura.`, //211
+     `Em desespero, o Conde tentará morder sua garganta, em vez de atingi-lo com os punhos.<br>
+     Ele perderá 2 pontos de HABILIDADE enquanto tentar este método de ataque de mordida.<br>
+     Se o Conde mordê-lo duas vezes haverão consequências.`, //212
+     `Você consegue abrir a tampa de madeira até poder ver o brilho de uma luz suave no interior. O esqueleto lá dentro, envolto por uma armadura de cota de malha enferrujada, tem uma brilhante e longa espada nas mãos.<br>
+     Gentilmente, você a remove e guarda.<br>
+     É uma Espada Mágica: não pode somar nenhum ponto a sua HABILIDADE, quando a usar, mas pelo menos é uma arma com a qual pode ferir Reiner Heydrich, o Vampiro!`, //213
+     `Você não encontra nada de interessante ou que seja valioso, então retorna para o hall de entrada.<br>
+     Chegando aqui, você pode abrir a porta norte ou seguir pela passagem leste.`, //214
+     `Jogue dois dados.<br><br>
+     Um teste de HABILIDADE.`, //215
      `Você joga sua Água-benta no Vampiro.<br>Jogue um dado e some 1, para obter um resultado entre 2 e 7; o total é o número de pontos de ENERGIA que o líquido 
-     abençoado causa de dano à criatura morta-viva enlouquecida, cuja pele agora parece estar pegando fogo!<br><br>`, //216
-     `217`, 
-     `218`, 
-     `219`, 
-     `220`, 
+     abençoado causa de dano à criatura morta-viva enlouquecida, cuja pele agora parece estar pegando fogo!`, //216
+     `Esses Zumbis - como pode ver que essas patéticas criaturas o são - hesitam e lhe dão tempo de disparar para a escada sem precisar lutar.`, //217
+     `Um dos lobos para a fim de devorar a comida; foi reduzido 2 refeições de suas Provisões.<br>
+     Porém, o lobo maior ignora a comida e o ataca, rosnando e babando.<br>
+     No fim, você ainda terá que enfrentar ao menos uma das criaturas, e se for atingido mais que uma vez, ao vencer o combate, haverão consequências.`, //218
+     `Você destranca a gaveta, mas ouve o som de vidro se quebrando, quando o faz.<br><br>
+     Jogue dois dados.<br><br>
+     Um teste de SORTE.`, //219
+     `“Você tem a cruz, mas não a arma para destruir Reiner” diz-lhe Siegfried, ansioso.<br>
+     Você tem o Livro das Espadas?`, //220
      `221`, 
      `222`, 
      `Você de repente sente um arrepio dentro da carruagem e lá, surgindo lentamente a sua frente, encontra-se um fantasma! A forma espectral de um homem alto 
